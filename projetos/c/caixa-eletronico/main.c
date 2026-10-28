@@ -6,6 +6,10 @@
 #include <locale.h>
 
 #define TAMANHO_ENTRADA 128
+#define RESET        "\x1b[0m"        // Código que desliga todas as cores/estilos (volta ao normal)
+#define VERMELHO     "\x1b[31m"       // Cor da letra: vermelho
+#define VERDE        "\x1b[32m"       // Cor da letra: verde
+#define AMARELO      "\x1b[33m"       // Cor da letra: amarelo
 
 /* Converte uma entrada como "25,50" em centavos inteiros. */
 int converter_para_centavos(const char *texto, long long *valor_centavos)
@@ -77,7 +81,7 @@ int ler_valor_positivo(long long *valor_centavos)
     char entrada[TAMANHO_ENTRADA];
 
     while (1) {
-        printf("Digite o valor (ex.: 25,50): R$ ");
+        printf("Digite o valor "AMARELO"(ex.: 25,50):"RESET" R$ ");
 
         if (fgets(entrada, sizeof entrada, stdin) == NULL) {
             return 0;
@@ -132,7 +136,7 @@ void exibir_menu(void)
 
 void consultar_saldo(long long saldo_centavos)
 {
-    printf("Saldo atual: R$ %lld,%02lld\n",
+    printf(AMARELO"Saldo atual: R$ %lld,%02lld\n"RESET,
            saldo_centavos / 100,
            saldo_centavos % 100);
 }
@@ -147,12 +151,12 @@ int depositar(long long *saldo_centavos)
     }
 
     if (valor > LLONG_MAX - *saldo_centavos) {
-        puts("Esse valor ultrapassa o limite suportado pelo programa.");
+        puts(AMARELO"Esse valor ultrapassa o limite suportado pelo programa."RESET);
         return 1;
     }
 
     *saldo_centavos += valor;
-    puts("Depósito realizado com sucesso.");
+    puts(VERDE"Depósito realizado com sucesso."RESET);
     consultar_saldo(*saldo_centavos);
     return 1;
 }
@@ -167,21 +171,29 @@ int sacar(long long *saldo_centavos)
     }
 
     if (valor > *saldo_centavos) {
-        puts("Saldo insuficiente. O saque não foi realizado.");
+        puts(VERMELHO"Saldo insuficiente. O saque não foi realizado."RESET);
         consultar_saldo(*saldo_centavos);
         return 1;
     }
 
     *saldo_centavos -= valor;
-    puts("Saque realizado com sucesso.");
+    puts(VERDE"Saque realizado com sucesso."RESET);
     consultar_saldo(*saldo_centavos);
     return 1;
 }
 
+void limparTela() {
+    #ifdef _WIN32
+        system("cls");
+    #else
+        system("clear");
+    #endif
+}
+
 int main(void)
 {
-    setlocale(LC_ALL,"");
-    
+	setlocale(LC_ALL,"");
+	
     long long saldo_centavos = 0;
     int sair = 0;
 
@@ -190,6 +202,7 @@ int main(void)
 
         exibir_menu();
         opcao = ler_opcao();
+        limparTela();
 
         switch (opcao) {
             case 1:
@@ -210,7 +223,7 @@ int main(void)
                 sair = 1;
                 break;
             default:
-                puts("Opção inválida. Escolha uma opção de 1 a 4.");
+                puts(VERMELHO"Opção inválida. Escolha uma opção de 1 a 4."RESET);
         }
     }
 
