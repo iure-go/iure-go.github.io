@@ -37,6 +37,7 @@
 
     tentativas += 1;
     contador.textContent = String(tentativas);
+    entrada.value = "";
 
     if (valor === segredo) {
       mensagem.textContent = `Acertou! O número era ${segredo}. Você precisou de ${tentativas} tentativa(s).`;
@@ -47,10 +48,11 @@
     } else {
       mensagem.textContent = valor < segredo ? "O número secreto é maior. Tente novamente." : "O número secreto é menor. Tente novamente.";
       mensagem.className = "message";
-      entrada.select();
+      entrada.focus();
     }
   });
 
   reiniciar.addEventListener("click", novoJogo);
   novoJogo();
 })();
+
