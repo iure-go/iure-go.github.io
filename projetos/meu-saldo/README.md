@@ -32,3 +32,8 @@ A API usa o cabeçalho `X-Perfil-Id` para separar dados de demonstração. Esse 
 - `assets/`: ícones do aplicativo.
 
 A pasta `android/` é gerada pelo Expo quando necessário. Arquivos locais de ambiente, dados do banco, caches e artefatos de compilação não fazem parte deste repositório.
+
+## Capturas de tela
+
+As telas do app e da API estão na página do projeto: [abrir galeria no portfólio](https://iure-go.github.io/projetos/meu-saldo/#capturas).
+
