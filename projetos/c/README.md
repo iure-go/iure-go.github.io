@@ -8,6 +8,8 @@ Esta pasta reúne uma seleção de exercícios e projetos acadêmicos em C.
 - **Agenda telefônica:** versão mais recente enviada (`V2.0.c`), com lista duplamente encadeada, validação de dados, busca, navegação e leitura/gravação em TXT. Foi criada para Windows e inclui `<conio.h>` e `<windows.h>`, portanto não é portátil sem adaptações.
 - **Operações com polinômios:** lista encadeada ordenada por expoente, soma, multiplicação e avaliação recursiva.
 
+Consulte os READMEs de cada projeto para ver como compilar e usar: [caixa eletrônico](caixa-eletronico/README.md), [agenda telefônica](agenda-telefonica/README.md) e [operações com polinômios](polinomios/README.md).
+
 ## Exercícios
 
 Os exemplos menores praticam condicionais, entrada e saída, laços, fatorial e `sizeof`.
