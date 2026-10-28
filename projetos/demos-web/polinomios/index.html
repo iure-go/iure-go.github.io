@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Demonstração interativa de operações com polinômios usando listas de termos.">
+  <title>Operações com polinômios | Iure Oliveira</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="polinomios.js" defer></script>
+</head>
+<body>
+  <main class="shell">
+    <a class="back" href="../">← Todas as demonstrações</a>
+    <header>
+      <p class="eyebrow">ESTRUTURA DE DADOS · LISTAS ENCADEADAS</p>
+      <h1>Operações com polinômios</h1>
+      <p class="intro">Monte dois polinômios e explore soma, multiplicação e avaliação. Informe um termo por linha, no formato <code>coeficiente, expoente</code>.</p>
+    </header>
+
+    <section class="polynomial-grid" aria-label="Entrada dos polinômios">
+      <article class="panel">
+        <label for="entrada-p1">Polinômio 1</label>
+        <textarea id="entrada-p1" rows="5" spellcheck="false" placeholder="3,2&#10;-2,1&#10;5,0">3,2
+-2,1
+5,0</textarea>
+        <p class="hint">Exemplo: 3x² − 2x + 5. Use um par coeficiente,expoente por linha.</p>
+        <button id="criar-p1" type="button">Criar P1</button>
+        <output id="saida-p1" class="polynomial" aria-live="polite">P1 ainda não criado.</output>
+      </article>
+      <article class="panel">
+        <label for="entrada-p2">Polinômio 2</label>
+        <textarea id="entrada-p2" rows="5" spellcheck="false" placeholder="1,1&#10;4,0">1,1
+4,0</textarea>
+        <p class="hint">Exemplo: x + 4. Coeficientes de mesmo expoente são somados.</p>
+        <button id="criar-p2" type="button">Criar P2</button>
+        <output id="saida-p2" class="polynomial" aria-live="polite">P2 ainda não criado.</output>
+      </article>
+    </section>
+
+    <section class="operations" aria-labelledby="operacoes-titulo">
+      <h2 id="operacoes-titulo">Operações</h2>
+      <div class="operation-buttons">
+        <button id="somar" type="button">Somar P1 + P2</button>
+        <button id="multiplicar" type="button">Multiplicar P1 × P2</button>
+      </div>
+      <div class="result" aria-live="polite">
+        <p id="resultado">Crie P1 e P2 para habilitar as operações.</p>
+      </div>
+      <form id="form-avaliar" class="evaluate-form" novalidate>
+        <label for="valor-x">Avaliar P1(x) e P2(x), com x inteiro de −100 a 100</label>
+        <div class="evaluate-row">
+          <input id="valor-x" type="number" min="-100" max="100" step="1" value="2" required>
+          <button type="submit">Avaliar</button>
+        </div>
+      </form>
+      <p id="mensagem" class="message" role="status" aria-live="polite"></p>
+    </section>
+    <p class="footnote">Limites didáticos: até 20 termos por polinômio, coeficientes entre −10.000 e 10.000 e expoentes de 0 a 20. <a href="../../c/polinomios/">Ver código original em C ↗</a></p>
+  </main>
+</body>
+</html>

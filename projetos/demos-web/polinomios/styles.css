@@ -1,0 +1,37 @@
+:root{font-family:Arial,Helvetica,sans-serif;color:#eaf4ef;background:#10231b;--mint:#51d5a2;--card:#163328;--muted:#b7c8bf;--line:#345346}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;line-height:1.55;background:radial-gradient(ellipse at 50% 0%,#1b4936 0,#10231b 60%)}
+button,input,textarea{font:inherit}
+.shell{width:min(980px,calc(100% - 32px));margin:0 auto;padding:28px 0 48px}
+a{color:var(--mint);text-decoration:none}
+a:hover{text-decoration:underline}
+.back{font-size:14px;font-weight:700}
+header{padding:38px 0 25px}
+.eyebrow{margin:0 0 10px;color:var(--mint);font-size:12px;font-weight:700;letter-spacing:1.1px}
+h1{margin:0;font-size:clamp(31px,6vw,46px);line-height:1.1;letter-spacing:-1px}
+.intro{max-width:700px;margin:14px 0;color:var(--muted)}
+code{padding:2px 5px;border-radius:4px;background:#0e241b;color:#d4f5e5}
+.polynomial-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.panel,.operations{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:14px}
+label{display:block;margin-bottom:8px;font-weight:700}
+textarea,input{width:100%;padding:12px 13px;border:1px solid #527365;border-radius:8px;background:#10251d;color:white;resize:vertical}
+textarea{font-family:Consolas,monospace;line-height:1.5}
+textarea:focus-visible,input:focus-visible,button:focus-visible,a:focus-visible{outline:3px solid #a7f1d1;outline-offset:2px}
+.hint{min-height:42px;margin:8px 0 13px;color:var(--muted);font-size:12px}
+button{min-height:42px;padding:9px 14px;border:0;border-radius:8px;background:var(--mint);color:#10251d;font-weight:700;cursor:pointer}
+button:hover{filter:brightness(1.07)}
+button:disabled{opacity:.45;cursor:not-allowed}
+.polynomial{display:block;min-height:28px;margin-top:14px;color:#b9f2d9;font-family:Consolas,monospace;overflow-wrap:anywhere}
+.operations{margin-top:18px}
+h2{margin:0 0 12px;font-size:22px}
+.operation-buttons{display:flex;flex-wrap:wrap;gap:9px}
+.result{min-height:64px;margin:16px 0;padding:14px;border:1px solid var(--line);border-radius:8px;background:#10251d;color:#eaf4ef;font-family:Consolas,monospace;overflow-wrap:anywhere}
+.result p{margin:0}
+.evaluate-form{margin-top:18px}
+.evaluate-row{display:flex;gap:9px}
+.evaluate-row input{max-width:180px}
+.message{min-height:24px;margin:12px 0 0;color:var(--muted);font-size:14px}
+.message.error{color:#ffc2b8}
+.footnote{margin:17px 0 0;color:#9eb1a7;font-size:12px}
+@media(max-width:680px){.polynomial-grid{grid-template-columns:1fr}.panel,.operations{padding:18px}.hint{min-height:0}}
+@media(max-width:400px){.evaluate-row{flex-direction:column}.evaluate-row input{max-width:none}}
