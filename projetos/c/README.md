@@ -4,6 +4,7 @@ Esta pasta reúne uma seleção de exercícios e projetos acadêmicos em C.
 
 ## Projetos
 
+- **Simulador de caixa eletrônico:** exercício de Construção de Algoritmos com menu, consulta de saldo, depósitos, saques e validação de valores. Os valores monetários são representados em centavos inteiros.
 - **Agenda telefônica:** versão mais recente enviada (`V2.0.c`), com lista duplamente encadeada, validação de dados, busca, navegação e leitura/gravação em TXT. Foi criada para Windows e inclui `<conio.h>` e `<windows.h>`, portanto não é portátil sem adaptações.
 - **Operações com polinômios:** lista encadeada ordenada por expoente, soma, multiplicação e avaliação recursiva.
 
@@ -12,6 +13,14 @@ Esta pasta reúne uma seleção de exercícios e projetos acadêmicos em C.
 Os exemplos menores praticam condicionais, entrada e saída, laços, fatorial e `sizeof`.
 
 ## Compilação
+
+O simulador usa C padrão e pode ser compilado com GCC:
+
+```sh
+gcc caixa-eletronico/main.c -o caixa-eletronico
+```
+
+No Windows com MinGW, use `gcc caixa-eletronico/main.c -o caixa-eletronico.exe`.
 
 Com GCC instalado, a agenda pode ser compilada no Windows com MinGW:
 
