@@ -1,6 +1,4 @@
 // ========== BIBLIOTECAS ==========
-// Explicação: São "caixas de ferramentas" já prontas com funções que ajudam a fazer várias tarefas.
-// É como pedir ajuda para especialistas que já sabem lidar com telas, textos e teclados.
 
 #include <stdio.h>      // Ferramentas para mostrar mensagens na tela (printf) e ler o que o usuário digita (scanf)
 #include <stdlib.h>     // Ferramentas para gerenciar memória (malloc, free) e interagir com o sistema (system)
@@ -10,15 +8,10 @@
 #include <locale.h>     // Ferramenta para configurar idioma (acentos em português)
 
 // ========== CONSTANTES SIMBÓLICAS ==========
-// Explicação: Em vez de digitar números "mágicos" (como 101) no código, damos nomes.
-// Facilita a manutenção: se precisar mudar o tamanho, muda em um só lugar.
 
 #define MAX_FIELD 101   // Tamanho máximo para qualquer campo (nome, telefone, etc.) = 100 caracteres + 1 para final
 
 // ========== CORES E ESTILOS ==========
-// Explicação: São "códigos mágicos" que fazem o terminal colorir os textos.
-// Cada \x1b[... começa uma sequência de controle que o terminal interpreta.
-// Exemplo: \x1b[31m = "use vermelho para o texto daqui em diante"
 
 #define RESET        "\x1b[0m"        // Código que desliga todas as cores/estilos (volta ao normal)
 #define NEGRITO      "\x1b[1m"        // Ativa negrito
@@ -32,9 +25,6 @@
 #define BG_AMARELO   "\x1b[43m"       // Cor de fundo: amarelo
 
 // ========== ESTRUTURA PRINCIPAL (STRUCT) ==========
-// Explicação: É como um "formulário" que junta várias informações sobre uma mesma coisa.
-// Aqui criamos o molde "Contato" com espaços para nome, telefone, nascimento, email,
-// E dois "ganchos" (ponteiros) para conectar este contato ao anterior e ao próximo da lista.
 
 typedef struct Contato {
     char nome[MAX_FIELD];              // Espaço para o nome (máximo 100 caracteres)
@@ -47,17 +37,11 @@ typedef struct Contato {
 } Contato;
 
 // ========== VARIÁVEIS GLOBAIS ==========
-// Explicação: São variáveis que podem ser acessadas de qualquer parte do programa.
-// Funcionam como "post-its" compartilhados que guardam informações da lista inteira.
-
 Contato *cabeca = NULL;    // Aponta para o primeiro contato da lista (NULL = nenhum no momento)
 Contato *cauda  = NULL;    // Aponta para o último contato da lista
 Contato *atual  = NULL;    // Aponta para o contato que está sendo visualizado na navegação
 
 // ========== FUNÇÃO PARA LIMPAR O BUFFER DO TECLADO ==========
-// Explicação: Quando o usuário digita algo e aperta Enter, o programa lê o que interessa,
-// mas a tecla Enter fica "suja" no buffer (memória temporária do teclado). 
-// Esta função "engole" esse lixo para não atrapalhar a próxima leitura.
 
 void limparBuffer(void) {
     int c;   // Variável temporária para guardar cada caractere "sujo"
@@ -69,28 +53,17 @@ void limparBuffer(void) {
 }
 
 // ========== FUNÇÃO PARA LIMPAR STRING ==========
-// Explicação: Remove caracteres "sujos" do final de um texto (como Enter e retorno de carro)
-// que podem ter ficado quando o usuário digitou algo.
 
 void limparString(char *texto) {
     size_t len = strlen(texto);   // Mede o comprimento do texto
     
-    // Enquanto o texto tiver caracteres E o último caractere for '\n' (Enter) ou '\r' (retorno de carro)...
+    // Enquanto o texto tiver caracteres e o último caractere for '\n' (Enter) ou '\r' (retorno de carro)...
     while (len > 0 && (texto[len - 1] == '\n' || texto[len - 1] == '\r')) {
         texto[--len] = '\0';   // Substitui esse caractere sujo pelo terminador '\0' (que marca "fim do texto")
     }
 }
 
 // ========== VALIDAÇÃO DE EMAIL ==========
-// Explicação: Verifica se um email parece correto. As regras são:
-// - Deve ter um @ (arroba)
-// - Deve ter um ponto DEPOIS do @
-// - Não pode ter espaços
-// - Não pode começar com @ ou .
-// - Não pode terminar com .
-// - Só pode ter um @
-// - O @ não pode ser o último caractere
-// - Depois do @ não pode vir ponto imediatamente
 
 int emailValido(const char *str) {
     int temArroba      = 0;     // Contador de arrobas
@@ -147,8 +120,6 @@ int emailValido(const char *str) {
 }
 
 // ========== FUNÇÃO PARA LER STRING COM VALIDAÇÃO OPCIONAL ==========
-// Explicação: Mostra uma mensagem, lê o que o usuário digita, remove o Enter do final,
-// e (se pedido) fica repetindo até que um email válido seja fornecido.
 
 void lerString(const char *rotulo, char *str, int tamanho, int validarEmail) {
     do {
@@ -167,8 +138,6 @@ void lerString(const char *rotulo, char *str, int tamanho, int validarEmail) {
 }
 
 // ========== FORMATAÇÃO DE TELEFONE ==========
-// Explicação: Pega os números digitados (só dígitos), conta quantos são (10 ou 11),
-// e formata no padrão (XX) XXXXX-XXXX ou (XX) XXXX-XXXX.
 
 int formatarTelefone(const char *origem, char *destino, int tamanho) {
     char digitos[12];     // Array para guardar até 11 dígitos + terminador
@@ -213,8 +182,6 @@ int formatarTelefone(const char *origem, char *destino, int tamanho) {
 }
 
 // ========== COMPARAÇÃO IGNORANDO MAIÚSCULAS/MINÚSCULAS ==========
-// Explicação: Compara duas strings (A vs B) tratando maiúsculas e minúsculas como iguais.
-// É uma versão case-insensitive da strcmp.
 
 int compareInsensitive(const char *a, const char *b) {
     // Enquanto ambos tiverem caracteres...
@@ -237,8 +204,6 @@ int compareInsensitive(const char *a, const char *b) {
 }
 
 // ========== CONVERSÃO PARA MINÚSCULAS (CRIANDO CÓPIA) ==========
-// Explicação: Cria uma NOVA string igual à original, mas com todas as letras minúsculas.
-// Importante: faz malloc (alocação de memória), então quem chamar precisa dar free depois!
 
 char *strtolower(const char *orig) {
     // Reserva memória: comprimento + 1 (para o terminador '\0')
@@ -260,8 +225,6 @@ char *strtolower(const char *orig) {
 }
 
 // ========== VALIDAÇÃO DE NOME ==========
-// Explicação: Verifica se o nome contém apenas letras, espaços, hífens e apóstrofos.
-// O primeiro caractere não pode ser espaço, hífen ou apóstrofo.
 
 int nomeValido(const char *nome) {
     // Nome vazio não é válido
@@ -290,9 +253,6 @@ int nomeValido(const char *nome) {
 }
 
 // ========== LEITURA DE NOME EM TEMPO REAL ==========
-// Explicação: Em vez de esperar o Enter, captura cada tecla pressionada.
-// Mostra na tela imediatamente. Bloqueia caracteres inválidos.
-// Backspace funciona para apagar. Números são ignorados.
 
 void lerNome(char *destino, int tamanho) {
     int pos = 0;     // Posição atual no array destino
@@ -338,8 +298,6 @@ void lerNome(char *destino, int tamanho) {
 }
 
 // ========== LEITURA DE TELEFONE COM MÁSCARA EM TEMPO REAL ==========
-// Explicação: Mostra a máscara (XX) XXXXX-XXXX ou (XX) XXXX-XXXX enquanto o usuário digita.
-// A máscara se adapta automaticamente conforme 10 ou 11 dígitos são inseridos.
 
 void lerTelefone(char *out) {
     char digitos[12];   // Array para guardar até 11 dígitos + terminador
@@ -410,7 +368,6 @@ void lerTelefone(char *out) {
 }
 
 // ========== VALIDAÇÃO DE DATA ==========
-// Explicação: Verifica se uma data é real (considera meses com 30/31 dias e anos bissextos).
 
 int dataValida(int dia, int mes, int ano) {
     // Ano deve ser >= 1900, mês entre 1 e 12, dia pelo menos 1
@@ -440,8 +397,6 @@ int dataValida(int dia, int mes, int ano) {
 }
 
 // ========== LEITURA DE DATA COM MÁSCARA EM TEMPO REAL ==========
-// Explicação: Mostra DD/MM/AAAA enquanto o usuário digita os 8 dígitos.
-// Valida se a data é real no final.
 
 void lerData(char *out) {
     char digitos[9];   // 8 dígitos + terminador
@@ -510,8 +465,6 @@ void lerData(char *out) {
 }
 
 // ========== CRIAÇÃO DE UM NOVO CONTATO NA MEMÓRIA ==========
-// Explicação: Reserva um espaço na memória do computador (malloc) para guardar um contato.
-// Depois copia os dados (nome, telefone, etc.) para esse espaço e retorna o endereço.
 
 Contato *criarContato(const char *nome, const char *telefone, 
                       const char *nascimento, const char *email) {
@@ -545,8 +498,6 @@ Contato *criarContato(const char *nome, const char *telefone,
 }
 
 // ========== INSERIR CONTATO NA LISTA ==========
-// Explicação: Lê todas as informações do novo contato, cria ele na memória,
-// e o encaixa no final da lista (ou como primeiro, se a lista estiver vazia).
 
 void inserirContato(void) {
     char nome[MAX_FIELD];
@@ -586,8 +537,6 @@ void inserirContato(void) {
 }
 
 // ========== EXIBIR UM CONTATO ==========
-// Explicação: Mostra na tela as informações de um contato específico.
-// Pode mostrar com número (posição) ou sem.
 
 void exibirContato(const Contato *contato, int posicao) {
     // Se posição for positiva, mostra o número do contato
@@ -604,8 +553,6 @@ void exibirContato(const Contato *contato, int posicao) {
 }
 
 // ========== EXIBIR LISTA COMPLETA ==========
-// Explicação: Mostra todos os contatos em uma tabela organizada,
-// ordenados por nome (usando Bubble Sort - um método simples de ordenação).
 
 void exibirLista(void) {
     // Se a lista estiver vazia...
@@ -676,8 +623,6 @@ void exibirLista(void) {
 }
 
 // ========== BUSCAR CONTATO POR PARTE DO NOME ==========
-// Explicação: Pergunta um termo, converte tudo para minúsculo (para busca case-insensitive),
-// e procura em todos os contatos usando strstr (que acha uma string dentro de outra).
 
 void buscarContato(void) {
     if (cabeca == NULL) {
@@ -733,9 +678,6 @@ void buscarContato(void) {
 }
 
 // ========== REMOVER CONTATO ==========
-// Explicação: Procura por parte do nome, remove o primeiro contato encontrado,
-// reajustando os ponteiros da lista para "pular" o contato removido.
-// Depois libera a memória ocupada por ele (free).
 
 void removerContato(void) {
     if (cabeca == NULL) {
@@ -809,9 +751,6 @@ void removerContato(void) {
 }
 
 // ========== NAVEGAR PELA LISTA ==========
-// Explicação: Permite ao usuário "caminhar" pelos contatos um a um,
-// vendo o atual, indo para o próximo, voltando ao anterior.
-// Usa a variável global 'atual' para saber qual está sendo visto.
 
 void navegarLista(void) {
     if (cabeca == NULL) {
@@ -918,8 +857,6 @@ void tentarAbrirArquivo(const char *nomeArquivo) {
 }
 
 // ========== SALVAR LISTA EM ARQUIVO TXT ==========
-// Explicação: Cria (ou sobrescreve) um arquivo "contatos.txt" com todos os contatos,
-// no mesmo formato usado na tela, um abaixo do outro.
 
 void salvarEmTxt(void) {
     if (cabeca == NULL) {
@@ -960,9 +897,6 @@ void salvarEmTxt(void) {
 }
 
 // ========== CARREGAR LISTA DE ARQUIVO TXT ==========
-// Explicação: Lê o arquivo "contatos.txt", procura linhas que contenham "Nome:",
-// extrai os dados de cada contato e recria a lista na memória.
-// A lista anterior é perdida (as variáveis globais são redefinidas).
 
 void carregarDeArquivo() {
     // Reseta a lista (descarta a lista atual)
@@ -1025,8 +959,6 @@ void carregarDeArquivo() {
 }
 
 // ========== LIBERAR TODA A MEMÓRIA DA LISTA ==========
-// Explicação: Percorre a lista do início ao fim, liberando (free) cada contato.
-// Evita "vazamento de memória" (memory leak) - memória alocada que nunca é liberada.
 
 void liberarLista(void) {
     Contato *ptr = cabeca;
@@ -1044,9 +976,6 @@ void liberarLista(void) {
 }
 
 // ========== FUNÇÃO PRINCIPAL (MAIN) ==========
-// Explicação: Este é o "coração" do programa. É a primeira função executada.
-// Configura o idioma, mostra o menu, recebe a escolha do usuário,
-// e chama a função apropriada para cada opção.
 
 int main(void) {
 
