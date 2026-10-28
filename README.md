@@ -1,20 +1,47 @@
-# Portfólio de Iure Oliveira
+<div align="center">
 
-Portfólio estático de Iure Oliveira dos Santos, publicado pelo GitHub Pages. O site reúne um organizador de estudos em JavaScript, projetos acadêmicos em C e o aplicativo Meu Saldo.
+# Iure Oliveira dos Santos
 
-## Antes de publicar
+**Estudante de Análise e Desenvolvimento de Sistemas · UERJ/ZO**
 
-1. Confira os dados pessoais, curso, datas e competências.
-2. Atualize o link do LinkedIn caso o endereço público esteja diferente.
-3. Os projetos ficam em `projetos/organizador-estudos/`, `projetos/c/` e `projetos/meu-saldo/`.
-4. Acrescente projetos conforme forem concluídos, com objetivo, tecnologias e links verificáveis.
-5. Descreva com clareza o que foi feito e mantenha as competências alinhadas ao que consegue demonstrar.
+Em formação na área de tecnologia, com interesse em desenvolvimento de software, dados e suporte de TI. Busco uma oportunidade de estágio para aplicar meus conhecimentos e continuar aprendendo.
 
-## Publicação no GitHub Pages
+[Portfólio](https://iure-go.github.io/) · [LinkedIn](https://www.linkedin.com/in/iiure) · [GitHub](https://github.com/iure-go) · [ORCID](https://orcid.org/0009-0002-8824-4044)
 
-1. No repositório público `iure-go/iure-go.github.io`, atualize `index.html`, `styles.css` e `README.md` na raiz.
-2. Mantenha as pastas dos projetos com seus arquivos e estruturas.
-3. Em **Settings → Pages**, a fonte deve continuar na branch `main` e pasta `/ (root)`.
-4. Após a publicação, o portfólio ficará em `https://iure-go.github.io/` e o projeto Meu Saldo em `https://iure-go.github.io/projetos/meu-saldo/`.
+</div>
 
-O código do app Meu Saldo está publicado para consulta; para executá-lo é necessário instalar as dependências e iniciar a API conforme o README do projeto.
+---
+
+## Sobre mim
+
+Minha graduação tem previsão de conclusão em **2028.2**. Já concluí disciplinas de algoritmos, estruturas de dados, programação orientada a objetos, bancos de dados, redes, segurança da informação, sistemas operacionais, desenvolvimento web e móvel, estatística aplicada e visão computacional.
+
+Também tenho formação complementar em análise de dados e Power BI, administração de bancos de dados, ciência de dados e inteligência artificial. Minha trajetória profissional inclui atividades administrativas e operacionais, atendimento ao público, suporte técnico, organização de documentos e apoio a equipes.
+
+## Projetos em destaque
+
+| Projeto | Descrição | Tecnologias | Acesso |
+|---|---|---|---|
+| **Meu Saldo** | Aplicativo acadêmico de controle financeiro, com lançamentos, limite mensal e relatórios. Desenvolvido para Programação para Dispositivos Móveis. | React Native, Expo, TypeScript, Java, Spring Boot, H2 | [Página do projeto](https://iure-go.github.io/projetos/meu-saldo/) · [Código](https://github.com/iure-go/iure-go.github.io/tree/main/projetos/meu-saldo) |
+| **Projetos acadêmicos em C** | Exercícios e aplicações com estruturas de dados, alocação dinâmica, arquivos e recursão. | C | [Ver projetos](https://iure-go.github.io/projetos/c/) · [Código](https://github.com/iure-go/iure-go.github.io/tree/main/projetos/c) |
+| **Organizador de estudos** | Aplicação web para cadastrar tarefas, acompanhar prioridades e salvar dados no navegador. | HTML, CSS, JavaScript, localStorage | [Abrir demonstração](https://iure-go.github.io/projetos/organizador-estudos/) · [Código](https://github.com/iure-go/iure-go.github.io/tree/main/projetos/organizador-estudos) |
+
+## Conhecimentos
+
+- **Desenvolvimento:** C, JavaScript, TypeScript, React Native, Expo e Spring Boot.
+- **Dados:** análise de dados, Power BI, modelagem e bancos de dados.
+- **Fundamentos de TI:** algoritmos, estruturas de dados, redes, sistemas operacionais e segurança da informação.
+- **Suporte e operação:** manutenção de computadores, configuração de sistemas, atendimento e documentação.
+
+## Formação
+
+**Tecnologia em Análise e Desenvolvimento de Sistemas** — Universidade do Estado do Rio de Janeiro, Unidade Zona Oeste (UERJ/ZO)  
+Em andamento · conclusão prevista: **2028.2**
+
+## Contato
+
+- E-mail: [1821312080@uezo.edu.br](mailto:1821312080@uezo.edu.br)
+- LinkedIn: [linkedin.com/in/iiure](https://www.linkedin.com/in/iiure)
+- ORCID: [0009-0002-8824-4044](https://orcid.org/0009-0002-8824-4044)
+- Portfólio: [iure-go.github.io](https://iure-go.github.io/)
+
