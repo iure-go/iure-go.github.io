@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Demonstração web de um simulador acadêmico de caixa eletrônico.">
+  <title>Simulador de caixa eletrônico | Iure Oliveira</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="caixa.js" defer></script>
+</head>
+<body>
+  <main class="shell">
+    <a class="back" href="../">← Todas as demonstrações</a>
+    <section class="atm" aria-labelledby="titulo">
+      <p class="eyebrow">CONSTRUÇÃO DE ALGORITMOS · DEMONSTRAÇÃO</p>
+      <h1 id="titulo">Caixa eletrônico</h1>
+      <p class="intro">Simulador acadêmico. O saldo começa em zero e fica salvo apenas durante esta sessão no navegador.</p>
+
+      <section class="balance" aria-label="Saldo atual">
+        <p>Saldo disponível</p>
+        <output id="saldo" aria-live="polite">R$ 0,00</output>
+      </section>
+
+      <form id="form-transacao" novalidate>
+        <label for="valor">Valor da operação</label>
+        <div class="amount-row">
+          <span aria-hidden="true">R$</span>
+          <input id="valor" name="valor" type="number" min="0.01" step="0.01" inputmode="decimal" placeholder="0,00" required>
+        </div>
+        <div class="actions">
+          <button class="deposit" type="submit" name="operacao" value="deposito">Depositar</button>
+          <button class="withdraw" type="submit" name="operacao" value="saque">Sacar</button>
+        </div>
+      </form>
+
+      <p id="mensagem" class="message" role="status" aria-live="polite">Escolha uma operação e informe um valor positivo.</p>
+      <button id="consultar" class="consult" type="button">Consultar saldo</button>
+      <button id="reiniciar" class="reset" type="button">Reiniciar simulador</button>
+      <p class="notice">Este projeto é apenas uma demonstração acadêmica. Não realiza operações bancárias reais nem armazena dados.</p>
+      <a class="code-link" href="../../c/caixa-eletronico/">Ver código original em C ↗</a>
+    </section>
+  </main>
+</body>
+</html>
