@@ -3,6 +3,7 @@
 #include <limits.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <locale.h>
 
 #define TAMANHO_ENTRADA 128
 
@@ -179,6 +180,8 @@ int sacar(long long *saldo_centavos)
 
 int main(void)
 {
+    setlocale(LC_ALL,"");
+    
     long long saldo_centavos = 0;
     int sair = 0;
 
