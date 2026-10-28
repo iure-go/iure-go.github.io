@@ -5,10 +5,11 @@ Esta pasta reúne uma seleção de exercícios e projetos acadêmicos em C.
 ## Projetos
 
 - **Simulador de caixa eletrônico:** exercício de Construção de Algoritmos com menu, consulta de saldo, depósitos, saques e validação de valores. Os valores monetários são representados em centavos inteiros.
+- **Jogo de adivinhação:** exercício de Construção de Algoritmos com geração de número aleatório, repetição de palpites, condicionais e contagem de tentativas.
 - **Agenda telefônica:** versão mais recente enviada (`V2.0.c`), com lista duplamente encadeada, validação de dados, busca, navegação e leitura/gravação em TXT. Foi criada para Windows e inclui `<conio.h>` e `<windows.h>`, portanto não é portátil sem adaptações.
 - **Operações com polinômios:** lista encadeada ordenada por expoente, soma, multiplicação e avaliação recursiva.
 
-Consulte os READMEs de cada projeto para ver como compilar e usar: [caixa eletrônico](caixa-eletronico/README.md), [agenda telefônica](agenda-telefonica/README.md) e [operações com polinômios](polinomios/README.md).
+Consulte os READMEs de cada projeto para ver como compilar e usar: [caixa eletrônico](caixa-eletronico/README.md), [jogo de adivinhação](adivinhacao/README.md), [agenda telefônica](agenda-telefonica/README.md) e [operações com polinômios](polinomios/README.md).
 
 ## Exercícios
 
@@ -23,6 +24,12 @@ gcc caixa-eletronico/main.c -o caixa-eletronico
 ```
 
 No Windows com MinGW, use `gcc caixa-eletronico/main.c -o caixa-eletronico.exe`.
+
+O jogo de adivinhação também usa C padrão:
+
+```sh
+gcc adivinhacao/main.c -o adivinhacao
+```
 
 Com GCC instalado, a agenda pode ser compilada no Windows com MinGW:
 
