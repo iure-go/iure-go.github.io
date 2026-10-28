@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Exercícios introdutórios interativos de lógica de programação.">
+  <title>Exercícios básicos | Iure Oliveira</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="exercicios.js" defer></script>
+</head>
+<body>
+  <main class="shell">
+    <a class="back" href="../">← Todas as demonstrações</a>
+    <header>
+      <p class="eyebrow">CONSTRUÇÃO DE ALGORITMOS · FUNDAMENTOS</p>
+      <h1>Exercícios básicos</h1>
+      <p class="intro">Pratique condicionais, operações e repetição com pequenas atividades que rodam direto no navegador.</p>
+    </header>
+
+    <section class="grid" aria-label="Exercícios interativos">
+      <article class="panel">
+        <h2>Classificar um número</h2>
+        <p>Descubra se o valor é positivo, negativo ou zero.</p>
+        <form id="form-classificar" novalidate>
+          <label for="numero">Número</label>
+          <input id="numero" type="number" step="any" required>
+          <button type="submit">Classificar</button>
+        </form>
+        <output id="resultado-classificar" class="result" aria-live="polite">Digite um valor para começar.</output>
+      </article>
+
+      <article class="panel">
+        <h2>Somar dois números</h2>
+        <p>Informe dois valores e veja a soma.</p>
+        <form id="form-somar" class="sum-form" novalidate>
+          <label for="parcela-a">Primeiro número</label>
+          <input id="parcela-a" type="number" step="any" required>
+          <label for="parcela-b">Segundo número</label>
+          <input id="parcela-b" type="number" step="any" required>
+          <button type="submit">Somar</button>
+        </form>
+        <output id="resultado-soma" class="result" aria-live="polite">Preencha os dois valores.</output>
+      </article>
+
+      <article class="panel">
+        <h2>Calcular fatorial</h2>
+        <p>O fatorial multiplica o inteiro por todos os positivos menores que ele. Por exemplo: 5! = 5 × 4 × 3 × 2 × 1.</p>
+        <form id="form-fatorial" novalidate>
+          <label for="fatorial">Inteiro entre 0 e 18</label>
+          <input id="fatorial" type="number" min="0" max="18" step="1" required>
+          <button type="submit">Calcular</button>
+        </form>
+        <output id="resultado-fatorial" class="result" aria-live="polite">Informe um inteiro de 0 a 18.</output>
+      </article>
+    </section>
+
+    <p class="footnote">Demonstrações para estudo. Veja também os <a href="../../c/">exercícios originais em C ↗</a>.</p>
+  </main>
+</body>
+</html>
