@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Visualização didática de vetores alocados com malloc e calloc em C.">
+  <title>Alocação dinâmica | Iure Oliveira</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="memoria.js" defer></script>
+</head>
+<body>
+  <main class="shell">
+    <a class="back" href="../">← Todas as demonstrações</a>
+    <header>
+      <p class="eyebrow">LINGUAGEM C · MEMÓRIA DINÂMICA</p>
+      <h1>malloc e calloc</h1>
+      <p class="intro">Explore a ideia de reservar espaço para um vetor durante a execução e compare o estado inicial de cada função.</p>
+    </header>
+
+    <section class="panel setup" aria-labelledby="setup-titulo">
+      <h2 id="setup-titulo">1. Escolha o tamanho do vetor</h2>
+      <label for="quantidade">Quantidade de posições (1 a 12)</label>
+      <div class="controls">
+        <input id="quantidade" type="number" min="1" max="12" step="1" value="5">
+        <button id="alocar-malloc" type="button">Alocar com malloc</button>
+        <button id="alocar-calloc" type="button">Alocar com calloc</button>
+        <button id="liberar" class="secondary" type="button" disabled>Liberar memória</button>
+      </div>
+      <p id="mensagem" class="message" role="status" aria-live="polite">Escolha a quantidade e uma função para começar.</p>
+    </section>
+
+    <section class="panel memory" aria-labelledby="memory-title">
+      <div class="section-heading">
+        <div><h2 id="memory-title">2. Visualização das posições</h2><p id="allocation-state" class="subtle">Nenhum vetor alocado.</p></div>
+      </div>
+      <div id="cells" class="cells" aria-live="polite"><p class="empty">As posições aparecerão aqui depois da alocação.</p></div>
+    </section>
+
+    <section class="panel explanation" aria-labelledby="explanation-title">
+      <h2 id="explanation-title">O que a visualização representa</h2>
+      <ul>
+        <li><code>malloc</code> reserva espaço, mas não inicializa os valores. O conteúdo é indeterminado; o programa C deve gravar um valor antes de ler a posição.</li>
+        <li><code>calloc</code> reserva espaço para várias posições e inicializa os bytes com zero.</li>
+        <li><code>free</code> libera a memória reservada. Depois disso, aquelas posições deixam de pertencer ao vetor.</li>
+      </ul>
+      <p class="caution">Esta é uma ilustração didática feita em JavaScript; ela não aloca memória C nem mostra endereços ou valores reais da memória do computador.</p>
+      <a href="../../c/polinomios/">Ver uso de malloc e free no projeto em C de polinômios ↗</a>
+    </section>
+  </main>
+</body>
+</html>

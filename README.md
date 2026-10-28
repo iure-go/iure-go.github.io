@@ -23,7 +23,7 @@ Também tenho formação complementar em análise de dados e Power BI, administr
 | Projeto | Descrição | Tecnologias | Acesso |
 |---|---|---|---|
 | **Meu Saldo** | Aplicativo acadêmico de controle financeiro, com lançamentos, limite mensal e relatórios. Desenvolvido para Programação para Dispositivos Móveis. | React Native, Expo, TypeScript, Java, Spring Boot, H2 | [Página do projeto](https://iure-go.github.io/projetos/meu-saldo/) · [Código](https://github.com/iure-go/iure-go.github.io/tree/main/projetos/meu-saldo) |
-| **Projetos acadêmicos em C e demos web** | Simulador de caixa eletrônico, jogo de adivinhação e exercícios básicos para Construção de Algoritmos, além de agenda telefônica e operações com polinômios. As demonstrações web permitem experimentar os projetos no navegador. | C, HTML, CSS, JavaScript | [Ver demos](https://iure-go.github.io/projetos/demos-web/) · [Ver projetos em C](https://iure-go.github.io/projetos/c/) |
+| **Projetos acadêmicos em C e demos web** | Simulador de caixa eletrônico, jogo de adivinhação e exercícios básicos para Construção de Algoritmos, além de agenda telefônica, operações com polinômios e uma visualização de `malloc`, `calloc` e `free`. | C, HTML, CSS, JavaScript | [Ver demos](https://iure-go.github.io/projetos/demos-web/) · [Ver projetos em C](https://iure-go.github.io/projetos/c/) |
 | **Organizador de estudos** | Aplicação web para cadastrar tarefas, acompanhar prioridades e salvar dados no navegador. | HTML, CSS, JavaScript, localStorage | [Abrir demonstração](https://iure-go.github.io/projetos/organizador-estudos/) · [Código](https://github.com/iure-go/iure-go.github.io/tree/main/projetos/organizador-estudos) |
 
 ## Conhecimentos
