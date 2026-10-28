@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Projetos e exercícios acadêmicos em linguagem C de Iure Oliveira.">
+  <title>Projetos em C | Iure Oliveira</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="page">
+    <a class="back" href="../../">← Voltar ao portfólio</a>
+    <header>
+      <p class="eyebrow">PROGRAMAÇÃO · LINGUAGEM C</p>
+      <h1>Projetos e exercícios em C</h1>
+      <p class="intro">Práticas acadêmicas de lógica de programação, estruturas de dados, memória dinâmica e manipulação de arquivos.</p>
+    </header>
+
+    <section aria-labelledby="projects-heading">
+      <h2 id="projects-heading">Projetos em destaque</h2>
+      <div class="cards">
+        <article class="card">
+          <p class="label">LISTA DUPLAMENTE ENCADEADA · ARQUIVOS</p>
+          <h3>Agenda telefônica</h3>
+          <p>Aplicação de terminal para cadastrar, buscar, remover e navegar por contatos. A versão atual inclui validação de campos e operações para salvar e carregar a agenda em arquivo TXT.</p>
+          <p class="note"><strong>Observação:</strong> utiliza recursos específicos do Windows, como <code>conio.h</code> e <code>windows.h</code>. O arquivo de contatos é gerado localmente; não publique dados reais.</p>
+          <div class="tags"><span>C</span><span>struct</span><span>lista duplamente encadeada</span><span>arquivos</span></div>
+          <a class="source" href="agenda-telefonica/agenda_telefonica.c">Ler código-fonte ↗</a>
+        </article>
+        <article class="card">
+          <p class="label">ESTRUTURA DE DADOS · RECURSÃO</p>
+          <h3>Operações com polinômios</h3>
+          <p>Programa de terminal que representa polinômios com lista encadeada e permite criar, somar, multiplicar e avaliar expressões para um valor de x.</p>
+          <div class="tags"><span>C</span><span>malloc e free</span><span>lista encadeada</span><span>recursão</span></div>
+          <a class="source" href="polinomios/polinomios.c">Ler código-fonte ↗</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="exercises" aria-labelledby="exercise-heading">
+      <h2 id="exercise-heading">Exercícios de fundamentos</h2>
+      <ul>
+        <li><a href="exercicios/classificar_numero.c">Classificar número positivo, negativo ou zero</a></li>
+        <li><a href="exercicios/somar_dois_numeros.c">Somar dois números</a></li>
+        <li><a href="exercicios/calcular_fatorial.c">Calcular fatorial</a></li>
+        <li><a href="exercicios/tamanhos_de_tipos.c">Consultar tamanhos de tipos e variáveis</a></li>
+      </ul>
+    </section>
+
+    <p class="footer-note">Os arquivos são apresentados como estudos de aprendizado. Leia as instruções no README antes de compilar.</p>
+  </main>
+</body>
+</html>
