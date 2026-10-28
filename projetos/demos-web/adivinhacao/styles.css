@@ -1,0 +1,29 @@
+:root{font-family:Arial,Helvetica,sans-serif;color:#eaf4ef;background:#10231b;--mint:#51d5a2;--card:#163328;--muted:#b7c8bf;--line:#345346}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;line-height:1.55;background:radial-gradient(ellipse at 50% 0%,#1b4936 0,#10231b 60%)}
+button,input{font:inherit}
+.game-shell{width:min(620px,calc(100% - 32px));margin:0 auto;padding:28px 0 48px}
+a{color:var(--mint);text-decoration:none}
+a:hover{text-decoration:underline}
+.back{font-size:14px;font-weight:700}
+.game-card{margin-top:35px;padding:clamp(22px,6vw,42px);background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:0 22px 70px #0003}
+.eyebrow{margin:0 0 12px;color:var(--mint);font-size:12px;font-weight:700;letter-spacing:1.2px}
+h1{margin:0;font-size:clamp(30px,7vw,42px);line-height:1.1;letter-spacing:-1px}
+.intro{margin:15px 0 28px;color:var(--muted)}
+label{display:block;margin-bottom:8px;font-weight:700}
+.guess-row{display:flex;gap:10px}
+input{min-width:0;flex:1;padding:13px 14px;border:1px solid #527365;border-radius:9px;background:#10251d;color:white;font-size:18px}
+input:focus-visible,button:focus-visible,summary:focus-visible,a:focus-visible{outline:3px solid #a7f1d1;outline-offset:3px}
+button{border:0;border-radius:9px;background:var(--mint);color:#10251d;font-weight:700;cursor:pointer}
+button[type=submit]{padding:0 23px}
+button:hover{filter:brightness(1.06)}
+.message{min-height:48px;margin:22px 0 10px;padding:12px 14px;border:1px solid var(--line);border-radius:9px;color:#eaf4ef}
+.message.success{border-color:var(--mint);color:var(--mint)}
+.message.error{border-color:#f29b91;color:#ffc2b8}
+.attempts{margin:0;color:var(--muted)}
+.attempts strong{color:white}
+.restart{margin-top:20px;padding:10px 16px;background:#29493b;color:white;border:1px solid #527365}
+.rules{margin-top:28px;padding-top:18px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+summary{color:#eaf4ef;font-weight:700;cursor:pointer}
+.code-link{display:inline-block;margin-top:24px;font-size:14px;font-weight:700}
+@media(max-width:420px){.guess-row{flex-direction:column}.guess-row button{min-height:46px}}

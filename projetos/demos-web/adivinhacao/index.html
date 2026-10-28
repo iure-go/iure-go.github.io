@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Jogo de adivinhação: descubra o número secreto e conte suas tentativas.">
+  <title>Jogo de adivinhação | Iure Oliveira</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="jogo.js" defer></script>
+</head>
+<body>
+  <main class="game-shell">
+    <a class="back" href="../">← Todas as demonstrações</a>
+    <section class="game-card" aria-labelledby="titulo">
+      <p class="eyebrow">CONSTRUÇÃO DE ALGORITMOS</p>
+      <h1 id="titulo">Jogo de adivinhação</h1>
+      <p class="intro">Pensei em um número entre <strong>1 e 100</strong>. Tente descobrir!</p>
+      <form id="form-palpite" novalidate>
+        <label for="palpite">Seu palpite</label>
+        <div class="guess-row">
+          <input id="palpite" name="palpite" type="number" min="1" max="100" step="1" inputmode="numeric" autocomplete="off" required>
+          <button type="submit">Tentar</button>
+        </div>
+      </form>
+      <p id="mensagem" class="message" role="status" aria-live="polite">Digite um número de 1 a 100 para começar.</p>
+      <p class="attempts">Tentativas: <strong id="contador">0</strong></p>
+      <button id="reiniciar" class="restart" type="button">Novo jogo</button>
+      <details class="rules">
+        <summary>Como funciona</summary>
+        <p>O jogo escolhe um número aleatório. A cada palpite, você recebe uma dica dizendo se o segredo é maior ou menor. O objetivo é acertar usando o menor número de tentativas.</p>
+      </details>
+      <a class="code-link" href="../../c/adivinhacao/">Ver a versão original em C ↗</a>
+    </section>
+  </main>
+</body>
+</html>
