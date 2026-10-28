@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <locale.h>
 
 #define LIMITE_SUPERIOR 100
 #define TAMANHO_ENTRADA 128
@@ -41,6 +42,8 @@ int ler_palpite(int *palpite)
 
 int main(void)
 {
+    setlocale(LC_ALL,"");
+    
     int segredo;
     int palpite;
     int tentativas = 0;
