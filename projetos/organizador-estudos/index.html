@@ -43,37 +43,45 @@
       <p id="empty-state" class="empty-state">Nenhuma tarefa por aqui. Adicione a primeira acima.</p>
     </section>
 
-     <script src="https://giscus.app/client.js"
-      data-repo="iure-go/iure-go.github.io"
-      data-repo-id="SEU_REPO_ID"
-      data-category="Comments"
-      data-category-id="SUA_CATEGORY_ID"
-      data-mapping="pathname"
-      data-theme="preferred_color_scheme"
-      crossorigin="anonymous"
-      async>
-     </script>
+         <section class="panel" aria-labelledby="like-title">
+      <h2 id="like-title">Curtiu o projeto?</h2>
+      <button id="like-btn" class="button secondary" type="button">
+        ❤️ <span id="like-count">0</span>
+      </button>
+    </section>
 
-    <button id="like-btn">❤️ <span id="like-count">0</span></button>
+    <section class="panel" aria-labelledby="comments-title">
+      <h2 id="comments-title">Comentários</h2>
+      <script src="https://giscus.app/client.js"
+        data-repo="iure-go/iure-go.github.io"
+        data-repo-id="SEU_REPO_ID"
+        data-category="Comments"
+        data-category-id="SUA_CATEGORY_ID"
+        data-mapping="pathname"
+        data-theme="preferred_color_scheme"
+        crossorigin="anonymous"
+        async>
+      </script>
+    </section>
 
-  <script>
-    const workspace = "iure-go"; // crie uma conta em counterapi.dev
-    const counterName = "organizador-estudos"; // um nome por projeto
-    
-    async function loadCount() {
-      const res = await fetch(`https://api.counterapi.dev/v1/${workspace}/${counterName}`);
-      const data = await res.json();
-      document.getElementById('like-count').textContent = data.count;
-    }
-    
-    document.getElementById('like-btn').addEventListener('click', async () => {
-      const res = await fetch(`https://api.counterapi.dev/v1/${workspace}/${counterName}/up`);
-      const data = await res.json();
-      document.getElementById('like-count').textContent = data.count;
-    });
-    
-    loadCount();
-  </script>
+    <script>
+      const workspace = "iure-go";
+      const counterName = "organizador-estudos";
+
+      async function loadCount() {
+        const res = await fetch(`https://api.counterapi.dev/v1/${workspace}/${counterName}`);
+        const data = await res.json();
+        document.getElementById('like-count').textContent = data.count;
+      }
+
+      document.getElementById('like-btn').addEventListener('click', async () => {
+        const res = await fetch(`https://api.counterapi.dev/v1/${workspace}/${counterName}/up`);
+        const data = await res.json();
+        document.getElementById('like-count').textContent = data.count;
+      });
+
+      loadCount();
+    </script>
 
     <footer><span>Projeto criado por Iure Oliveira</span><a href="https://github.com/iure-go/iure-go.github.io/tree/main/projetos/organizador-estudos" target="_blank" rel="noreferrer">Código no GitHub ↗</a></footer>
   </main>
