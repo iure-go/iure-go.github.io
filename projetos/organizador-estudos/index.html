@@ -43,41 +43,65 @@
       <p id="empty-state" class="empty-state">Nenhuma tarefa por aqui. Adicione a primeira acima.</p>
     </section>
 
+    <section class="panel" aria-labelledby="like-title">
+      <h2 id="like-title">Curtiu o projeto?</h2>
+      <button class="like-btn button secondary" type="button" data-counter="organizador-estudos">
+        ❤️ <span class="like-count">0</span>
+      </button>
+      <p class="project-views"><span class="view-count" data-counter="view-organizador-estudos">—</span> visualizações</p>
+    </section>
 
-    
+    <section class="panel" aria-labelledby="comments-title">
+      <h2 id="comments-title">Teve alguma ideia, sugestão ou encontrou um bug? Comenta aqui embaixo 👇</h2>
+      <script src="https://giscus.app/client.js"
+        data-repo="iure-go/iure-go.github.io"
+        data-repo-id="SEU_REPO_ID"
+        data-category="Comments"
+        data-category-id="SUA_CATEGORY_ID"
+        data-mapping="specific"
+        data-term="organizador-estudos"
+        data-theme="preferred_color_scheme"
+        crossorigin="anonymous"
+        async>
+      </script>
+    </section>
+
     <script>
       const workspace = "iure-go";
       const viewCounter = "view-organizador-estudos";
-    
-      // evita contar de novo se a pessoa só der F5 na mesma visita
+
+      // conta a visualização da página (uma vez por sessão, evita contar de novo no F5)
       if (!sessionStorage.getItem(viewCounter)) {
-        fetch(`https://api.counterapi.dev/v1/${workspace}/${viewCounter}/up`);
-        sessionStorage.setItem(viewCounter, "1");
+        fetch(`https://api.counterapi.dev/v1/${workspace}/${viewCounter}/up`)
+          .then(() => sessionStorage.setItem(viewCounter, "1"))
+          .catch(() => {});
       }
-    </script>
-    
-    <script>
-      const workspace = "iure-go";
-    
+
+      // like e exibição do contador de views
       document.querySelectorAll('.like-btn').forEach(btn => {
         const counterName = btn.dataset.counter;
         const countEl = btn.querySelector('.like-count');
         fetch(`https://api.counterapi.dev/v1/${workspace}/${counterName}`)
-          .then(res => res.json()).then(data => countEl.textContent = data.count);
+          .then(res => res.json())
+          .then(data => countEl.textContent = data.count)
+          .catch(() => {});
+
         btn.addEventListener('click', () => {
           fetch(`https://api.counterapi.dev/v1/${workspace}/${counterName}/up`)
-            .then(res => res.json()).then(data => countEl.textContent = data.count);
+            .then(res => res.json())
+            .then(data => countEl.textContent = data.count)
+            .catch(() => {});
         });
       });
-    
+
       document.querySelectorAll('.view-count').forEach(el => {
         fetch(`https://api.counterapi.dev/v1/${workspace}/${el.dataset.counter}`)
-          .then(res => res.json()).then(data => el.textContent = data.count);
+          .then(res => res.json())
+          .then(data => el.textContent = data.count)
+          .catch(() => {});
       });
     </script>
 
-
-    
     <footer><span>Projeto criado por Iure Oliveira</span><a href="https://github.com/iure-go/iure-go.github.io/tree/main/projetos/organizador-estudos" target="_blank" rel="noreferrer">Código no GitHub ↗</a></footer>
   </main>
 </body>
