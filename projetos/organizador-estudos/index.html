@@ -50,46 +50,7 @@
       </button>
       <p class="project-views"><span class="view-count" data-counter="iure-go-view-organizador-estudos">—</span> visualizações</p>
     </section>
-
-    <script>
-      const COUNTER_BASE = "https://countapi.mileshilliard.com/api/v1";
-      const viewKey = "iure-go-view-organizador-estudos";
-
-      // conta a visualização da página (uma vez por sessão, evita contar de novo no F5)
-      if (!sessionStorage.getItem(viewKey)) {
-        fetch(`${COUNTER_BASE}/hit/${viewKey}`)
-          .then(() => sessionStorage.setItem(viewKey, "1"))
-          .catch(() => {});
-      }
-
-      // like
-      document.querySelectorAll('.like-btn').forEach(btn => {
-        const key = btn.dataset.counter;
-        const countEl = btn.querySelector('.like-count');
-
-        fetch(`${COUNTER_BASE}/get/${key}`)
-          .then(res => res.json())
-          .then(data => countEl.textContent = data.count ?? 0)
-          .catch(() => {});
-
-        btn.addEventListener('click', () => {
-          fetch(`${COUNTER_BASE}/hit/${key}`)
-            .then(res => res.json())
-            .then(data => countEl.textContent = data.count)
-            .catch(() => {});
-        });
-      });
-
-      // exibição do contador de views
-      document.querySelectorAll('.view-count').forEach(el => {
-        const key = el.dataset.counter;
-        fetch(`${COUNTER_BASE}/get/${key}`)
-          .then(res => res.json())
-          .then(data => el.textContent = data.count ?? 0)
-          .catch(() => {});
-      });
-    </script>
-
+    
     <footer><span>Projeto criado por Iure Oliveira</span><a href="https://github.com/iure-go/iure-go.github.io/tree/main/projetos/organizador-estudos" target="_blank" rel="noreferrer">Código no GitHub ↗</a></footer>
   </main>
 </body>
