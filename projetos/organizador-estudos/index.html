@@ -54,6 +54,27 @@
       async>
      </script>
 
+    <button id="like-btn">❤️ <span id="like-count">0</span></button>
+
+  <script>
+    const workspace = "iure-go"; // crie uma conta em counterapi.dev
+    const counterName = "organizador-estudos"; // um nome por projeto
+    
+    async function loadCount() {
+      const res = await fetch(`https://api.counterapi.dev/v1/${workspace}/${counterName}`);
+      const data = await res.json();
+      document.getElementById('like-count').textContent = data.count;
+    }
+    
+    document.getElementById('like-btn').addEventListener('click', async () => {
+      const res = await fetch(`https://api.counterapi.dev/v1/${workspace}/${counterName}/up`);
+      const data = await res.json();
+      document.getElementById('like-count').textContent = data.count;
+    });
+    
+    loadCount();
+  </script>
+
     <footer><span>Projeto criado por Iure Oliveira</span><a href="https://github.com/iure-go/iure-go.github.io/tree/main/projetos/organizador-estudos" target="_blank" rel="noreferrer">Código no GitHub ↗</a></footer>
   </main>
 </body>
