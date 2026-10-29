@@ -8,8 +8,9 @@ Esta pasta reúne uma seleção de exercícios e projetos acadêmicos em C.
 - **Jogo de adivinhação:** exercício de Construção de Algoritmos com geração de número aleatório, repetição de palpites, condicionais e contagem de tentativas.
 - **Agenda telefônica:** versão mais recente enviada (`V2.0.c`), com lista duplamente encadeada, validação de dados, busca, navegação e leitura/gravação em TXT. Foi criada para Windows e inclui `<conio.h>` e `<windows.h>`, portanto não é portátil sem adaptações.
 - **Operações com polinômios:** lista encadeada ordenada por expoente, soma, multiplicação e avaliação recursiva.
+- **CPU de 8 bits:** simulador didático de Organização de Computadores para visualizar o ciclo buscar, decodificar e executar, com registradores, RAM, operações da ULA e desvios condicionais.
 
-Consulte os READMEs de cada projeto para ver como compilar e usar: [caixa eletrônico](caixa-eletronico/README.md), [jogo de adivinhação](adivinhacao/README.md), [agenda telefônica](agenda-telefonica/README.md) e [operações com polinômios](polinomios/README.md).
+Consulte os READMEs de cada projeto para ver como compilar e usar: [caixa eletrônico](caixa-eletronico/README.md), [jogo de adivinhação](adivinhacao/README.md), [agenda telefônica](agenda-telefonica/README.md) e [operações com polinômios](polinomios/README.md) e [simulador de CPU](cpu8/README.md).
 
 ## Exercícios
 
@@ -42,6 +43,8 @@ O programa de polinômios usa C padrão e pode ser compilado com:
 ```sh
 gcc polinomios/polinomios.c -o polinomios
 ```
+
+O simulador de CPU também usa C padrão e pode ser compilado com `gcc -std=c11 -Wall -Wextra -pedantic cpu8/cpu8.c -o cpu8`.
 
 Esses comandos indicam como compilar; os programas não foram executados nesta preparação.
 
