@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Demonstração web do Meu Saldo, aplicativo acadêmico de controle financeiro.">
+  <title>Meu Saldo | Demonstração</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <div class="topbar"><a href="../../" class="brand-back">← Portfólio</a><span>Meu Saldo · Demonstração</span><a class="source-link" href="../../meu-saldo/">Sobre o projeto ↗</a></div>
+    <main class="dashboard">
+      <header class="page-heading">
+        <div><p class="eyebrow">CONTROLE FINANCEIRO PESSOAL</p><h1>Meu<span>Saldo</span></h1><p id="period-heading" class="period-heading">Outubro de 2026</p></div>
+        <button id="abrir-lancamento" class="add-button" type="button" aria-label="Adicionar lançamento">＋</button>
+      </header>
+
+      <nav class="period-tabs" aria-label="Selecionar período">
+        <button type="button" data-mode="day">Dia</button><button type="button" data-mode="week">Semana</button><button type="button" data-mode="month" class="active" aria-current="true">Mês</button><button type="button" data-mode="year">Ano</button>
+      </nav>
+      <div class="period-nav"><button id="period-prev" type="button" aria-label="Período anterior">‹</button><strong id="period-label">Outubro de 2026</strong><button id="period-next" type="button" aria-label="Próximo período">›</button></div>
+
+      <section class="balance-card" aria-labelledby="balance-label"><p id="balance-label">Saldo do período</p><output id="saldo-periodo">R$ 660,00</output><span id="total-lancamentos">6 lançamentos</span></section>
+
+      <section class="totals" aria-label="Entradas e saídas">
+        <article class="metric"><span>Entradas</span><strong id="entradas">R$ 1.700,00</strong></article>
+        <article class="metric"><span>Saídas</span><strong id="saidas">R$ 1.040,00</strong></article>
+      </section>
+
+      <section class="budget-card" aria-labelledby="budget-heading">
+        <div class="budget-top"><div><p id="budget-heading">Limite mensal</p><strong id="budget-text">R$ 1.040,00 de R$ 2.000,00</strong></div><button id="editar-limite" class="text-button" type="button">Editar</button></div>
+        <div class="progress-track" role="progressbar" aria-label="Uso do limite mensal" aria-valuemin="0" aria-valuemax="100" aria-valuenow="52"><div id="budget-progress" class="progress-fill"></div></div>
+      </section>
+
+      <section class="section-block" aria-labelledby="category-heading"><h2 id="category-heading">Maiores gastos</h2><div id="category-list" class="category-list"></div></section>
+
+      <section class="section-block transactions-section" aria-labelledby="transaction-heading">
+        <div class="section-title"><h2 id="transaction-heading">Lançamentos</h2><span id="transaction-count" class="subtle"></span></div>
+        <div class="filters" role="group" aria-label="Filtrar por tipo">
+          <button type="button" class="filter active" data-type="all">Todos</button><button type="button" class="filter" data-type="income">Entradas</button><button type="button" class="filter" data-type="expense">Saídas</button>
+        </div>
+        <label class="sr-only" for="category-filter">Filtrar por categoria</label>
+        <select id="category-filter"><option value="all">Todas as categorias</option><option>Alimentação</option><option>Lazer</option><option>Moradia</option><option>Outros</option><option>Transporte</option></select>
+        <div id="transaction-list" class="transaction-list"></div>
+        <p id="empty-transactions" class="empty" hidden>Nenhum lançamento neste período.</p>
+      </section>
+
+      <section class="report-card" aria-labelledby="report-heading"><h2 id="report-heading">Relatório do período</h2><p id="report-summary" class="report-summary"></p><div id="report-categories" class="report-categories"></div></section>
+      <p class="demo-note">Demonstração acadêmica com dados fictícios. Os lançamentos e o limite são mantidos apenas na memória desta página e desaparecem ao recarregar.</p>
+    </main>
+  </div>
+
+  <dialog id="transaction-dialog" class="dialog">
+    <form id="transaction-form" method="dialog" novalidate>
+      <div class="dialog-title"><h2>Novo lançamento</h2><button class="close-button" type="button" data-close="transaction-dialog" aria-label="Fechar">×</button></div>
+      <p class="dialog-intro">Registre uma entrada ou saída fictícia.</p>
+      <label for="type-input">Tipo</label><select id="type-input"><option value="expense">Saída</option><option value="income">Entrada</option></select>
+      <label for="description-input">Descrição</label><input id="description-input" maxlength="80" placeholder="Ex.: salário ou mercado" required>
+      <label for="amount-input">Valor</label><input id="amount-input" type="number" min="0.01" step="0.01" inputmode="decimal" placeholder="Ex.: 142,80" required>
+      <label for="category-input">Categoria</label><select id="category-input"><option>Alimentação</option><option>Lazer</option><option>Moradia</option><option>Outros</option><option>Transporte</option></select>
+      <label for="date-input">Data</label><input id="date-input" type="date" required>
+      <p id="transaction-error" class="form-error" role="alert"></p>
+      <div class="dialog-actions"><button class="button-secondary" type="button" data-close="transaction-dialog">Cancelar</button><button class="button-primary" type="submit">Salvar lançamento</button></div>
+    </form>
+  </dialog>
+
+  <dialog id="budget-dialog" class="dialog compact-dialog">
+    <form id="budget-form" method="dialog" novalidate>
+      <div class="dialog-title"><h2>Limite mensal</h2><button class="close-button" type="button" data-close="budget-dialog" aria-label="Fechar">×</button></div>
+      <p class="dialog-intro">Defina um valor máximo de gastos para a demonstração.</p>
+      <label for="budget-input">Limite (R$)</label><input id="budget-input" type="number" min="0.01" step="0.01" required>
+      <p id="budget-error" class="form-error" role="alert"></p>
+      <div class="dialog-actions"><button class="button-secondary" type="button" data-close="budget-dialog">Cancelar</button><button class="button-primary" type="submit">Salvar limite</button></div>
+    </form>
+  </dialog>
+</body>
+</html>

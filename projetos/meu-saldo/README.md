@@ -37,3 +37,5 @@ A pasta `android/` é gerada pelo Expo quando necessário. Arquivos locais de am
 
 As telas do app e da API estão na página do projeto: [abrir galeria no portfólio](https://iure-go.github.io/projetos/meu-saldo/#capturas).
 
+Experimente também a [demonstração web interativa](https://iure-go.github.io/projetos/demos-web/meu-saldo/), que usa somente dados fictícios em memória.
+

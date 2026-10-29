@@ -4,6 +4,7 @@ Esta pasta reúne versões para navegador dos projetos acadêmicos. Os fontes or
 
 ## Demonstrações disponíveis
 
+- [Meu Saldo](meu-saldo/): painel de finanças pessoais com dados fictícios e sem persistência no navegador.
 - [Jogo de adivinhação](adivinhacao/): implementação em HTML, CSS e JavaScript com dicas, validação de palpites, contador e opção de novo jogo. O código original em C está em `../c/adivinhacao/`.
 - [Simulador de caixa eletrônico](caixa-eletronico/): versão web com consulta de saldo, depósitos, saques e validação de saldo. O código original em C está em `../c/caixa-eletronico/`.
 - [Operações com polinômios](polinomios/): cria dois polinômios e permite somar, multiplicar e avaliar. O código original em C está em `../c/polinomios/`.
