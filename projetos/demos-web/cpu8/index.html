@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Simulador didático de uma CPU de 8 bits e do ciclo buscar, decodificar e executar.">
+  <title>CPU de 8 bits | Iure Oliveira</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="cpu8.js" defer></script>
+</head>
+<body>
+  <main class="shell">
+    <a class="back" href="../">← Todas as demonstrações</a>
+    <header><p class="eyebrow">ORGANIZAÇÃO DE COMPUTADORES · PROJETO DIDÁTICO</p><h1>Dentro de uma CPU de 8 bits</h1><p class="intro">Escreva instruções e acompanhe o processador buscar, decodificar e executar. Observe o contador de programa, o acumulador, as flags e a memória.</p></header>
+    <section class="workbench" aria-label="Simulador da CPU">
+      <article class="panel editor-panel">
+        <div class="panel-heading"><div><p class="eyebrow">01 / PROGRAMA</p><h2>Montagem simplificada</h2></div><span class="badge">8 bits</span></div>
+        <label for="assembly">Instruções</label>
+        <textarea id="assembly" rows="13" spellcheck="false" aria-describedby="assembly-help">; Soma 5 + 3, guarda o resultado em RAM[48]
+; e testa se o resultado é 8.
+LDI 5
+ADDI 3
+STORE 48
+LOAD 48
+SUBI 8
+JZ SUCESSO
+LDI 99
+OUT
+JMP FIM
+SUCESSO: LDI 1
+OUT
+FIM: HLT</textarea>
+        <p id="assembly-help" class="hint">Uma instrução por linha. Comentários começam com <code>;</code>. Rótulos podem ser usados em <code>JMP</code> e <code>JZ</code>.</p>
+        <div class="actions"><button id="assemble" class="primary" type="button">Montar programa</button><button id="run" type="button">Executar</button><button id="reset" class="quiet" type="button">Reiniciar</button></div>
+        <p id="message" class="message" role="status" aria-live="polite">Programa de exemplo pronto.</p>
+        <div class="listing-wrap"><h3>Programa montado</h3><pre id="listing" class="listing" aria-live="polite">Monte o programa para ver os bytes.</pre></div>
+      </article>
+      <div class="machine-column">
+        <section class="panel cycle-panel" aria-labelledby="cycle-heading">
+          <div class="panel-heading"><div><p class="eyebrow">02 / CICLO DA INSTRUÇÃO</p><h2 id="cycle-heading">Buscar · decodificar · executar</h2></div></div>
+          <div class="phase-track" aria-label="Fases do ciclo"><div class="phase active" data-phase="0"><span>1</span><strong>Buscar</strong><small>RAM → IR</small></div><div class="phase" data-phase="1"><span>2</span><strong>Decodificar</strong><small>interpretar opcode</small></div><div class="phase" data-phase="2"><span>3</span><strong>Executar</strong><small>atualizar estado</small></div></div>
+          <div class="cycle-summary"><div><span class="metric-label">Fase atual</span><strong id="phase-name">Buscar</strong></div><div><span class="metric-label">Instrução</span><strong id="current-instruction">—</strong></div></div>
+          <p id="cycle-explanation" class="cycle-explanation" aria-live="polite">O PC aponta para o próximo opcode na memória.</p>
+          <button id="next-phase" class="primary full" type="button">Avançar uma fase</button>
+        </section>
+        <section class="panel registers-panel" aria-labelledby="registers-heading">
+          <div class="panel-heading"><div><p class="eyebrow">03 / ESTADO DA CPU</p><h2 id="registers-heading">Registradores e flags</h2></div></div>
+          <div class="register-grid"><div class="register"><span>PC</span><strong id="reg-pc">00</strong><small>contador de programa</small></div><div class="register"><span>IR</span><strong id="reg-ir">—</strong><small>registrador de instrução</small></div><div class="register"><span>A</span><strong id="reg-a">00</strong><small>acumulador</small></div><div class="register"><span>OP</span><strong id="reg-op">—</strong><small>operando</small></div></div>
+          <div class="flags"><span>FLAGS</span><span>Z <b id="flag-z">0</b></span><span>C <b id="flag-c">0</b></span><span>Instruções executadas <b id="instruction-count">0</b></span></div>
+          <div class="output-box"><span>Saída da CPU</span><strong id="output">—</strong></div>
+        </section>
+      </div>
+    </section>
+    <section class="panel memory-panel" aria-labelledby="memory-heading"><div class="panel-heading"><div><p class="eyebrow">04 / MEMÓRIA PRINCIPAL</p><h2 id="memory-heading">RAM de 64 bytes</h2></div><span class="memory-legend"><i class="code-dot"></i> programa <i class="data-dot"></i> dados</span></div><p class="hint">Cada instrução ocupa dois bytes (opcode e operando). O programa usa endereços 00–2F; a área de dados fica em 30–3F (48–63 em decimal).</p><div id="memory" class="memory-grid" role="list" aria-label="Conteúdo da memória"></div></section>
+    <section class="panel guide-panel" aria-labelledby="guide-heading"><div class="panel-heading"><div><p class="eyebrow">05 / CONCEITOS</p><h2 id="guide-heading">O que o projeto demonstra</h2></div></div><div class="concept-grid"><article><h3>Representação binária</h3><p>Os valores têm 8 bits e variam de 0 a 255. A memória mostra cada byte em hexadecimal.</p></article><article><h3>Registradores</h3><p>O PC localiza a próxima instrução; o IR guarda o opcode; A participa das operações da ULA.</p></article><article><h3>ULA e flags</h3><p>Soma, subtração e operações lógicas atualizam A e as flags zero (Z) e carry/borrow (C).</p></article><article><h3>Fluxo de controle</h3><p><code>JMP</code> altera o PC e <code>JZ</code> desvia quando Z está ativa.</p></article></div><details><summary>Ver conjunto de instruções</summary><ul class="instruction-list"><li><code>LDI n</code> carrega um valor imediato no acumulador.</li><li><code>ADDI n</code> e <code>SUBI n</code> somam ou subtraem um valor imediato.</li><li><code>LOAD a</code> lê RAM[<code>a</code>]; <code>STORE a</code> grava em RAM[<code>a</code>].</li><li><code>ANDI n</code> e <code>ORI n</code> fazem operações bit a bit.</li><li><code>JMP a</code>, <code>JZ a</code>, <code>OUT</code> e <code>HLT</code> controlam o fluxo, exibem A e encerram o programa.</li></ul></details></section>
+    <p class="footnote">Simulador educacional simplificado; não representa uma CPU comercial. <a href="../../c/cpu8/cpu8.c">Ver implementação em C ↗</a></p>
+  </main>
+</body>
+</html>
+
