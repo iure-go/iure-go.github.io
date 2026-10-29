@@ -45,10 +45,10 @@
 
     <section class="panel" aria-labelledby="like-title">
       <h2 id="like-title">Curtiu o projeto?</h2>
-      <button class="like-btn button secondary" type="button" data-counter="organizador-estudos">
+      <button class="like-btn button secondary" type="button" data-counter="iure-go-like-organizador-estudos">
         ❤️ <span class="like-count">0</span>
       </button>
-      <p class="project-views"><span class="view-count" data-counter="view-organizador-estudos">—</span> visualizações</p>
+      <p class="project-views"><span class="view-count" data-counter="iure-go-view-organizador-estudos">—</span> visualizações</p>
     </section>
 
     <section class="panel" aria-labelledby="comments-title">
@@ -67,37 +67,40 @@
     </section>
 
     <script>
-      const workspace = "iure-go";
-      const viewCounter = "view-organizador-estudos";
+      const COUNTER_BASE = "https://countapi.mileshilliard.com/api/v1";
+      const viewKey = "iure-go-view-organizador-estudos";
 
       // conta a visualização da página (uma vez por sessão, evita contar de novo no F5)
-      if (!sessionStorage.getItem(viewCounter)) {
-        fetch(`https://api.counterapi.dev/v1/${workspace}/${viewCounter}/up`)
-          .then(() => sessionStorage.setItem(viewCounter, "1"))
+      if (!sessionStorage.getItem(viewKey)) {
+        fetch(`${COUNTER_BASE}/hit/${viewKey}`)
+          .then(() => sessionStorage.setItem(viewKey, "1"))
           .catch(() => {});
       }
 
-      // like e exibição do contador de views
+      // like
       document.querySelectorAll('.like-btn').forEach(btn => {
-        const counterName = btn.dataset.counter;
+        const key = btn.dataset.counter;
         const countEl = btn.querySelector('.like-count');
-        fetch(`https://api.counterapi.dev/v1/${workspace}/${counterName}`)
+
+        fetch(`${COUNTER_BASE}/get/${key}`)
           .then(res => res.json())
-          .then(data => countEl.textContent = data.count)
+          .then(data => countEl.textContent = data.count ?? 0)
           .catch(() => {});
 
         btn.addEventListener('click', () => {
-          fetch(`https://api.counterapi.dev/v1/${workspace}/${counterName}/up`)
+          fetch(`${COUNTER_BASE}/hit/${key}`)
             .then(res => res.json())
             .then(data => countEl.textContent = data.count)
             .catch(() => {});
         });
       });
 
+      // exibição do contador de views
       document.querySelectorAll('.view-count').forEach(el => {
-        fetch(`https://api.counterapi.dev/v1/${workspace}/${el.dataset.counter}`)
+        const key = el.dataset.counter;
+        fetch(`${COUNTER_BASE}/get/${key}`)
           .then(res => res.json())
-          .then(data => el.textContent = data.count)
+          .then(data => el.textContent = data.count ?? 0)
           .catch(() => {});
       });
     </script>
