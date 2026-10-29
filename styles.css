@@ -1,23 +1,609 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap');
+Claude
+https://iure-go.github.io/
 
-:root{--ink:#18211e;--muted:#66736d;--paper:#f7f8f4;--line:#dce2db;--green:#b5f36c;--dark:#1e3027;--white:#fff}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--paper);color:var(--ink);font-family:Manrope,Arial,sans-serif;line-height:1.65}
-a{color:inherit;text-decoration:none}
-.site-header{height:78px;padding:0 max(6vw,24px);display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}
-.brand{font-size:24px;font-weight:800;letter-spacing:-1.5px}.brand span{color:#729d3e}
-nav{display:flex;gap:30px;font-size:13px;font-weight:700;color:#45514b}nav a:hover,.contact-links a:hover{color:#618e30}
-.hero{min-height:560px;padding:90px max(10vw,28px);display:grid;grid-template-columns:1.4fr .8fr;align-items:center;gap:70px;background:radial-gradient(ellipse at 85% 30%,#e5f2d4 0,transparent 35%),var(--paper)}
-.eyebrow{font:500 11px 'DM Mono',monospace;letter-spacing:1.5px;color:#678147;margin:0 0 14px}
-h1{font-size:clamp(46px,7vw,82px);line-height:1.04;letter-spacing:-5px;margin:0 0 24px}h1 span{color:#618b37}
-.lead{font-size:18px;max-width:570px;color:#59655f;line-height:1.75}
-.hero-actions{display:flex;gap:12px;margin-top:32px}.button{padding:12px 20px;border-radius:6px;font-size:13px;font-weight:800}.primary{background:var(--dark);color:var(--white)}.primary:hover{background:#34533f}.secondary{border:1px solid #aeb9af}.secondary:hover{background:white}
-.hero-card{background:var(--dark);color:white;padding:30px;border-radius:10px;min-height:320px;box-shadow:18px 18px 0 var(--green);position:relative}.card-mark{height:58px;width:58px;display:grid;place-items:center;background:var(--green);color:var(--dark);font-size:20px;font-weight:800;border-radius:50%;margin-bottom:28px}.card-label{font:11px 'DM Mono',monospace;color:var(--green);letter-spacing:1px}.hero-card h2{font-size:23px;line-height:1.35;margin:8px 0}.hero-card>p:not(.card-label):not(.card-foot){color:#c0cbc2;font-size:14px}.card-line{height:1px;background:#506357;margin:26px 0 18px}.card-foot{margin:0;font-size:12px;color:#b9c4ba}.card-foot strong{color:white;font-size:16px}
-.section{padding:90px max(10vw,28px);display:grid;grid-template-columns:.8fr 1.2fr;gap:60px}.section-heading h2{font-size:clamp(30px,4vw,46px);line-height:1.2;letter-spacing:-2px;margin:0;max-width:390px}.about-copy p{margin:0 0 18px;color:#56625c;font-size:16px}.shaded{background:#eef1e9}
-.education-card{grid-column:2;background:white;border:1px solid var(--line);border-radius:8px;padding:26px;display:flex;justify-content:space-between;gap:30px;align-items:center}.education-card h3{font-size:19px;line-height:1.4;margin:0 0 7px}.education-card p:not(.eyebrow){color:var(--muted);margin:0;font-size:14px}.year{text-align:right;font:700 24px 'DM Mono',monospace!important;color:var(--ink)!important;white-space:nowrap}.year span{font:11px Manrope,sans-serif;color:var(--muted)}.course-list{grid-column:2;display:flex;gap:9px;flex-wrap:wrap}.course-list span{border:1px solid #ccd5c9;border-radius:20px;padding:7px 12px;font-size:12px;color:#4c5d50;background:#f8faf6}
-.skills-grid{grid-column:2;display:grid;grid-template-columns:1fr 1fr;gap:14px}.skill-card{background:white;padding:20px;border:1px solid var(--line);border-radius:8px}.skill-number{font:12px 'DM Mono',monospace;color:#779948}.skill-card h3{margin:8px 0;font-size:17px}.skill-card p{font-size:13px;color:#66716b;margin:0}.language-note{grid-column:2;font-size:13px;color:#59655f}
-.project-card{grid-column:2;background:white;border:1px solid var(--line);border-radius:10px;padding:28px;box-shadow:0 12px 30px #18211e0a}.project-topline{display:flex;justify-content:space-between;gap:12px;align-items:center}.project-type{font:500 10px 'DM Mono',monospace;letter-spacing:1px;color:#678147}.project-status{font-size:11px;color:#59655f;background:#eef1e9;border-radius:20px;padding:5px 10px}.project-card h3{font-size:24px;letter-spacing:-.7px;margin:18px 0 8px}.project-card>p{margin:0;color:#65716a;font-size:14px;max-width:680px}.project-highlights{padding-left:20px;color:#4f5c54;font-size:13px}.project-highlights li{padding:3px 0}.project-tags{display:flex;gap:8px;flex-wrap:wrap;margin:20px 0}.project-tags span{border:1px solid #ccd5c9;border-radius:20px;padding:5px 10px;font:11px 'DM Mono',monospace;color:#4c5d50}.project-actions{display:flex;gap:18px;align-items:center;flex-wrap:wrap}.project-actions .button{display:inline-block}.project-code{font-size:13px;font-weight:700;color:#496a31}.project-code:hover{text-decoration:underline}
-.contact-section{padding:80px max(10vw,28px);background:var(--dark);color:white}.contact-section .eyebrow{color:var(--green)}.contact-section h2{font-size:clamp(38px,5vw,58px);letter-spacing:-3px;margin:0}.contact-section>p:not(.eyebrow){color:#c0cbc2}.contact-links{display:flex;gap:26px;flex-wrap:wrap;margin-top:24px}.contact-links a{color:var(--green);font-weight:700;font-size:14px}
-footer{padding:20px max(6vw,24px);display:flex;justify-content:space-between;color:#68736c;font-size:12px;border-top:1px solid var(--line)}footer a{font-weight:700}
-@media(max-width:760px){.site-header{height:auto;min-height:70px;align-items:flex-start;padding-top:18px;padding-bottom:15px;gap:20px;flex-direction:column}nav{gap:15px;flex-wrap:wrap;font-size:12px}.hero{grid-template-columns:1fr;gap:44px;padding-top:64px;padding-bottom:72px}.hero-card{max-width:420px}.section{grid-template-columns:1fr;gap:25px;padding-top:66px;padding-bottom:66px}.education-card,.course-list,.skills-grid,.language-note,.project-card{grid-column:1}.skills-grid{grid-template-columns:1fr}.education-card{align-items:flex-start;flex-direction:column}.year{text-align:left!important}.contact-section{padding-top:65px;padding-bottom:65px}}
+Quero colocar a opção de comentário e like nos meus projetos
+
+Fetched: Iure Oliveira | Portfólio
+Dá para adicionar isso sem precisar montar um backend próprio, já que o site é estático (GitHub Pages). Duas peças separadas:
+
+Comentários → Giscus
+Como o código já está no GitHub, o mais simples e de graça é o Giscus (usa GitHub Discussions como banco de dados dos comentários).
+
+Ative “Discussions” no repositório iure-go.github.io (em Settings → Features).
+Acesse giscus.app, informe o repositório e ele gera um <script> pronto, tipo:
+html
+<script src="https://giscus.app/client.js"
+  data-repo="iure-go/iure-go.github.io"
+  data-repo-id="SEU_REPO_ID"
+  data-category="Comments"
+  data-category-id="SUA_CATEGORY_ID"
+  data-mapping="pathname"
+  data-theme="preferred_color_scheme"
+  crossorigin="anonymous"
+  async>
+</script>
+Cole esse script dentro da página de cada projeto (ex: projetos/organizador-estudos/index.html), num ponto onde queira que os comentários apareçam.
+Vantagem: zero manutenção, login via conta do GitHub, e combina com o perfil do seu portfólio (voltado a tecnologia).
+
+Curtidas (like)
+Para likes você precisa de algum lugar que guarde o contador — HTML puro não persiste nada sozinho. Caminho mais simples sem backend: CounterAPI (gratuito, só uma chamada de API).
+
+html
+<button id="like-btn">❤️ <span id="like-count">0</span></button>
+
+<script>
+const workspace = "iure-go"; // crie uma conta em counterapi.dev
+const counterName = "organizador-estudos"; // um nome por projeto
+
+async function loadCount() {
+  const res = await fetch(`https://api.counterapi.dev/v1/${workspace}/${counterName}`);
+  const data = await res.json();
+  document.getElementById('like-count').textContent = data.count;
+}
+
+document.getElementById('like-btn').addEventListener('click', async () => {
+  const res = await fetch(`https://api.counterapi.dev/v1/${workspace}/${counterName}/up`);
+  const data = await res.json();
+  document.getElementById('like-count').textContent = data.count;
+});
+
+loadCount();
+</script>
+Isso dá um contador global simples (não impede que a mesma pessoa curta várias vezes, a não ser que você bloqueie via localStorage no navegador dela).
+
+Se quiser algo mais robusto (impedir curtidas duplicadas por usuário, likes por seção específica, dashboard de métricas), o caminho seria um banco tipo Firebase Firestore ou Supabase — mais trabalho de configurar, mas ainda gratuito no plano free e sem precisar de servidor próprio.
+
+Quer que eu monte o código completo já integrado nas páginas de projeto (os cards), com os dois recursos juntos?
+
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap'); :root{--ink:#18211e;--muted:#66736d;--paper:#f7f8f4;--line:#dce2db;--green:#b5f36c;--dark:#1e3027;--white:#fff} *{box-sizing:border-box} html{scroll-behavior:smooth
+
+pasted
+
+Organize
+
+Criou um arquivo, arquivos compartilhados
+Organizei o style.css mantendo exatamente as mesmas regras e valores — só reformatei: cada propriedade em sua própria linha, indentação consistente e comentários dividindo o arquivo em blocos (variáveis, reset, header, hero, seções, projetos, contato, rodapé, responsivo). Fica bem mais fácil de navegar e editar depois.
+
+Style
+Código
+·CSS
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap'); :root{--ink:#18211e;--muted:#66736d;--paper:#f7f8f4;--line:#dce2db;--green:#b5f36c;--dark:#1e3027;--white:#fff} *{box-sizing:border-box} html{scroll-behavior:smooth} bo
+
+pasted
+
+Weighing how to respond to an ambiguous re-upload
+Esse arquivo é idêntico ao que você já me mandou antes — já tenho a versão organizada dele pronta (o style.css que te entreguei). Quer que eu reenvie esse mesmo arquivo organizado, ou você tinha algo diferente em mente para esse envio (alguma alteração específica, por exemplo)?
+
+
+
+
+Claude é uma IA e pode cometer erros.
+Style · CSS
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap');
+ 
+/* ==========================================================================
+   Variáveis globais
+   ========================================================================== */
+:root {
+  --ink: #18211e;
+  --muted: #66736d;
+  --paper: #f7f8f4;
+  --line: #dce2db;
+  --green: #b5f36c;
+  --dark: #1e3027;
+  --white: #fff;
+}
+ 
+/* ==========================================================================
+   Reset básico
+   ========================================================================== */
+* {
+  box-sizing: border-box;
+}
+ 
+html {
+  scroll-behavior: smooth;
+}
+ 
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: Manrope, Arial, sans-serif;
+  line-height: 1.65;
+}
+ 
+a {
+  color: inherit;
+  text-decoration: none;
+}
+ 
+/* ==========================================================================
+   Header / navegação
+   ========================================================================== */
+.site-header {
+  height: 78px;
+  padding: 0 max(6vw, 24px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--line);
+}
+ 
+.brand {
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -1.5px;
+}
+ 
+.brand span {
+  color: #729d3e;
+}
+ 
+nav {
+  display: flex;
+  gap: 30px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #45514b;
+}
+ 
+nav a:hover,
+.contact-links a:hover {
+  color: #618e30;
+}
+ 
+/* ==========================================================================
+   Hero
+   ========================================================================== */
+.hero {
+  min-height: 560px;
+  padding: 90px max(10vw, 28px);
+  display: grid;
+  grid-template-columns: 1.4fr .8fr;
+  align-items: center;
+  gap: 70px;
+  background:
+    radial-gradient(ellipse at 85% 30%, #e5f2d4 0, transparent 35%),
+    var(--paper);
+}
+ 
+.eyebrow {
+  font: 500 11px 'DM Mono', monospace;
+  letter-spacing: 1.5px;
+  color: #678147;
+  margin: 0 0 14px;
+}
+ 
+h1 {
+  font-size: clamp(46px, 7vw, 82px);
+  line-height: 1.04;
+  letter-spacing: -5px;
+  margin: 0 0 24px;
+}
+ 
+h1 span {
+  color: #618b37;
+}
+ 
+.lead {
+  font-size: 18px;
+  max-width: 570px;
+  color: #59655f;
+  line-height: 1.75;
+}
+ 
+.hero-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 32px;
+}
+ 
+.button {
+  padding: 12px 20px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 800;
+}
+ 
+.primary {
+  background: var(--dark);
+  color: var(--white);
+}
+ 
+.primary:hover {
+  background: #34533f;
+}
+ 
+.secondary {
+  border: 1px solid #aeb9af;
+}
+ 
+.secondary:hover {
+  background: white;
+}
+ 
+/* Cartão de destaque na hero */
+.hero-card {
+  background: var(--dark);
+  color: white;
+  padding: 30px;
+  border-radius: 10px;
+  min-height: 320px;
+  box-shadow: 18px 18px 0 var(--green);
+  position: relative;
+}
+ 
+.card-mark {
+  height: 58px;
+  width: 58px;
+  display: grid;
+  place-items: center;
+  background: var(--green);
+  color: var(--dark);
+  font-size: 20px;
+  font-weight: 800;
+  border-radius: 50%;
+  margin-bottom: 28px;
+}
+ 
+.card-label {
+  font: 11px 'DM Mono', monospace;
+  color: var(--green);
+  letter-spacing: 1px;
+}
+ 
+.hero-card h2 {
+  font-size: 23px;
+  line-height: 1.35;
+  margin: 8px 0;
+}
+ 
+.hero-card > p:not(.card-label):not(.card-foot) {
+  color: #c0cbc2;
+  font-size: 14px;
+}
+ 
+.card-line {
+  height: 1px;
+  background: #506357;
+  margin: 26px 0 18px;
+}
+ 
+.card-foot {
+  margin: 0;
+  font-size: 12px;
+  color: #b9c4ba;
+}
+ 
+.card-foot strong {
+  color: white;
+  font-size: 16px;
+}
+ 
+/* ==========================================================================
+   Seções gerais (Sobre, Formação, Competências, Projetos)
+   ========================================================================== */
+.section {
+  padding: 90px max(10vw, 28px);
+  display: grid;
+  grid-template-columns: .8fr 1.2fr;
+  gap: 60px;
+}
+ 
+.section-heading h2 {
+  font-size: clamp(30px, 4vw, 46px);
+  line-height: 1.2;
+  letter-spacing: -2px;
+  margin: 0;
+  max-width: 390px;
+}
+ 
+.about-copy p {
+  margin: 0 0 18px;
+  color: #56625c;
+  font-size: 16px;
+}
+ 
+.shaded {
+  background: #eef1e9;
+}
+ 
+/* --- Formação --- */
+.education-card {
+  grid-column: 2;
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 26px;
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  align-items: center;
+}
+ 
+.education-card h3 {
+  font-size: 19px;
+  line-height: 1.4;
+  margin: 0 0 7px;
+}
+ 
+.education-card p:not(.eyebrow) {
+  color: var(--muted);
+  margin: 0;
+  font-size: 14px;
+}
+ 
+.year {
+  text-align: right;
+  font: 700 24px 'DM Mono', monospace !important;
+  color: var(--ink) !important;
+  white-space: nowrap;
+}
+ 
+.year span {
+  font: 11px Manrope, sans-serif;
+  color: var(--muted);
+}
+ 
+.course-list {
+  grid-column: 2;
+  display: flex;
+  gap: 9px;
+  flex-wrap: wrap;
+}
+ 
+.course-list span {
+  border: 1px solid #ccd5c9;
+  border-radius: 20px;
+  padding: 7px 12px;
+  font-size: 12px;
+  color: #4c5d50;
+  background: #f8faf6;
+}
+ 
+/* --- Competências --- */
+.skills-grid {
+  grid-column: 2;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+ 
+.skill-card {
+  background: white;
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+ 
+.skill-number {
+  font: 12px 'DM Mono', monospace;
+  color: #779948;
+}
+ 
+.skill-card h3 {
+  margin: 8px 0;
+  font-size: 17px;
+}
+ 
+.skill-card p {
+  font-size: 13px;
+  color: #66716b;
+  margin: 0;
+}
+ 
+.language-note {
+  grid-column: 2;
+  font-size: 13px;
+  color: #59655f;
+}
+ 
+/* --- Projetos --- */
+.project-card {
+  grid-column: 2;
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 28px;
+  box-shadow: 0 12px 30px #18211e0a;
+}
+ 
+.project-topline {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+}
+ 
+.project-type {
+  font: 500 10px 'DM Mono', monospace;
+  letter-spacing: 1px;
+  color: #678147;
+}
+ 
+.project-status {
+  font-size: 11px;
+  color: #59655f;
+  background: #eef1e9;
+  border-radius: 20px;
+  padding: 5px 10px;
+}
+ 
+.project-card h3 {
+  font-size: 24px;
+  letter-spacing: -.7px;
+  margin: 18px 0 8px;
+}
+ 
+.project-card > p {
+  margin: 0;
+  color: #65716a;
+  font-size: 14px;
+  max-width: 680px;
+}
+ 
+.project-highlights {
+  padding-left: 20px;
+  color: #4f5c54;
+  font-size: 13px;
+}
+ 
+.project-highlights li {
+  padding: 3px 0;
+}
+ 
+.project-tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 20px 0;
+}
+ 
+.project-tags span {
+  border: 1px solid #ccd5c9;
+  border-radius: 20px;
+  padding: 5px 10px;
+  font: 11px 'DM Mono', monospace;
+  color: #4c5d50;
+}
+ 
+.project-actions {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+ 
+.project-actions .button {
+  display: inline-block;
+}
+ 
+.project-code {
+  font-size: 13px;
+  font-weight: 700;
+  color: #496a31;
+}
+ 
+.project-code:hover {
+  text-decoration: underline;
+}
+ 
+/* ==========================================================================
+   Contato
+   ========================================================================== */
+.contact-section {
+  padding: 80px max(10vw, 28px);
+  background: var(--dark);
+  color: white;
+}
+ 
+.contact-section .eyebrow {
+  color: var(--green);
+}
+ 
+.contact-section h2 {
+  font-size: clamp(38px, 5vw, 58px);
+  letter-spacing: -3px;
+  margin: 0;
+}
+ 
+.contact-section > p:not(.eyebrow) {
+  color: #c0cbc2;
+}
+ 
+.contact-links {
+  display: flex;
+  gap: 26px;
+  flex-wrap: wrap;
+  margin-top: 24px;
+}
+ 
+.contact-links a {
+  color: var(--green);
+  font-weight: 700;
+  font-size: 14px;
+}
+ 
+/* ==========================================================================
+   Rodapé
+   ========================================================================== */
+footer {
+  padding: 20px max(6vw, 24px);
+  display: flex;
+  justify-content: space-between;
+  color: #68736c;
+  font-size: 12px;
+  border-top: 1px solid var(--line);
+}
+ 
+footer a {
+  font-weight: 700;
+}
+ 
+/* ==========================================================================
+   Responsivo (telas até 760px)
+   ========================================================================== */
+@media (max-width: 760px) {
+  .site-header {
+    height: auto;
+    min-height: 70px;
+    align-items: flex-start;
+    padding-top: 18px;
+    padding-bottom: 15px;
+    gap: 20px;
+    flex-direction: column;
+  }
+ 
+  nav {
+    gap: 15px;
+    flex-wrap: wrap;
+    font-size: 12px;
+  }
+ 
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 44px;
+    padding-top: 64px;
+    padding-bottom: 72px;
+  }
+ 
+  .hero-card {
+    max-width: 420px;
+  }
+ 
+  .section {
+    grid-template-columns: 1fr;
+    gap: 25px;
+    padding-top: 66px;
+    padding-bottom: 66px;
+  }
+ 
+  .education-card,
+  .course-list,
+  .skills-grid,
+  .language-note,
+  .project-card {
+    grid-column: 1;
+  }
+ 
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+ 
+  .education-card {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+ 
+  .year {
+    text-align: left !important;
+  }
+ 
+  .contact-section {
+    padding-top: 65px;
+    padding-bottom: 65px;
+  }
+}
