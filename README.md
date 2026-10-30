@@ -1,23 +1,5 @@
 <div align="center">
 
-# Iure Oliveira dos Santos
-
-**Estudante de Análise e Desenvolvimento de Sistemas · UERJ/ZO**
-
-Em formação na área de tecnologia, com interesse em desenvolvimento de software, dados e suporte de TI. Busco uma oportunidade de estágio para aplicar meus conhecimentos e continuar aprendendo.
-
-[Portfólio](https://iure-go.github.io/) · [LinkedIn](https://www.linkedin.com/in/iiure) · [GitHub](https://github.com/iure-go) · [ORCID](https://orcid.org/0009-0002-8824-4044)
-
-</div>
-
----
-
-## Sobre mim
-
-Minha graduação tem previsão de conclusão em **2028.2**. Já concluí disciplinas de algoritmos, estruturas de dados, programação orientada a objetos, bancos de dados, redes, segurança da informação, sistemas operacionais, desenvolvimento web e móvel, estatística aplicada e visão computacional.
-
-Também tenho formação complementar em análise de dados e Power BI, administração de bancos de dados, ciência de dados e inteligência artificial. Minha trajetória profissional inclui atividades administrativas e operacionais, atendimento ao público, suporte técnico, organização de documentos e apoio a equipes.
-
 ## Projetos em destaque
 
 | Projeto | Descrição | Tecnologias | Acesso |
