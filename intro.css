@@ -1,5 +1,6 @@
 :root{--intro-bg:#060504;--intro-stage:#0e0b09;--intro-green:#188f00;--intro-line:#45cf57;--intro-word:#cdcdcd;--intro-tag:#6f655e;--intro-glyph:#140b06}
 body.intro-active{overflow:hidden}
+html.intro-already-seen #intro-screen{display:none!important}
 .intro-screen{position:fixed;inset:0;z-index:10000;display:grid;place-items:center;padding:20px;background:var(--intro-bg);opacity:1;visibility:visible;transition:opacity .42s ease,visibility .42s ease}
 .intro-screen.is-closing{opacity:0;visibility:hidden;pointer-events:none}
 #stage{width:min(100vw,100vh,900px);aspect-ratio:1/1;background:var(--intro-stage);cursor:pointer;-webkit-tap-highlight-color:transparent}

@@ -5,6 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Portfólio de Iure Oliveira dos Santos, estudante de Análise e Desenvolvimento de Sistemas.">
   <title>Iure Oliveira | Portfólio</title>
+  <script>
+    try {
+      if (localStorage.getItem('iure-go-portfolio-intro-seen') === 'true' ||
+          window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        document.documentElement.classList.add('intro-already-seen');
+      }
+    } catch { /* O portfólio continua disponível se o armazenamento estiver bloqueado. */ }
+  </script>
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="intro.css">
   <script src="intro.js" defer></script>

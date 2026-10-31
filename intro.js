@@ -2,8 +2,8 @@
   'use strict';
 
   const SPEED = 1;
-  const HOLD_END = 1.4;
-  const CYCLE = 2.0;
+  const HOLD_END = 1.9;
+  const CYCLE = 2.5;
   const CX = 360, CY = 292;
   const A0 = 132 * Math.PI / 180;
   const SWEEP = 330 * Math.PI / 180;
@@ -20,6 +20,7 @@
   const backToTop = $('back-to-top');
   const main = document.querySelector('main');
   const pageParts = document.querySelectorAll('.site-header, main, body > footer');
+  const introStorageKey = 'iure-go-portfolio-intro-seen';
   const el = {
     all: $('all'), glow: $('bg-glow'), hex: $('hex'),
     g1: $('g1'), g2: $('g2'), g3: $('g3'),
@@ -99,6 +100,7 @@
     if (dismissed) return;
     dismissed = true;
     cancelAnimationFrame(raf);
+    try { localStorage.setItem(introStorageKey, 'true'); } catch { /* Armazenamento pode estar indisponível. */ }
     intro.classList.add('is-closing');
     pageParts.forEach(part => { part.inert = false; });
     document.body.classList.remove('intro-active');
@@ -124,7 +126,9 @@
   }
 
   pageParts.forEach(part => { part.inert = true; });
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  let introWasSeen = false;
+  try { introWasSeen = localStorage.getItem(introStorageKey) === 'true'; } catch { /* Armazenamento pode estar indisponível. */ }
+  if (introWasSeen || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     render(CYCLE);
     dismiss(true);
     return;
