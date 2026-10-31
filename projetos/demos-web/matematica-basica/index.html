@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Demonstração interativa de operações, frações, porcentagem e regra de três.">
+  <title>Matemática em prática | Iure Oliveira</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <main class="shell">
+    <a class="back" href="../">← Todas as demonstrações</a>
+    <header class="hero">
+      <p class="eyebrow">MATEMÁTICA BÁSICA · PROJETO DIDÁTICO</p>
+      <h1>Matemática em prática</h1>
+      <p class="intro">Explore quatro fundamentos com exemplos interativos: operações, frações, porcentagem e regra de três.</p>
+    </header>
+
+    <section class="concept-strip" aria-label="Conceitos abordados">
+      <div><span>01</span><strong>Operações</strong><small>calcular e comparar</small></div>
+      <div><span>02</span><strong>Frações</strong><small>representar partes</small></div>
+      <div><span>03</span><strong>Porcentagem</strong><small>interpretar proporções</small></div>
+      <div><span>04</span><strong>Regra de três</strong><small>resolver proporções</small></div>
+    </section>
+
+    <section class="tools-grid" aria-label="Ferramentas de matemática">
+      <article class="panel tool-card">
+        <div class="panel-heading"><div><p class="eyebrow">01 / OPERAÇÕES</p><h2>Calculadora essencial</h2></div><span class="panel-icon" aria-hidden="true">＋ −</span></div>
+        <p class="description">Escolha uma operação e calcule com números inteiros ou decimais.</p>
+        <form id="arithmetic-form" class="tool-form">
+          <div class="field-row"><label>Número A<input name="a" type="number" step="any" value="24" required></label><label>Operação<select name="operation"><option value="add">Somar (+)</option><option value="subtract">Subtrair (−)</option><option value="multiply">Multiplicar (×)</option><option value="divide">Dividir (÷)</option></select></label></div>
+          <label>Número B<input name="b" type="number" step="any" value="6" required></label>
+          <button class="primary" type="submit">Calcular resultado</button>
+        </form>
+        <div class="result" id="arithmetic-result" role="status" aria-live="polite"><span>Resultado</span><strong>30</strong><small>24 + 6</small></div>
+      </article>
+
+      <article class="panel tool-card">
+        <div class="panel-heading"><div><p class="eyebrow">02 / FRAÇÕES</p><h2>Operações com frações</h2></div><span class="panel-icon" aria-hidden="true">½</span></div>
+        <p class="description">Combine duas frações. O resultado é reduzido à forma mais simples.</p>
+        <form id="fraction-form" class="tool-form">
+          <div class="fraction-row">
+            <label class="fraction"><span>Fração A</span><input name="n1" type="number" step="1" value="1" required aria-label="Numerador da fração A"><i></i><input name="d1" type="number" step="1" value="2" required aria-label="Denominador da fração A"></label>
+            <label class="fraction-op">Operação<select name="operation" aria-label="Operação entre frações"><option value="add">+</option><option value="subtract">−</option><option value="multiply">×</option><option value="divide">÷</option></select></label>
+            <label class="fraction"><span>Fração B</span><input name="n2" type="number" step="1" value="1" required aria-label="Numerador da fração B"><i></i><input name="d2" type="number" step="1" value="3" required aria-label="Denominador da fração B"></label>
+          </div>
+          <button class="primary" type="submit">Resolver fração</button>
+        </form>
+        <div class="result" id="fraction-result" role="status" aria-live="polite"><span>Resultado simplificado</span><strong>5/6</strong><small>1/2 + 1/3</small></div>
+      </article>
+
+      <article class="panel tool-card">
+        <div class="panel-heading"><div><p class="eyebrow">03 / PORCENTAGEM</p><h2>Quanto representa?</h2></div><span class="panel-icon" aria-hidden="true">%</span></div>
+        <p class="description">Descubra quanto uma porcentagem representa de um valor.</p>
+        <form id="percent-form" class="tool-form">
+          <label>Porcentagem (%)<input name="percent" type="number" min="0" step="any" value="15" required></label>
+          <label>Valor de referência<input name="base" type="number" min="0" step="any" value="240" required></label>
+          <button class="primary" type="submit">Calcular porcentagem</button>
+        </form>
+        <div class="result" id="percent-result" role="status" aria-live="polite"><span>15% de 240</span><strong>36</strong><small>15 ÷ 100 × 240</small></div>
+      </article>
+
+      <article class="panel tool-card">
+        <div class="panel-heading"><div><p class="eyebrow">04 / PROPORÇÃO</p><h2>Regra de três simples</h2></div><span class="panel-icon" aria-hidden="true">A:B</span></div>
+        <p class="description">Se A está para B assim como C está para X, encontre o valor de X.</p>
+        <form id="proportion-form" class="tool-form">
+          <div class="proportion-equation"><label>A<input name="a" type="number" step="any" value="4" required></label><span>está para</span><label>B<input name="b" type="number" step="any" value="12" required></label></div>
+          <div class="proportion-equation"><label>C<input name="c" type="number" step="any" value="7" required></label><span>está para X</span><div class="unknown">?</div></div>
+          <button class="primary" type="submit">Encontrar X</button>
+        </form>
+        <div class="result" id="proportion-result" role="status" aria-live="polite"><span>Valor de X</span><strong>21</strong><small>4/12 = 7/X → X = (12 × 7) ÷ 4</small></div>
+      </article>
+    </section>
+
+    <section class="panel learning" aria-labelledby="learning-title">
+      <div class="panel-heading"><div><p class="eyebrow">CONCEITOS EM FOCO</p><h2 id="learning-title">O que cada ferramenta pratica</h2></div></div>
+      <div class="learning-grid">
+        <article><h3>Ordem das operações</h3><p>Adição, subtração, multiplicação e divisão são operações fundamentais. A calculadora permite testar cada uma isoladamente.</p></article>
+        <article><h3>Frações equivalentes</h3><p>Para somar ou subtrair, use denominadores comuns. Para multiplicar, multiplique numeradores e denominadores; simplifique pelo MDC.</p></article>
+        <article><h3>Porcentagem</h3><p>Por cento significa “a cada cem”. Para calcular p% de um valor, multiplique o valor por p/100.</p></article>
+        <article><h3>Proporcionalidade</h3><p>Na regra de três direta, a razão se mantém. O produto cruzado permite encontrar o termo desconhecido.</p></article>
+      </div>
+      <p class="scope-note"><span aria-hidden="true">ⓘ</span> Projeto didático para revisão de conteúdos. Os cálculos acontecem no navegador; nenhum dado é enviado ou armazenado.</p>
+    </section>
+    <footer class="footnote">Projeto acadêmico de Matemática Básica · <a href="https://github.com/iure-go/iure-go.github.io/tree/main/projetos/demos-web/matematica-basica">Ver arquivos do projeto ↗</a></footer>
+  </main>
+</body>
+</html>
