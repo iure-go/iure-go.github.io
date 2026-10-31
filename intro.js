@@ -17,6 +17,7 @@
   const NS = 'http://www.w3.org/2000/svg';
   const intro = $('intro-screen');
   const skip = $('skip-intro');
+  const backToTop = $('back-to-top');
   const main = document.querySelector('main');
   const pageParts = document.querySelectorAll('.site-header, main, body > footer');
   const el = {
@@ -25,6 +26,15 @@
     word: $('word'), tag: $('tag'),
     trail: $('trail'), halo: $('halo'), spark: $('spark')
   };
+  function updateBackToTop() {
+    const visible = window.scrollY > 320;
+    backToTop.classList.toggle('is-visible', visible);
+    backToTop.setAttribute('aria-hidden', String(!visible));
+    backToTop.tabIndex = visible ? 0 : -1;
+  }
+  window.addEventListener('scroll', updateBackToTop, {passive:true});
+  updateBackToTop();
+
   const lines = [];
   for (let i = 0; i < TRAIL_N; i++) {
     const line = document.createElementNS(NS, 'line');
