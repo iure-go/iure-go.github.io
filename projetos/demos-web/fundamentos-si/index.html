@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Protótipo acadêmico de sistema de chamados para laboratórios universitários.">
+  <title>LabFlux — Central de suporte</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#inicio" aria-label="LabFlux, início"><span class="brand-mark">L</span><span>lab<span class="brand-accent">flux</span></span></a>
+    <div class="topbar-note"><span class="status-dot"></span> Painel de suporte <span class="demo-label">DEMO ACADÊMICA</span></div>
+  </header>
+
+  <main id="inicio" class="page-shell">
+    <section class="welcome-row">
+      <div>
+        <p class="eyebrow">SISTEMA DE INFORMAÇÃO · SUPORTE</p>
+        <h1>Central de chamados</h1>
+        <p class="subtitle">Organize solicitações e acompanhe o suporte dos laboratórios.</p>
+      </div>
+      <button id="open-form" class="button button-primary" type="button"><span aria-hidden="true">＋</span> Novo chamado</button>
+    </section>
+
+    <section class="metrics" aria-label="Resumo dos chamados">
+      <article class="metric-card"><span class="metric-icon icon-open" aria-hidden="true">○</span><p>Abertos</p><strong id="count-open">0</strong></article>
+      <article class="metric-card"><span class="metric-icon icon-progress" aria-hidden="true">↻</span><p>Em andamento</p><strong id="count-progress">0</strong></article>
+      <article class="metric-card"><span class="metric-icon icon-done" aria-hidden="true">✓</span><p>Concluídos</p><strong id="count-done">0</strong></article>
+      <article class="metric-card metric-total"><span class="metric-icon icon-total" aria-hidden="true">▤</span><p>Total registrado</p><strong id="count-total">0</strong></article>
+    </section>
+
+    <section class="content-card" aria-labelledby="requests-title">
+      <div class="section-heading">
+        <div><h2 id="requests-title">Fila de solicitações</h2><p id="result-count" class="muted">Chamados recentes</p></div>
+        <label class="search-box"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="Buscar chamado..." aria-label="Buscar chamados"></label>
+      </div>
+      <div class="toolbar" role="group" aria-label="Filtrar chamados por status">
+        <button class="filter-button active" data-filter="Todos" type="button">Todos</button>
+        <button class="filter-button" data-filter="Aberto" type="button">Abertos</button>
+        <button class="filter-button" data-filter="Em andamento" type="button">Em andamento</button>
+        <button class="filter-button" data-filter="Concluído" type="button">Concluídos</button>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Solicitação</th><th>Local</th><th>Categoria</th><th>Prioridade</th><th>Status</th><th>Atualizar</th></tr></thead>
+          <tbody id="ticket-list"></tbody>
+        </table>
+      </div>
+      <div id="empty-state" class="empty-state" hidden><span aria-hidden="true">⌕</span><strong>Nenhum chamado encontrado</strong><p>Ajuste a busca ou os filtros para ver outros resultados.</p></div>
+      <p class="data-note"><span aria-hidden="true">ⓘ</span> Demonstração acadêmica com dados fictícios. As alterações não são salvas após fechar ou recarregar a página.</p>
+    </section>
+
+    <footer class="footer"><span>LabFlux <span class="muted">· Protótipo acadêmico</span></span><a href="https://github.com/iure-go/iure-go.github.io/tree/main/projetos/demos-web/fundamentos-si">Ver documentação do projeto <span aria-hidden="true">↗</span></a></footer>
+  </main>
+
+  <dialog id="ticket-dialog" aria-labelledby="dialog-title">
+    <form id="ticket-form" method="dialog">
+      <div class="dialog-heading"><div><p class="eyebrow">REGISTRO DE SOLICITAÇÃO</p><h2 id="dialog-title">Novo chamado</h2></div><button id="close-form" class="icon-button" type="button" aria-label="Fechar">×</button></div>
+      <label>Título do problema<input name="title" required maxlength="70" placeholder="Ex.: Computador não inicia"></label>
+      <div class="form-grid"><label>Laboratório<input name="location" required maxlength="50" placeholder="Ex.: Lab. 204"></label><label>Categoria<select name="category" required><option value="">Selecione</option><option>Computadores</option><option>Rede</option><option>Projetor</option><option>Software</option><option>Outro</option></select></label></div>
+      <div class="form-grid"><label>Solicitante<input name="requester" required maxlength="50" placeholder="Nome para identificação"></label><label>Prioridade<select name="priority" required><option value="Média">Média</option><option value="Baixa">Baixa</option><option value="Alta">Alta</option></select></label></div>
+      <label>Descrição<textarea name="description" required maxlength="240" rows="3" placeholder="Descreva o que ocorreu e quando começou."></textarea></label>
+      <p class="form-note">Use apenas informações fictícias nesta demonstração.</p>
+      <div class="dialog-actions"><button id="cancel-form" class="button button-quiet" type="button">Cancelar</button><button class="button button-primary" type="submit">Registrar chamado</button></div>
+    </form>
+  </dialog>
+  <div id="announcement" class="sr-only" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
