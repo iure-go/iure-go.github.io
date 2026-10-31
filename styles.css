@@ -158,12 +158,17 @@ h1 span {
   width: 58px;
   display: grid;
   place-items: center;
+  overflow: hidden;
   background: var(--green);
-  color: var(--dark);
-  font-size: 20px;
-  font-weight: 800;
   border-radius: 50%;
   margin-bottom: 28px;
+}
+
+.profile-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 34%;
 }
  
 .card-label {
