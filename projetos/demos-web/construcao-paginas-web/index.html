@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Editor didático para aprender estrutura HTML, estilos CSS e interatividade JavaScript.">
+  <title>PageLab | Construção de Páginas Web</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#inicio"><span class="brand-mark">&lt;/&gt;</span> Page<span>Lab</span></a>
+    <span class="topbar-label"><i></i> CONSTRUÇÃO DE PÁGINAS WEB</span>
+  </header>
+  <main class="shell" id="inicio">
+    <a class="back" href="../">← Todas as demonstrações</a>
+    <section class="intro">
+      <p class="eyebrow">PROJETO DIDÁTICO · HTML, CSS E JAVASCRIPT</p>
+      <h1>Monte uma página.<br><span>Entenda como ela funciona.</span></h1>
+      <p>Edite o conteúdo e o visual, compare a prévia e explore o código HTML gerado.</p>
+    </section>
+
+    <section class="workspace" aria-label="Editor e prévia da página">
+      <article class="panel editor-panel">
+        <div class="panel-heading"><div><p class="eyebrow">01 / PERSONALIZE</p><h2>Conteúdo da página</h2></div><span class="step">EDITOR</span></div>
+        <form id="page-form">
+          <label for="site-title">Título principal</label>
+          <input id="site-title" maxlength="70" value="Crie uma presença digital marcante" required>
+          <label for="site-intro">Texto de apresentação</label>
+          <textarea id="site-intro" rows="3" maxlength="180" required>Uma página clara e responsiva começa com uma boa ideia e uma estrutura bem organizada.</textarea>
+          <label for="about-text">Texto da seção “Sobre”</label>
+          <textarea id="about-text" rows="3" maxlength="220" required>Apresente aqui o objetivo do seu projeto, produto ou serviço. Use frases diretas para que o visitante entenda o que você oferece.</textarea>
+          <div class="editor-row">
+            <label for="button-label">Texto do botão<input id="button-label" maxlength="28" value="Conheça o projeto" required></label>
+            <label for="accent-color">Cor de destaque<input id="accent-color" type="color" value="#51d5a2"></label>
+          </div>
+          <fieldset>
+            <legend>Seções da página</legend>
+            <label class="check-option"><input type="checkbox" name="section" value="about" checked> Sobre</label>
+            <label class="check-option"><input type="checkbox" name="section" value="features" checked> Destaques</label>
+            <label class="check-option"><input type="checkbox" name="section" value="contact" checked> Contato</label>
+          </fieldset>
+          <p id="editor-status" class="sr-only" role="status" aria-live="polite">Prévia atualizada.</p>
+        </form>
+        <div class="code-block">
+          <div class="code-heading"><div><p class="eyebrow">02 / EXPLORE O CÓDIGO</p><h2>HTML gerado</h2></div><button id="copy-code" class="secondary" type="button">Copiar código</button></div>
+          <textarea id="code-output" rows="12" readonly spellcheck="false" aria-label="Código HTML gerado"></textarea>
+          <p class="hint">O código é gerado no navegador. Copie para estudar ou adaptar.</p>
+        </div>
+      </article>
+
+      <article class="panel preview-panel">
+        <div class="panel-heading preview-heading"><div><p class="eyebrow">03 / VISUALIZE</p><h2>Prévia responsiva</h2></div><div class="viewport-controls" role="group" aria-label="Tamanho da prévia"><button type="button" data-viewport="desktop" class="active" aria-pressed="true">Desktop</button><button type="button" data-viewport="mobile" aria-pressed="false">Celular</button></div></div>
+        <div class="preview-stage"><div id="preview-frame" class="preview-frame"><iframe id="page-preview" title="Prévia da página criada" sandbox=""></iframe></div></div>
+        <div class="learning-note"><span aria-hidden="true">✦</span><p><strong>O que você está vendo</strong><br>HTML organiza o conteúdo; CSS define aparência e adaptação à tela; JavaScript atualiza a prévia a cada edição.</p></div>
+      </article>
+    </section>
+
+    <section class="concepts panel">
+      <div class="panel-heading"><div><p class="eyebrow">CONCEITOS EM FOCO</p><h2>Uma página, três camadas</h2></div></div>
+      <div class="concept-grid">
+        <article><span>HTML</span><h3>Estrutura semântica</h3><p><code>header</code>, <code>main</code>, <code>section</code> e <code>footer</code> ajudam a organizar o significado do conteúdo.</p></article>
+        <article><span>CSS</span><h3>Estilo e responsividade</h3><p>Variáveis, cores, espaçamento e media queries adaptam a apresentação a diferentes larguras.</p></article>
+        <article><span>JAVASCRIPT</span><h3>Comportamento</h3><p>Eventos de formulário atualizam o texto, as seções e o código mostrado na prévia.</p></article>
+      </div>
+    </section>
+    <footer class="footnote">Projeto acadêmico de Construção de Páginas Web · <a href="https://github.com/iure-go/iure-go.github.io/tree/main/projetos/demos-web/construcao-paginas-web">Ver arquivos do projeto ↗</a></footer>
+  </main>
+</body>
+</html>
