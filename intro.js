@@ -2,8 +2,8 @@
   'use strict';
 
   const SPEED = 1;
-  const HOLD_END = 2.9;
-  const CYCLE = 3.5;
+  const HOLD_END = 1.4;
+  const CYCLE = 2.0;
   const CX = 360, CY = 292;
   const A0 = 132 * Math.PI / 180;
   const SWEEP = 330 * Math.PI / 180;

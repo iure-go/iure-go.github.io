@@ -529,3 +529,20 @@ footer a {
     padding-bottom: 65px;
   }
 }
+
+
+/* Prévia local: rede animada na seção de apresentação */
+.hero-copy {grid-column:1;grid-row:1;text-align:left;min-width:0}
+.hero-card {grid-column:2;grid-row:1;text-align:right;min-width:0}
+.hero-card .card-mark {margin-left:auto}
+.hero.vanta-active {position:relative;isolation:isolate;overflow:hidden;background:#153c25;grid-template-columns:minmax(0,1.4fr) minmax(320px,.8fr);align-items:center}
+.hero.vanta-active>* {position:relative;z-index:1}
+.hero.vanta-active canvas {position:absolute!important;inset:0;z-index:0!important}
+.hero.vanta-active .eyebrow {color:#b5f36c}
+.hero.vanta-active h1 {color:#f7fff8}
+.hero.vanta-active h1 span {color:#82ff3f}
+.hero.vanta-active .lead {color:#d1e5d7}
+.hero.vanta-active .button.secondary {color:#f7fff8;border-color:#a9c5b0;background:#102b1b}
+.hero.vanta-active .hero-card {background:rgba(14,37,24,.92);box-shadow:18px 18px 0 #82ff3f;backdrop-filter:blur(5px)}
+.hero.vanta-active .card-mark {background:#82ff3f}
+@media(max-width:760px){.hero.vanta-active{grid-template-columns:minmax(0,1fr)}.hero.vanta-active .hero-copy,.hero.vanta-active .hero-card{grid-column:1;grid-row:auto}}
