@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Laboratório interativo de conjuntos, lógica proposicional e relações para Matemática Discreta.">
+  <title>Laboratório Discreto | Iure Oliveira</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <main class="shell">
+    <a class="back" href="../">← Todas as demonstrações</a>
+    <header class="hero">
+      <p class="eyebrow">MATEMÁTICA DISCRETA · PROJETO DIDÁTICO</p>
+      <h1>Laboratório Discreto</h1>
+      <p class="intro">Investigue conjuntos, lógica proposicional e relações com exemplos interativos. Um espaço para enxergar como conceitos matemáticos aparecem na computação.</p>
+    </header>
+
+    <section class="concept-strip" aria-label="Conceitos abordados">
+      <div><span>01</span><strong>Conjuntos</strong><small>união, interseção e diferença</small></div>
+      <div><span>02</span><strong>Lógica</strong><small>proposições e conectivos</small></div>
+      <div><span>03</span><strong>Tabela-verdade</strong><small>avaliar combinações</small></div>
+      <div><span>04</span><strong>Relações</strong><small>propriedades e pares</small></div>
+    </section>
+
+    <section class="tools-grid" aria-label="Ferramentas de matemática discreta">
+      <article class="panel tool-card">
+        <div class="panel-heading"><div><p class="eyebrow">01 / TEORIA DOS CONJUNTOS</p><h2>Operações com conjuntos</h2></div><span class="panel-icon" aria-hidden="true">∪ ∩</span></div>
+        <p class="description">Informe elementos separados por vírgula. O laboratório remove repetições e organiza os resultados.</p>
+        <form id="sets-form" class="tool-form">
+          <label>Conjunto A<input name="a" value="1, 2, 3, 4" autocomplete="off" required></label>
+          <label>Conjunto B<input name="b" value="3, 4, 5, 6" autocomplete="off" required></label>
+          <button class="primary" type="submit">Calcular operações</button>
+        </form>
+        <div id="sets-result" class="set-results" aria-live="polite">
+          <div><span>A ∪ B · união</span><strong>{1, 2, 3, 4, 5, 6}</strong></div>
+          <div><span>A ∩ B · interseção</span><strong>{3, 4}</strong></div>
+          <div><span>A − B · diferença</span><strong>{1, 2}</strong></div>
+          <div><span>B − A · diferença</span><strong>{5, 6}</strong></div>
+        </div>
+      </article>
+
+      <article class="panel tool-card">
+        <div class="panel-heading"><div><p class="eyebrow">02 / LÓGICA PROPOSICIONAL</p><h2>Tabela-verdade</h2></div><span class="panel-icon" aria-hidden="true">¬ ∧ ∨</span></div>
+        <p class="description">Escolha um conectivo lógico e veja o resultado para cada combinação de P e Q.</p>
+        <form id="logic-form" class="tool-form logic-form">
+          <label>Expressão<select name="operator"><option value="and">P ∧ Q · E (conjunção)</option><option value="or">P ∨ Q · OU (disjunção)</option><option value="xor">P ⊕ Q · OU exclusivo</option><option value="implies">P → Q · implica</option><option value="iff">P ↔ Q · se e somente se</option></select></label>
+          <button class="primary" type="submit">Atualizar tabela</button>
+        </form>
+        <div id="logic-result" aria-live="polite">
+          <table class="truth-table"><thead><tr><th>P</th><th>Q</th><th>P ∧ Q</th></tr></thead><tbody><tr><td>V</td><td>V</td><td class="true">V</td></tr><tr><td>V</td><td>F</td><td class="false">F</td></tr><tr><td>F</td><td>V</td><td class="false">F</td></tr><tr><td>F</td><td>F</td><td class="false">F</td></tr></tbody></table>
+        </div>
+        <p class="hint">V = verdadeiro · F = falso</p>
+      </article>
+
+      <article class="panel tool-card relation-card">
+        <div class="panel-heading"><div><p class="eyebrow">03 / RELAÇÕES BINÁRIAS</p><h2>Teste as propriedades</h2></div><span class="panel-icon" aria-hidden="true">R ⊆ A×A</span></div>
+        <p class="description">Descreva o conjunto e os pares da relação no formato <code>origem&gt;destino</code>, separados por vírgula.</p>
+        <form id="relation-form" class="tool-form">
+          <label>Elementos de A<input name="set" value="1, 2, 3" autocomplete="off" required></label>
+          <label>Pares de R<input name="pairs" value="1&gt;1, 2&gt;2, 3&gt;3, 1&gt;2, 2&gt;1" autocomplete="off" required></label>
+          <button class="primary" type="submit">Analisar relação</button>
+        </form>
+        <div id="relation-result" class="property-list" aria-live="polite">
+          <div><span class="status yes">✓</span><span><strong>Reflexiva</strong><small>Todo elemento se relaciona consigo mesmo.</small></span></div>
+          <div><span class="status yes">✓</span><span><strong>Simétrica</strong><small>Se (a,b) pertence a R, então (b,a) também pertence.</small></span></div>
+          <div><span class="status no">×</span><span><strong>Antissimétrica</strong><small>Há pares distintos nos dois sentidos.</small></span></div>
+          <div><span class="status no">×</span><span><strong>Transitiva</strong><small>A relação não contém todos os pares exigidos.</small></span></div>
+        </div>
+      </article>
+    </section>
+
+    <section class="panel learning" aria-labelledby="learning-title">
+      <div class="panel-heading"><div><p class="eyebrow">CONCEITOS EM FOCO</p><h2 id="learning-title">Matemática por trás da computação</h2></div></div>
+      <div class="learning-grid">
+        <article><h3>Conjuntos</h3><p>Representam coleções de elementos. União reúne os elementos, interseção seleciona os comuns e diferença remove os que pertencem ao outro conjunto.</p></article>
+        <article><h3>Lógica</h3><p>Conectivos combinam proposições. Tabelas-verdade enumeram todas as possibilidades e ajudam a verificar condições em algoritmos e circuitos.</p></article>
+        <article><h3>Relações</h3><p>Uma relação em A é um subconjunto de A × A. Reflexividade, simetria, antissimetria e transitividade descrevem sua estrutura.</p></article>
+        <article><h3>Aplicações em TI</h3><p>Esses fundamentos aparecem em consultas de banco de dados, validação de regras, grafos, circuitos digitais e análise de algoritmos.</p></article>
+      </div>
+      <p class="scope-note"><span aria-hidden="true">ⓘ</span> Projeto didático executado localmente no navegador. Os dados digitados não são enviados nem armazenados.</p>
+    </section>
+    <footer class="footnote">Projeto acadêmico de Matemática Discreta · <a href="https://github.com/iure-go/iure-go.github.io/tree/main/projetos/demos-web/matematica-discreta">Ver arquivos do projeto ↗</a></footer>
+  </main>
+</body>
+</html>
