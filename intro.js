@@ -96,7 +96,7 @@
   }
 
   let start = performance.now(), raf = 0, dismissed = false;
-  function dismiss(instant = false) {
+  function dismiss() {
     if (dismissed) return;
     dismissed = true;
     cancelAnimationFrame(raf);
@@ -104,12 +104,7 @@
     intro.classList.add('is-closing');
     pageParts.forEach(part => { part.inert = false; });
     document.body.classList.remove('intro-active');
-    const remove = () => {
-      intro.remove();
-      if (main) main.focus({preventScroll:true});
-    };
-    if (instant) remove();
-    else window.setTimeout(remove, 430);
+    if (main) main.focus({preventScroll:true});
   }
   function frame(now) {
     const elapsed = ((now-start)/1000)*SPEED;
@@ -125,16 +120,33 @@
     raf = requestAnimationFrame(frame);
   }
 
+  function replayIntro(event) {
+    if (event) event.preventDefault();
+    dismissed = false;
+    cancelAnimationFrame(raf);
+    document.documentElement.classList.remove('intro-already-seen');
+    intro.classList.remove('is-closing');
+    document.body.classList.add('intro-active');
+    pageParts.forEach(part => { part.inert = true; });
+    window.scrollTo({top:0, behavior:'auto'});
+    render(0);
+    skip.focus({preventScroll:true});
+    play();
+  }
+
   pageParts.forEach(part => { part.inert = true; });
+  skip.addEventListener('click', () => dismiss());
+  $('stage').addEventListener('click', play);
+  const brand = document.querySelector('.brand');
+  if (brand) brand.addEventListener('click', replayIntro);
+
   let introWasSeen = false;
   try { introWasSeen = localStorage.getItem(introStorageKey) === 'true'; } catch { /* Armazenamento pode estar indisponível. */ }
   if (introWasSeen || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     render(CYCLE);
-    dismiss(true);
+    dismiss();
     return;
   }
-  skip.addEventListener('click', () => dismiss());
-  $('stage').addEventListener('click', play);
   skip.focus({preventScroll:true});
   play();
 })();
