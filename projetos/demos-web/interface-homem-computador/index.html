@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Laboratório interativo de Interface Homem Computador: explore acessibilidade, heurísticas de usabilidade e avaliação de uma interface.">
+  <title>IHC Lab | Interface Homem Computador</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#inicio" aria-label="IHC Lab início"><span class="brand-mark">◎</span> IHC<span>Lab</span></a>
+    <span class="topbar-label"><i></i> INTERFACE HOMEM COMPUTADOR</span>
+  </header>
+  <main class="shell" id="inicio">
+    <a class="back" href="../">← Todas as demonstrações</a>
+    <section class="intro">
+      <p class="eyebrow">PROJETO ACADÊMICO · DESIGN CENTRADO NAS PESSOAS</p>
+      <h1>Uma interface melhor<br><span>começa por quem usa.</span></h1>
+      <p>Experimente uma tarefa, ajuste recursos de acessibilidade e avalie a experiência com princípios de usabilidade.</p>
+    </section>
+
+    <section class="principles" aria-label="Objetivos do laboratório">
+      <article><span class="principle-icon" aria-hidden="true">◉</span><div><strong>Observe</strong><p>Entenda o contexto da pessoa usuária.</p></div></article>
+      <article><span class="principle-icon" aria-hidden="true">⌘</span><div><strong>Experimente</strong><p>Use a interface com diferentes preferências.</p></div></article>
+      <article><span class="principle-icon" aria-hidden="true">↗</span><div><strong>Avalie</strong><p>Identifique melhorias com heurísticas.</p></div></article>
+    </section>
+
+    <section class="workspace" aria-label="Laboratório de usabilidade">
+      <article class="panel task-panel">
+        <div class="panel-heading"><div><p class="eyebrow">01 / TESTE UMA TAREFA</p><h2>Solicitar suporte no laboratório</h2></div><span class="step">DEMO</span></div>
+        <p class="panel-intro">Imagine que você precisa de ajuda para usar um computador da universidade. Preencha o formulário e observe como a interface orienta cada etapa.</p>
+
+        <div class="profile-row">
+          <label for="user-profile">Perfil de uso</label>
+          <select id="user-profile">
+            <option value="default">Navegação padrão</option>
+            <option value="keyboard">Pessoa que usa teclado</option>
+            <option value="low-vision">Pessoa com baixa visão</option>
+            <option value="first-time">Pessoa usando o serviço pela primeira vez</option>
+          </select>
+        </div>
+        <p id="profile-tip" class="profile-tip" aria-live="polite">Você pode usar Tab para navegar e Enter para selecionar os controles.</p>
+
+        <div class="access-controls" role="group" aria-label="Preferências de acessibilidade">
+          <button id="contrast-toggle" class="toggle-button" type="button" aria-pressed="false">◐ Alto contraste</button>
+          <button id="text-toggle" class="toggle-button" type="button" aria-pressed="false">A+ Texto ampliado</button>
+        </div>
+
+        <form id="support-form">
+          <label for="location">Local do atendimento <span class="required">Obrigatório</span></label>
+          <select id="location" name="location" required>
+            <option value="">Escolha um laboratório</option>
+            <option>Laboratório de Informática 1</option>
+            <option>Laboratório de Informática 2</option>
+            <option>Biblioteca</option>
+          </select>
+          <label for="issue">O que aconteceu? <span class="required">Obrigatório</span></label>
+          <textarea id="issue" name="issue" rows="3" maxlength="240" placeholder="Ex.: não consigo acessar minha conta institucional" required></textarea>
+          <p class="field-hint">Descreva o problema em até 240 caracteres.</p>
+          <fieldset>
+            <legend>Qual a urgência?</legend>
+            <label class="radio-option"><input type="radio" name="urgency" value="normal" checked> Posso aguardar</label>
+            <label class="radio-option"><input type="radio" name="urgency" value="high"> Preciso de ajuda agora</label>
+          </fieldset>
+          <button class="primary-button" type="submit">Revisar solicitação <span aria-hidden="true">→</span></button>
+          <p id="form-status" class="form-status" role="status" aria-live="polite"></p>
+        </form>
+
+        <section id="confirmation" class="confirmation" hidden aria-labelledby="confirmation-title">
+          <span class="success-mark" aria-hidden="true">✓</span>
+          <div><h3 id="confirmation-title">Solicitação registrada</h3><p id="confirmation-copy"></p><button id="new-request" class="text-button" type="button">Iniciar outra solicitação</button></div>
+        </section>
+      </article>
+
+      <aside class="panel evaluation-panel">
+        <div class="panel-heading"><div><p class="eyebrow">02 / AVALIAÇÃO HEURÍSTICA</p><h2>O que observar</h2></div><span class="step">CHECKLIST</span></div>
+        <p class="panel-intro">Marque os princípios que a interface demonstra. O resultado atualiza conforme sua avaliação.</p>
+        <div class="score-card">
+          <div><span class="score-label">Princípios identificados</span><strong id="score-value">0 de 5</strong></div>
+          <div class="progress-track" role="progressbar" aria-label="Princípios de usabilidade identificados" aria-valuemin="0" aria-valuemax="5" aria-valuenow="0"><span id="score-bar"></span></div>
+          <p id="score-feedback" aria-live="polite">Comece a explorar os princípios abaixo.</p>
+        </div>
+        <fieldset id="heuristic-list" class="heuristic-list">
+          <legend class="sr-only">Princípios de usabilidade</legend>
+          <label class="heuristic"><input type="checkbox"><span><strong>Visibilidade do estado</strong><small>A interface dá retorno após uma ação?</small></span><b>01</b></label>
+          <label class="heuristic"><input type="checkbox"><span><strong>Correspondência com o mundo real</strong><small>Os termos e exemplos são familiares?</small></span><b>02</b></label>
+          <label class="heuristic"><input type="checkbox"><span><strong>Controle e liberdade</strong><small>É possível revisar ou recomeçar uma tarefa?</small></span><b>03</b></label>
+          <label class="heuristic"><input type="checkbox"><span><strong>Consistência</strong><small>Rótulos e controles seguem um padrão?</small></span><b>04</b></label>
+          <label class="heuristic"><input type="checkbox"><span><strong>Prevenção e recuperação de erros</strong><small>Há instruções claras para corrigir problemas?</small></span><b>05</b></label>
+        </fieldset>
+        <button id="reset-evaluation" class="secondary-button" type="button">Limpar avaliação</button>
+      </aside>
+    </section>
+
+    <section class="reflection panel">
+      <div class="panel-heading"><div><p class="eyebrow">03 / REFLEXÃO</p><h2>Como foi a experiência?</h2></div><span class="step">FEEDBACK</span></div>
+      <p>Uma avaliação de usabilidade combina observação, contexto e feedback. Registre uma nota para simular uma etapa de teste com pessoas usuárias.</p>
+      <div class="rating-row"><label for="experience-rating">Facilidade para concluir a tarefa</label><select id="experience-rating"><option value="">Selecione uma nota</option><option value="1">1 — Muito difícil</option><option value="2">2 — Difícil</option><option value="3">3 — Nem difícil, nem fácil</option><option value="4">4 — Fácil</option><option value="5">5 — Muito fácil</option></select><button id="save-rating" class="secondary-button" type="button">Registrar nota</button></div>
+      <p id="rating-status" class="rating-status" role="status" aria-live="polite"></p>
+      <div class="concept-grid">
+        <article><span>USABILIDADE</span><h3>Eficiência e clareza</h3><p>Uma tarefa deve ser compreensível, possível de concluir e acompanhada por retorno claro.</p></article>
+        <article><span>ACESSIBILIDADE</span><h3>Mais formas de interagir</h3><p>Contraste, ampliação do texto, foco visível e controles semânticos apoiam diferentes necessidades.</p></article>
+        <article><span>DESIGN CENTRADO NO USUÁRIO</span><h3>Projetar com contexto</h3><p>Conhecer necessidades reais permite avaliar, testar e melhorar a interface continuamente.</p></article>
+      </div>
+    </section>
+    <footer class="footnote">Projeto acadêmico de Interface Homem Computador · <a href="https://github.com/iure-go/iure-go.github.io/tree/main/projetos/demos-web/interface-homem-computador">Ver arquivos do projeto ↗</a></footer>
+  </main>
+</body>
+</html>
