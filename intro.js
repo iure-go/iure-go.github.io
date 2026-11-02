@@ -6,8 +6,8 @@
      ===================================================================== */
   const SPEED = 1;       // velocidade geral: 1 = normal, 0.5 = metade da velocidade, 2 = dobro
   const LOOP  = false;    // true = repete para sempre; false = toca uma vez e fica na logo final
-  const CYCLE = 2.5;     // (s) duração de cada ciclo completo, contando o fade-out final
-  const FADE_AT = 2.5;   // (s) momento em que começa o fade-out antes de reiniciar
+  const CYCLE = 3.5;     // (s) duração da animação, com 1 segundo extra para ler a frase final
+  const FADE_AT = 3.5;   // (s) momento em que começa o fade-out antes de reiniciar
 
   // Tempos do feixe de luz (em segundos):
   //   ORBIT_START → começa a circular | ORBIT_END → termina a volta | SWOOP_END → chega ao texto e some
