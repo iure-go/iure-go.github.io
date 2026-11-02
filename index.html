@@ -204,13 +204,15 @@
       const intro = document.querySelector('#intro-screen');
       if (!intro) startNetwork();
       else {
-        const observer = new MutationObserver(() => {
-          if (!document.querySelector('#intro-screen')) {
+        const startAfterIntro = () => {
+          if (intro.classList.contains('is-closing')) {
             observer.disconnect();
             startNetwork();
           }
-        });
-        observer.observe(document.body, { childList: true });
+        };
+        const observer = new MutationObserver(startAfterIntro);
+        observer.observe(intro, { attributes: true, attributeFilter: ['class'] });
+        startAfterIntro();
       }
     })();
   </script>
