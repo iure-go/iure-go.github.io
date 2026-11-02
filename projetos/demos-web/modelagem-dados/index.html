@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Projeto interativo de modelagem relacional, cardinalidade, chaves e normalização de dados.">
+  <title>DataLab · Modelagem de Dados | Iure Oliveira</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <main class="shell">
+    <a class="back" href="../">← Todas as demonstrações</a>
+    <header class="hero">
+      <p class="eyebrow">MODELAGEM DE DADOS · PROJETO DIDÁTICO</p>
+      <h1>DataLab <span>Modelagem relacional</span></h1>
+      <p class="intro">Modele um sistema de empréstimo de equipamentos de laboratório. Explore entidades, relacionamentos, chaves e normalização até a 3ª Forma Normal.</p>
+    </header>
+
+    <nav class="tabs" aria-label="Seções do laboratório">
+      <a href="#modelo">Modelo relacional</a>
+      <a href="#sql-lab">Laboratório SQL</a>
+      <a href="#normalizacao">Normalização</a>
+      <a href="#conceitos">Conceitos</a>
+    </nav>
+
+    <section id="modelo" class="panel model-panel">
+      <div class="section-heading"><div><p class="eyebrow">01 / MODELO LÓGICO</p><h2>Empréstimo de equipamentos</h2><p class="muted">Selecione uma tabela para ver seu papel. As linhas mostram o relacionamento e sua cardinalidade.</p></div><span class="panel-icon" aria-hidden="true">ERD</span></div>
+      <div class="legend" aria-label="Legenda"><span><b class="key-pk">PK</b> Chave primária</span><span><b class="key-fk">FK</b> Chave estrangeira</span><span><b class="one">1</b> Um</span><span><b class="many">N</b> Muitos</span></div>
+      <div class="erd-scroll" tabindex="0" aria-label="Diagrama relacional, role para navegar horizontalmente">
+        <div class="erd" id="erd">
+          <svg class="relationships" viewBox="0 0 1000 450" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M230 110 C300 110 320 95 385 95"/><path d="M230 330 C300 330 320 355 385 355"/>
+            <path d="M560 95 C640 95 655 110 730 110"/><path d="M560 355 C640 355 655 330 730 330"/>
+            <text x="290" y="95">1 : N</text><text x="290" y="355">1 : N</text><text x="625" y="95">1 : N</text><text x="625" y="355">1 : N</text>
+          </svg>
+          <button class="entity" data-entity="Aluno" type="button" style="--x:0%;--y:7%">
+            <span class="entity-title">ALUNO</span><span class="attribute"><b class="key-pk">PK</b> id_aluno</span><span class="attribute">nome</span><span class="attribute">email</span>
+          </button>
+          <button class="entity" data-entity="Empréstimo" type="button" style="--x:38.5%;--y:4%">
+            <span class="entity-title">EMPRESTIMO</span><span class="attribute"><b class="key-pk">PK</b> id_emprestimo</span><span class="attribute"><b class="key-fk">FK</b> id_aluno</span><span class="attribute">data_retirada</span><span class="attribute">data_prevista</span><span class="attribute">status</span>
+          </button>
+          <button class="entity" data-entity="Equipamento" type="button" style="--x:77%;--y:7%">
+            <span class="entity-title">EQUIPAMENTO</span><span class="attribute"><b class="key-pk">PK</b> id_equipamento</span><span class="attribute"><b class="key-fk">FK</b> id_categoria</span><span class="attribute">descricao</span><span class="attribute">numero_patrimonio</span>
+          </button>
+          <button class="entity" data-entity="ItemEmpréstimo" type="button" style="--x:38.5%;--y:62%">
+            <span class="entity-title">ITEM_EMPRESTIMO</span><span class="attribute"><b class="key-pk">PK</b> <b class="key-fk">FK</b> id_emprestimo</span><span class="attribute"><b class="key-pk">PK</b> <b class="key-fk">FK</b> id_equipamento</span><span class="attribute">condicao_retirada</span><span class="attribute">condicao_devolucao</span>
+          </button>
+          <button class="entity" data-entity="Categoria" type="button" style="--x:77%;--y:62%">
+            <span class="entity-title">CATEGORIA</span><span class="attribute"><b class="key-pk">PK</b> id_categoria</span><span class="attribute">nome</span>
+          </button>
+        </div>
+      </div>
+      <div id="entity-detail" class="entity-detail" aria-live="polite"><strong>Como ler o modelo</strong><p>O aluno pode fazer vários empréstimos. Cada empréstimo pode incluir vários equipamentos; a tabela ITEM_EMPRESTIMO resolve esse relacionamento N:N e guarda dados específicos de cada item.</p></div>
+      <details class="sql-details"><summary>Ver esquema SQL</summary><pre><code>CREATE TABLE Aluno (
+  id_aluno INTEGER PRIMARY KEY,
+  nome VARCHAR(100) NOT NULL,
+  email VARCHAR(150) UNIQUE NOT NULL
+);
+
+CREATE TABLE Categoria (
+  id_categoria INTEGER PRIMARY KEY,
+  nome VARCHAR(60) UNIQUE NOT NULL
+);
+
+CREATE TABLE Equipamento (
+  id_equipamento INTEGER PRIMARY KEY,
+  id_categoria INTEGER NOT NULL REFERENCES Categoria(id_categoria),
+  descricao VARCHAR(120) NOT NULL,
+  numero_patrimonio VARCHAR(40) UNIQUE NOT NULL
+);
+
+CREATE TABLE Emprestimo (
+  id_emprestimo INTEGER PRIMARY KEY,
+  id_aluno INTEGER NOT NULL REFERENCES Aluno(id_aluno),
+  data_retirada DATE NOT NULL,
+  data_prevista DATE NOT NULL,
+  status VARCHAR(20) NOT NULL
+);
+
+CREATE TABLE Item_Emprestimo (
+  id_emprestimo INTEGER REFERENCES Emprestimo(id_emprestimo),
+  id_equipamento INTEGER REFERENCES Equipamento(id_equipamento),
+  condicao_retirada VARCHAR(120),
+  condicao_devolucao VARCHAR(120),
+  PRIMARY KEY (id_emprestimo, id_equipamento)
+);</code></pre></details>
+    </section>
+
+    <section id="sql-lab" class="panel sql-lab">
+      <div class="section-heading"><div><p class="eyebrow">02 / LABORATÓRIO SQL</p><h2>Edite a consulta e execute</h2><p class="muted">Consulte os dados fictícios do modelo. Experimente SELECT, INNER JOIN, WHERE, ORDER BY e LIMIT.</p></div><span class="panel-icon" aria-hidden="true">SQL</span></div>
+      <div class="query-toolbar">
+        <label>Exemplo para carregar<select id="query-example"><option value="loans">Empréstimos com nome do aluno</option><option value="equipment">Equipamentos e categorias</option><option value="active">Empréstimos ativos</option><option value="all">Todos os alunos</option></select></label>
+        <span class="engine-badge"><i></i> Dataset de demonstração</span>
+      </div>
+      <label class="editor-label" for="sql-editor">Consulta SQL</label>
+      <textarea id="sql-editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" aria-describedby="sql-help">SELECT a.nome, e.status, e.data_prevista
+FROM aluno AS a
+INNER JOIN emprestimo AS e ON a.id_aluno = e.id_aluno
+ORDER BY e.data_prevista;</textarea>
+      <div class="editor-actions"><p id="sql-help" class="sql-help">Consultas somente leitura. O executor entende nomes de tabelas e colunas do modelo; não altera os dados.</p><div><button id="reset-query" class="button secondary" type="button">Restaurar exemplo</button><button id="run-query" class="button primary" type="button">▶ Executar consulta</button></div></div>
+      <div id="query-result" class="query-result" role="status" aria-live="polite"><div class="result-placeholder">Execute uma consulta para ver os resultados.</div></div>
+      <p class="scope-note"><span aria-hidden="true">ⓘ</span> Este é um executor didático com um subconjunto de SQL, não um banco SQLite completo. Os registros são fictícios, ficam na memória e são reiniciados ao recarregar.</p>
+    </section>
+
+    <section id="normalizacao" class="panel normalization">
+      <div class="section-heading"><div><p class="eyebrow">03 / NORMALIZAÇÃO</p><h2>Da tabela única a um modelo consistente</h2><p class="muted">Avance etapa a etapa. Observe como as dependências funcionais orientam a decomposição.</p></div></div>
+      <div class="stepper" role="group" aria-label="Etapas de normalização">
+        <button class="step active" data-step="0" type="button"><span>00</span>Tabela inicial</button>
+        <button class="step" data-step="1" type="button"><span>01</span>1ª Forma Normal</button>
+        <button class="step" data-step="2" type="button"><span>02</span>2ª Forma Normal</button>
+        <button class="step" data-step="3" type="button"><span>03</span>3ª Forma Normal</button>
+      </div>
+      <div id="normalization-content" class="normalization-content" aria-live="polite"></div>
+      <div class="step-actions"><button id="prev-step" class="button secondary" type="button" disabled>← Anterior</button><button id="next-step" class="button primary" type="button">Próxima etapa →</button></div>
+    </section>
+
+    <section id="conceitos" class="panel learning">
+      <div class="section-heading"><div><p class="eyebrow">04 / CONCEITOS EM FOCO</p><h2>Decisões que sustentam bons dados</h2></div></div>
+      <div class="learning-grid">
+        <article><h3>Entidade e atributo</h3><p>Entidades representam objetos relevantes do domínio, como Aluno e Equipamento. Atributos descrevem suas propriedades.</p></article>
+        <article><h3>Chaves</h3><p>A PK identifica cada registro. A FK referencia um registro de outra tabela e mantém a integridade referencial.</p></article>
+        <article><h3>Cardinalidade</h3><p>1:N significa que um registro de um lado pode se associar a muitos do outro. N:N é implementado com uma tabela associativa.</p></article>
+        <article><h3>Normalização</h3><p>As formas normais reduzem redundância e anomalias de inserção, atualização e exclusão, respeitando dependências funcionais.</p></article>
+      </div>
+      <p class="scope-note"><span aria-hidden="true">ⓘ</span> Estudo de caso fictício para fins acadêmicos. O esquema SQL é uma proposta didática; nenhum banco de dados é conectado.</p>
+    </section>
+    <footer class="footnote">Projeto acadêmico de Modelagem de Dados · <a href="https://github.com/iure-go/iure-go.github.io/tree/main/projetos/demos-web/modelagem-dados">Ver arquivos do projeto ↗</a></footer>
+  </main>
+</body>
+</html>
