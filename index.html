@@ -155,32 +155,152 @@
   <footer><span>© <span id="year">2026</span> Iure Oliveira dos Santos</span><a href="#inicio">Voltar ao topo ↑</a></footer>
   <div id="intro-screen" class="intro-screen" role="dialog" aria-modal="true" aria-label="Apresentação animada do portfólio">
     <div id="stage" title="Clique para repetir" tabindex="-1">
-      <svg id="svg" viewBox="0 0 720 720" role="img" aria-label="Logo iure-go: Conectando pessoas e sistemas.">
-        <defs>
-          <radialGradient id="glow" cx="360" cy="292" r="330" gradientUnits="userSpaceOnUse">
-            <stop offset="0" stop-color="#188f00" stop-opacity=".30"/>
-            <stop offset=".45" stop-color="#0d4f00" stop-opacity=".12"/>
-            <stop offset="1" stop-color="#000" stop-opacity="0"/>
-          </radialGradient>
-          <filter id="blur" x="-200%" y="-200%" width="500%" height="500%"><feGaussianBlur stdDeviation="5"/></filter>
-        </defs>
-        <g id="all">
-          <circle id="bg-glow" cx="360" cy="292" r="330" fill="url(#glow)" opacity="0"/>
-          <g id="hex-wrap" transform="translate(-3 0)">
-            <path id="hex" d="M363 207 L437 249.5 L437 334.5 L363 377 L289 334.5 L289 249.5 Z" pathLength="100" fill="#188f00" fill-opacity="0" stroke="#45cf57" stroke-width="3.2" stroke-linejoin="round" stroke-dasharray="100" stroke-dashoffset="100"/>
-            <g fill="none" stroke="#140b06" stroke-width="8.5" stroke-linecap="round" stroke-linejoin="round">
-              <path id="g1" d="M336 263 L312 291 L336 319" pathLength="100" stroke-dasharray="100" stroke-dashoffset="100"/>
-              <path id="g2" d="M390 263 L414 291 L390 319" pathLength="100" stroke-dasharray="100" stroke-dashoffset="100"/>
-              <path id="g3" d="M377 257 L350 326" pathLength="100" stroke-dasharray="100" stroke-dashoffset="100"/>
-            </g>
-          </g>
-          <text id="word" class="word" x="360" y="490" text-anchor="middle" opacity="0"><tspan fill="#cdcdcd">iure</tspan><tspan fill="#188f00">-go</tspan></text>
-          <text id="tag" class="tag" x="360" y="546" text-anchor="middle" opacity="0">Conectando pessoas e sistemas.</text>
-          <g id="trail" stroke="#45cf57" stroke-linecap="round"></g>
-          <circle id="halo" r="9" fill="#45cf57" filter="url(#blur)" opacity="0"/>
-          <circle id="spark" r="3.6" fill="#d9ffd5" opacity="0"/>
-        </g>
-      </svg>
+      <svg id="svg" viewBox="0 0 896 1200" role="img" aria-label="Logo iure-go">
+
+    <!-- ===== DEFINIÇÕES: gradientes e filtros reutilizados abaixo ===== -->
+    <defs>
+      <clipPath id="chevronLeftStraightEnds" clipPathUnits="userSpaceOnUse">
+        <rect x="240" y="450" width="73" height="140"/>
+      </clipPath>
+      <clipPath id="chevronMiddleStraightEnds" clipPathUnits="userSpaceOnUse">
+        <rect x="354" y="450" width="70" height="140"/>
+      </clipPath>
+      <clipPath id="chevronStraightEnds" clipPathUnits="userSpaceOnUse">
+        <rect x="607" y="450" width="117" height="140"/>
+      </clipPath>
+      <!-- Cortes paralelos aos braços do chevron, com folga uniforme. -->
+      <clipPath id="hexUpperCut" clipPathUnits="userSpaceOnUse">
+        <polygon points="0,0 896,0 896,682 0,-3.17647"/>
+      </clipPath>
+      <clipPath id="hexLowerCut" clipPathUnits="userSpaceOnUse">
+        <polygon points="0,1043.17647 896,358 896,1200 0,1200"/>
+      </clipPath>
+      <!-- Fundo: degradê vertical (topo → base) -->
+      <linearGradient id="bgGrad" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#2b3139"/><stop offset="1" stop-color="#171b21"/>
+      </linearGradient>
+
+      <!-- Brilho central atrás da logo (centro em 448,520; raio 420) -->
+      <radialGradient id="glow" cx="448" cy="520" r="420" gradientUnits="userSpaceOnUse">
+        <stop offset="0"   stop-color="#14c8ff" stop-opacity=".30"/>
+        <stop offset=".5"  stop-color="#12a0d8" stop-opacity=".10"/>
+        <stop offset="1"   stop-color="#000"    stop-opacity="0"/>
+      </radialGradient>
+
+      <!-- Cores do contorno do hexágono (diagonal, do canto superior esquerdo ao inferior direito) -->
+      <linearGradient id="gHex" gradientUnits="userSpaceOnUse" x1="270" y1="300" x2="650" y2="650">
+        <stop offset="0" stop-color="#42f58b"/><stop offset=".5" stop-color="#32f397"/><stop offset="1" stop-color="#12eab6"/>
+      </linearGradient>
+      <!-- Cores da chave "{" da esquerda -->
+      <linearGradient id="gLeft" gradientUnits="userSpaceOnUse" x1="250" y1="390" x2="250" y2="650">
+        <stop offset="0" stop-color="#15dbf2"/><stop offset="1" stop-color="#0bc6f2"/>
+      </linearGradient>
+      <!-- Cores da barra "I" -->
+      <linearGradient id="gBar" gradientUnits="userSpaceOnUse" x1="0" y1="420" x2="0" y2="690">
+        <stop offset="0" stop-color="#18e6f2"/><stop offset="1" stop-color="#12b0f5"/>
+      </linearGradient>
+      <!-- Cores do anel "O" -->
+      <linearGradient id="gO" gradientUnits="userSpaceOnUse" x1="440" y1="420" x2="590" y2="630">
+        <stop offset="0" stop-color="#1af0f2"/><stop offset="1" stop-color="#14c4f5"/>
+      </linearGradient>
+
+      <!-- Cores dos chevrons < < >: verde claro (brilho) no canto superior esquerdo → verde mais forte embaixo à direita -->
+      <linearGradient id="gChev" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#9bff6a"/><stop offset=".55" stop-color="#55ee45"/><stop offset="1" stop-color="#2fd23c"/>
+      </linearGradient>
+
+      <!-- Desfoque usado no halo da faísca (stdDeviation = intensidade do desfoque) -->
+      <filter id="blur" x="-300%" y="-300%" width="700%" height="700%"><feGaussianBlur stdDeviation="6"/></filter>
+    </defs>
+
+    <!-- ===== FUNDO ===== -->
+    <rect width="896" height="1200" fill="url(#bgGrad)"/>
+    <!-- Brilho central: sua opacidade é animada pelo JS (começa em 0) -->
+    <circle id="glowC" cx="448" cy="520" r="420" fill="url(#glow)" opacity="0"/>
+
+    <!-- Riscos diagonais decorativos nos cantos (stA = canto superior direito, stB = inferior esquerdo).
+         Cada linha é x1,y1 → x2,y2. Eles deslizam para dentro durante a animação. -->
+    <g id="streaks" stroke="#6fb8d8" stroke-width="1.2" opacity="0">
+      <g id="stA"><line x1="800" y1="330" x2="896" y2="230"/><line x1="770" y1="300" x2="896" y2="170"/><line x1="830" y1="360" x2="896" y2="290"/></g>
+      <g id="stB"><line x1="0" y1="950" x2="120" y2="820"/><line x1="0" y1="1000" x2="160" y2="830"/><line x1="40" y1="1030" x2="170" y2="900"/><line x1="40" y1="1180" x2="200" y2="1030"/></g>
+    </g>
+
+    <!-- Partículas: os círculos são criados pelo JS e inseridos aqui -->
+    <g id="particles"></g>
+
+    <!-- ===== A LOGO ===== -->
+    <g id="logo">
+      <!-- Contorno do hexágono (lado direito, em duas partes com uma abertura onde fica o ">")
+           e a chave "{" do lado esquerdo.
+           A chave "{" (path id="l") tem cantos VIVOS (stroke-linejoin="miter"), traço mais grosso
+           (stroke-width="24") e braços a 45°. Pontos, de baixo para cima: ponta de baixo, canto,
+           início do entalhe, PONTA DO ENTALHE (o ponto mais à esquerda), fim do entalhe, canto, ponta de cima.
+           As linhas são RETAS (comandos L); só os cantos são curvos (comandos Q).
+           Cada canto tem a forma:  L [início da curva]  Q [vértice] [fim da curva].
+           Para deixar um canto mais ou menos arredondado, afaste ou aproxime os dois
+           pontos de curva do vértice. Para pontas arredondadas, troque stroke-linecap
+           de "butt" (corte reto) para "round" no grupo abaixo.
+           r1 / r2 / l são "traçados": o JS os revela aos poucos com stroke-dashoffset.
+           Se mudar o formato (atributo d), a faísca e o desenho se ajustam sozinhos. -->
+      <g fill="none" stroke-linecap="butt" stroke-linejoin="round" stroke-width="22">
+        <path id="r1" stroke="url(#gHex)" stroke-width="26" d="M405 318 L437 300 Q448 294 459 300 L631 399 Q643 406 643 420 L643 466"/>
+        <path id="r2" stroke="url(#gHex)" stroke-width="26" d="M643 574 L643 620 Q643 634 631 641 L459 740 Q448 746 437 740 L405 722"/>
+        <path id="l" stroke="url(#gLeft)" stroke-width="27" stroke-linejoin="round"
+              d="M287.5 659.5 L253 626.3 L253 552 L216 520 L253 488 L253 413.7 L287.5 380.5"/>
+      </g>
+
+      <!-- Pontas preenchidas: cortes diagonais paralelos ao chevron. -->
+      <path id="hexTipTop" fill="url(#gHex)" d="M630 465 L656 465 L656 498.47 L630 478.59 Z" opacity="0"/>
+      <path id="hexTipBottom" fill="url(#gHex)" d="M630 561.41 L656 541.53 L656 575 L630 575 Z" opacity="0"/>
+
+      <!-- Barra "I" e anel "O".
+           pathLength="100" + dasharray/dashoffset = 100 faz o traço começar "apagado";
+           o JS reduz o dashoffset até 0 para desenhar. -->
+      <line id="bar" x1="352" y1="432" x2="352" y2="676" pathLength="100" stroke="url(#gBar)" stroke-width="30"
+            stroke-linecap="butt" stroke-dasharray="100" stroke-dashoffset="100"/>
+      <rect id="ring" x="447.5" y="427.5" width="135" height="190" rx="67.5" pathLength="100" fill="none"
+            stroke="url(#gO)" stroke-width="35" stroke-dasharray="100" stroke-dashoffset="100"/>
+
+      <!-- Os três chevrons: "<" esquerdo, "<" do meio e ">" da direita.
+           Estilo: traço grosso (stroke-width), ponta bem afiada (stroke-linejoin="miter";
+           aumente stroke-miterlimit se a ponta ficar cortada), extremidades em corte reto
+           (stroke-linecap="butt") e cor em degradê (gChev, no início do arquivo).
+           Para mudar tamanho/ângulo, edite os pontos de cada path: M ponta-de-cima L vértice L ponta-de-baixo. -->
+      <g fill="none" stroke="url(#gChev)" stroke-width="15" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10">
+        <path id="c1" stroke-width="19" stroke-linejoin="round" clip-path="url(#chevronLeftStraightEnds)" d="M323 473.35294 L262 520 L323 566.64706" pathLength="100" stroke-dasharray="100" stroke-dashoffset="100"/>
+        <path id="c2" stroke-linejoin="round" clip-path="url(#chevronMiddleStraightEnds)" d="M434 486.35294 L390 520 L434 553.64706" pathLength="100" stroke-dasharray="100" stroke-dashoffset="100"/>
+        <!-- Braços prolongados e recortados em x=624: extremidades verticais. -->
+        <path id="c3" stroke-width="17" clip-path="url(#chevronStraightEnds)" stroke-linejoin="round" d="M597 473.35294 L658 520 L597 566.64706" pathLength="100" stroke-dasharray="100" stroke-dashoffset="100"/>
+      </g>
+
+      <!-- Chaves pequenas acima e abaixo da barra "I" (aparecem com fade) -->
+      <g id="braceTop" opacity="0">
+        <text class="mono" x="323" y="388" font-size="58" fill="#62ee3e" text-anchor="middle">{</text>
+        <text class="mono" x="380" y="388" font-size="58" fill="#62ee3e" text-anchor="middle">}</text>
+        <text class="mono" x="352" y="386" font-size="46" fill="#18e6f2" text-anchor="middle">I</text>
+      </g>
+      <g id="braceBot" opacity="0">
+        <text class="mono" x="312" y="695" font-size="62" fill="#78f35c" text-anchor="middle">{</text>
+        <text class="mono" x="392" y="695" font-size="62" fill="#78f35c" text-anchor="middle">}</text>
+      </g>
+
+      <!-- Linhas de código decorativas: criadas pelo JS a partir da lista DASH_DATA -->
+      <g id="dashes" stroke-width="6" stroke-linecap="round" fill="none"></g>
+    </g>
+
+    <!-- ===== TEXTOS =====
+         x/y = posição (x é o início do texto, y é a linha de base).
+         textLength força a largura total do texto, por isso ele fica parecido em qualquer fonte.
+         Para mudar as cores, edite o fill de cada tspan. -->
+    <text id="word" class="word" x="248" y="876" textLength="400" lengthAdjust="spacing" opacity="0"><tspan fill="#d4d4d4">iure</tspan><tspan fill="#1a9b00">-go</tspan></text>
+    <text id="sub" class="sub" x="68" y="962" textLength="760" lengthAdjust="spacing" opacity="0">Conectando pessoas e sistemas.</text>
+
+    <!-- ===== FEIXE DE LUZ (fica por cima de tudo) =====
+         trail = cauda (várias linhas criadas pelo JS), halo = brilho desfocado, spark = ponto brilhante -->
+    <g id="trail" stroke="#3ae6ff" stroke-linecap="round"></g>
+    <circle id="halo"  r="11" fill="#4df0ff" filter="url(#blur)" opacity="0"/>
+    <circle id="spark" r="4.2" fill="#eafffd" opacity="0"/>
+  </svg>
     </div>
     <button id="skip-intro" class="skip-intro" type="button">Pular animação <span aria-hidden="true">↗</span></button>
   </div>
