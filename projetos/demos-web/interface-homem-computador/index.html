@@ -9,17 +9,19 @@
   <script src="app.js" defer></script>
 </head>
 <body>
-  <header class="topbar">
-    <a class="brand" href="#inicio" aria-label="IHC Lab início"><span class="brand-mark">◎</span> IHC<span>Lab</span></a>
-    <span class="topbar-label"><i></i> INTERFACE HOMEM COMPUTADOR</span>
-  </header>
   <main class="shell" id="inicio">
     <a class="back" href="../">← Todas as demonstrações</a>
-    <section class="intro">
-      <p class="eyebrow">PROJETO ACADÊMICO · DESIGN CENTRADO NAS PESSOAS</p>
-      <h1>Uma interface melhor<br><span>começa por quem usa.</span></h1>
-      <p>Experimente uma tarefa, ajuste recursos de acessibilidade e avalie a experiência com princípios de usabilidade.</p>
-    </section>
+    <header class="hero">
+      <p class="eyebrow">INTERFACE HOMEM COMPUTADOR · PROJETO DIDÁTICO</p>
+      <h1>IHC Lab <span>Design centrado nas pessoas</span></h1>
+      <p class="intro">Experimente uma tarefa, ajuste recursos de acessibilidade e avalie a experiência com princípios de usabilidade.</p>
+    </header>
+
+    <nav class="tabs" aria-label="Seções do laboratório">
+      <a href="#demo">Teste de interface</a>
+      <a href="#heuristicas">Avaliação heurística</a>
+      <a href="#reflexao">Reflexão</a>
+    </nav>
 
     <section class="principles" aria-label="Objetivos do laboratório">
       <article><span class="principle-icon" aria-hidden="true">◉</span><div><strong>Observe</strong><p>Entenda o contexto da pessoa usuária.</p></div></article>
@@ -27,7 +29,7 @@
       <article><span class="principle-icon" aria-hidden="true">↗</span><div><strong>Avalie</strong><p>Identifique melhorias com heurísticas.</p></div></article>
     </section>
 
-    <section class="workspace" aria-label="Laboratório de usabilidade">
+    <section class="workspace" id="demo" aria-label="Laboratório de usabilidade">
       <article class="panel task-panel">
         <div class="panel-heading"><div><p class="eyebrow">01 / TESTE UMA TAREFA</p><h2>Solicitar suporte no laboratório</h2></div><span class="step">DEMO</span></div>
         <p class="panel-intro">Imagine que você precisa de ajuda para usar um computador da universidade. Preencha o formulário e observe como a interface orienta cada etapa.</p>
@@ -74,7 +76,7 @@
         </section>
       </article>
 
-      <aside class="panel evaluation-panel">
+      <aside class="panel evaluation-panel" id="heuristicas">
         <div class="panel-heading"><div><p class="eyebrow">02 / AVALIAÇÃO HEURÍSTICA</p><h2>O que observar</h2></div><span class="step">CHECKLIST</span></div>
         <p class="panel-intro">Marque os princípios que a interface demonstra. O resultado atualiza conforme sua avaliação.</p>
         <div class="score-card">
@@ -94,7 +96,7 @@
       </aside>
     </section>
 
-    <section class="reflection panel">
+    <section class="reflection panel" id="reflexao">
       <div class="panel-heading"><div><p class="eyebrow">03 / REFLEXÃO</p><h2>Como foi a experiência?</h2></div><span class="step">FEEDBACK</span></div>
       <p>Uma avaliação de usabilidade combina observação, contexto e feedback. Registre uma nota para simular uma etapa de teste com pessoas usuárias.</p>
       <div class="rating-row"><label for="experience-rating">Facilidade para concluir a tarefa</label><select id="experience-rating"><option value="">Selecione uma nota</option><option value="1">1 — Muito difícil</option><option value="2">2 — Difícil</option><option value="3">3 — Nem difícil, nem fácil</option><option value="4">4 — Fácil</option><option value="5">5 — Muito fácil</option></select><button id="save-rating" class="secondary-button" type="button">Registrar nota</button></div>
