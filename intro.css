@@ -1,9 +1,9 @@
 :root{--intro-bg:#0b0d10;--intro-cyan:#18e6f2;--intro-blue:#12b8f5;--intro-green:#62ee3e}
 body.intro-active{overflow:hidden}
 html.intro-already-seen #intro-screen{display:none!important}
-.intro-screen{position:fixed;inset:0;z-index:10000;display:grid;place-items:center;padding:20px;background:var(--intro-bg);opacity:1;visibility:visible;transition:opacity .42s ease,visibility .42s ease}
+.intro-screen{position:fixed;inset:0;z-index:10000;display:grid;place-items:center;padding:0;background:var(--intro-bg);opacity:1;visibility:visible;transition:opacity .42s ease,visibility .42s ease}
 .intro-screen.is-closing{opacity:0;visibility:hidden;pointer-events:none}
-#stage{width:min(100vw,calc(100vh * 896 / 1200),820px);aspect-ratio:896/1200;cursor:pointer;-webkit-tap-highlight-color:transparent}
+#stage{width:min(100vw,calc(100vh * 896 / 1200));aspect-ratio:896/1200;cursor:pointer;-webkit-tap-highlight-color:transparent}
 #svg{display:block;width:100%;height:100%}
 #intro-screen .mono{font-family:"SF Mono",Menlo,Consolas,"Courier New",monospace;font-weight:700}
 #intro-screen .word,#intro-screen .sub{font-family:"Segoe UI","Open Sans",Inter,"SF Pro Display",Roboto,"Helvetica Neue",Arial,sans-serif}
@@ -17,5 +17,5 @@ html.intro-already-seen #intro-screen{display:none!important}
 .back-to-top.is-visible{opacity:1;visibility:visible;pointer-events:auto;transform:translateY(0)}
 .back-to-top:hover{background:#34533f;color:#b5f36c;text-decoration:none}
 .back-to-top:focus-visible{outline:3px solid #b5f36c;outline-offset:3px}
-@media(max-height:620px){#stage{width:min(74.67vh,820px)}}
+
 @media(prefers-reduced-motion:reduce){.intro-screen{transition:none}}
