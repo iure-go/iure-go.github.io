@@ -2,7 +2,7 @@
 
 # Portfólio de Iure Oliveira
 
-Estudante de Análise e Desenvolvimento de Sistemas na UERJ/ZO, com projetos acadêmicos em desenvolvimento web, fundamentos de TI, matemática e programação.
+Estudante de Análise e Desenvolvimento de Sistemas na UERJ/ZO, com projetos acadêmicos em desenvolvimento web, fundamentos de computação, matemática, programação e experiência do usuário.
 
 [🌐 Portfólio](https://iure-go.github.io/) · [🧪 Demonstrações web](https://iure-go.github.io/projetos/demos-web/) · [📂 Projetos em C](https://iure-go.github.io/projetos/c/)
 
@@ -10,15 +10,18 @@ Estudante de Análise e Desenvolvimento de Sistemas na UERJ/ZO, com projetos aca
 
 ## Projetos em destaque
 
-| Projeto | Descrição | Tecnologias | Acesso |
+| Projeto | Descrição | Tecnologias e conceitos | Acesso |
 |---|---|---|---|
-| **PageLab · Editor de páginas** | Editor didático para ajustar conteúdo e cor, escolher seções, comparar a prévia em desktop e celular e copiar o HTML gerado. Projeto de Construção de Páginas Web. | HTML, CSS, JavaScript, DOM | [Demonstração](https://iure-go.github.io/projetos/demos-web/construcao-paginas-web/) · [Código e conceitos](https://github.com/iure-go/iure-go.github.io/tree/main/projetos/demos-web/construcao-paginas-web) |
-| **LabFlux · Sistema de chamados** | Protótipo para registrar e acompanhar chamados de suporte em laboratórios universitários, com filtros e indicadores. Os dados demonstrativos são fictícios. Projeto de Fundamentos de Sistemas de Informação. | HTML, CSS, JavaScript, modelagem de dados | [Demonstração](https://iure-go.github.io/projetos/demos-web/fundamentos-si/) · [Código e documentação](https://github.com/iure-go/iure-go.github.io/tree/main/projetos/demos-web/fundamentos-si) |
-| **Matemática em prática** | Ferramentas interativas para operações aritméticas, frações, porcentagem e regra de três simples, com explicações das fórmulas. Projeto de Matemática Básica. | HTML, CSS, JavaScript | [Demonstração](https://iure-go.github.io/projetos/demos-web/matematica-basica/) · [Código e conceitos](https://github.com/iure-go/iure-go.github.io/tree/main/projetos/demos-web/matematica-basica) |
-| **Meu Saldo** | Aplicativo acadêmico de controle financeiro, com lançamentos, limite mensal e relatórios. Desenvolvido para Programação para Dispositivos Móveis. | React Native, Expo, TypeScript, Java, Spring Boot, H2 | [Demonstração web](https://iure-go.github.io/projetos/demos-web/meu-saldo/) · [Página do projeto](https://iure-go.github.io/projetos/meu-saldo/) · [Código](https://github.com/iure-go/iure-go.github.io/tree/main/projetos/meu-saldo) |
-| **CPU de 8 bits** | Simulador didático do ciclo buscar, decodificar e executar, com registradores, memória, operações da ULA e desvios. Projeto de Organização de Computadores. | C, JavaScript, HTML, CSS | [Demonstração](https://iure-go.github.io/projetos/demos-web/cpu8/) · [Código em C](https://github.com/iure-go/iure-go.github.io/tree/main/projetos/c/cpu8) |
-| **Algoritmos e estruturas de dados** | Caixa eletrônico, jogo de adivinhação, exercícios básicos, agenda telefônica e operações com polinômios. | C, algoritmos, listas encadeadas, alocação dinâmica | [Demonstrações](https://iure-go.github.io/projetos/demos-web/) · [Fontes em C](https://iure-go.github.io/projetos/c/) |
-| **Organizador de estudos** | Aplicação web para cadastrar tarefas, acompanhar prioridades e salvar os dados no navegador. | HTML, CSS, JavaScript, localStorage | [Demonstração](https://iure-go.github.io/projetos/organizador-estudos/) · [Código](https://github.com/iure-go/iure-go.github.io/tree/main/projetos/organizador-estudos) |
+| **IHC Lab · Interface Homem Computador** | Simulação de uma solicitação de suporte com preferências de acessibilidade, avaliação heurística e feedback de usabilidade. | HTML, CSS, JavaScript, acessibilidade, usabilidade | [Demonstração](https://iure-go.github.io/projetos/demos-web/interface-homem-computador/) · [Código](https://github.com/iure-go/iure-go.github.io/tree/main/projetos/demos-web/interface-homem-computador) |
+| **DataLab · Modelagem de Dados** | Explore um modelo relacional, consulte dados fictícios com SQL editável e acompanhe a normalização. | HTML, CSS, JavaScript, SQL, modelagem relacional | [Demonstração](https://iure-go.github.io/projetos/demos-web/modelagem-dados/) · [Código e conceitos](https://github.com/iure-go/iure-go.github.io/tree/main/projetos/demos-web/modelagem-dados) |
+| **Laboratório Discreto** | Investigue operações com conjuntos, tabelas-verdade e propriedades de relações em exemplos interativos. | HTML, CSS, JavaScript, lógica proposicional, conjuntos | [Demonstração](https://iure-go.github.io/projetos/demos-web/matematica-discreta/) · [Código e conceitos](https://github.com/iure-go/iure-go.github.io/tree/main/projetos/demos-web/matematica-discreta) |
+| **PageLab · Editor de páginas** | Personalize conteúdo e cores, escolha seções, compare a prévia em desktop e celular e explore o HTML gerado. | HTML, CSS, JavaScript, DOM, responsividade | [Demonstração](https://iure-go.github.io/projetos/demos-web/construcao-paginas-web/) · [Código e conceitos](https://github.com/iure-go/iure-go.github.io/tree/main/projetos/demos-web/construcao-paginas-web) |
+| **LabFlux · Sistema de chamados** | Protótipo para registrar, filtrar e acompanhar chamados de suporte em laboratórios universitários. Os dados demonstrativos são fictícios. | HTML, CSS, JavaScript, sistemas de informação | [Demonstração](https://iure-go.github.io/projetos/demos-web/fundamentos-si/) · [Código e documentação](https://github.com/iure-go/iure-go.github.io/tree/main/projetos/demos-web/fundamentos-si) |
+| **Matemática em prática** | Ferramentas interativas para operações aritméticas, frações, porcentagem e regra de três, com explicações. | HTML, CSS, JavaScript, aritmética, proporção | [Demonstração](https://iure-go.github.io/projetos/demos-web/matematica-basica/) · [Código e conceitos](https://github.com/iure-go/iure-go.github.io/tree/main/projetos/demos-web/matematica-basica) |
+| **Meu Saldo** | Aplicativo acadêmico para registrar receitas e despesas, acompanhar limites mensais e consultar relatórios. | React Native, Expo, TypeScript, Java, Spring Boot, H2 | [Demonstração web](https://iure-go.github.io/projetos/demos-web/meu-saldo/) · [Página do projeto](https://iure-go.github.io/projetos/meu-saldo/) · [Código](https://github.com/iure-go/iure-go.github.io/tree/main/projetos/meu-saldo) |
+| **CPU de 8 bits** | Simulador didático do ciclo de instrução, registradores, memória, operações da ULA e desvios. | C, JavaScript, arquitetura de computadores | [Demonstração](https://iure-go.github.io/projetos/demos-web/cpu8/) · [Código em C](https://github.com/iure-go/iure-go.github.io/tree/main/projetos/c/cpu8) |
+| **Algoritmos e estruturas de dados** | Exercícios em C, simulador de caixa eletrônico, jogo de adivinhação, agenda telefônica e operações com polinômios. | C, algoritmos, listas encadeadas, alocação dinâmica | [Demonstrações](https://iure-go.github.io/projetos/demos-web/) · [Fontes em C](https://iure-go.github.io/projetos/c/) |
+| **Organizador de estudos** | Aplicação web para cadastrar tarefas, acompanhar prioridades e salvar dados no navegador. | HTML, CSS, JavaScript, localStorage | [Demonstração](https://iure-go.github.io/projetos/organizador-estudos/) · [Código](https://github.com/iure-go/iure-go.github.io/tree/main/projetos/organizador-estudos) |
 
 ## Conhecimentos
 
@@ -27,6 +30,7 @@ Estudante de Análise e Desenvolvimento de Sistemas na UERJ/ZO, com projetos aca
 - **Aplicações móveis e backend:** React Native, Expo, TypeScript, Java e Spring Boot.
 - **Dados:** modelagem de dados, bancos de dados, análise de dados e Power BI.
 - **Fundamentos de TI:** organização de computadores, redes, sistemas operacionais e segurança da informação.
+- **Experiência do usuário:** princípios de usabilidade, acessibilidade e design centrado nas pessoas.
 - **Suporte e operação:** manutenção de computadores, configuração de sistemas, atendimento e documentação.
 
 ## Formação
