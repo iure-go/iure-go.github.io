@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="EstatLab: laboratório interativo de estatística descritiva com dados editáveis, medidas de tendência central, dispersão e histograma.">
+  <title>EstatLab · Estatística Aplicada | Iure Oliveira</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <main class="shell" id="inicio">
+    <a class="back" href="../">← Todas as demonstrações</a>
+    <header class="hero">
+      <p class="eyebrow">ESTATÍSTICA APLICADA · PROJETO DIDÁTICO</p>
+      <h1>EstatLab <span>Explore os dados, entenda a história.</span></h1>
+      <p class="intro">Edite um conjunto de dados e observe como medidas estatísticas e gráficos ajudam a resumir informações. Os dados apresentados são fictícios.</p>
+    </header>
+
+    <nav class="tabs" aria-label="Seções do laboratório">
+      <a href="#dados">Conjunto de dados</a>
+      <a href="#resultados">Resultados</a>
+      <a href="#conceitos">Conceitos</a>
+    </nav>
+
+    <section class="concept-strip" aria-label="Conceitos abordados">
+      <div><span>01</span><strong>Descreva</strong><small>organize os valores</small></div>
+      <div><span>02</span><strong>Resuma</strong><small>calcule medidas centrais</small></div>
+      <div><span>03</span><strong>Compare</strong><small>observe a dispersão</small></div>
+      <div><span>04</span><strong>Interprete</strong><small>leia a distribuição</small></div>
+    </section>
+
+    <section class="workspace" aria-label="Laboratório de estatística">
+      <article class="panel data-panel" id="dados">
+        <div class="panel-heading"><div><p class="eyebrow">01 / ENTRADA</p><h2>Seu conjunto de dados</h2></div><span class="panel-icon" aria-hidden="true">xᵢ</span></div>
+        <p class="description">Digite números para representar, por exemplo, o tempo de atendimento de chamados em minutos.</p>
+        <form id="data-form">
+          <label for="dataset">Valores observados</label>
+          <textarea id="dataset" rows="4" spellcheck="false" aria-describedby="data-hint">12, 15, 18, 18, 20, 22, 24, 25, 29, 37</textarea>
+          <p class="hint" id="data-hint">Separe valores por vírgula. Para decimais com vírgula, use ponto e vírgula entre valores (ex.: 12,5; 14,1).</p>
+          <div class="control-grid">
+            <label for="variance-type">Tipo de conjunto
+              <select id="variance-type">
+                <option value="sample">Amostra</option>
+                <option value="population">População</option>
+              </select>
+            </label>
+            <label for="bin-count">Intervalos do histograma
+              <select id="bin-count">
+                <option value="3">3 intervalos</option>
+                <option value="4">4 intervalos</option>
+                <option value="5" selected>5 intervalos</option>
+                <option value="6">6 intervalos</option>
+                <option value="7">7 intervalos</option>
+                <option value="8">8 intervalos</option>
+              </select>
+            </label>
+          </div>
+          <div class="actions">
+            <button class="primary" type="submit">Analisar dados</button>
+            <button class="secondary" id="restore-sample" type="button">Restaurar exemplo</button>
+          </div>
+          <p id="input-status" class="status" role="status" aria-live="polite"></p>
+        </form>
+        <div class="sample-note"><strong>Exemplo:</strong> tempos fictícios de atendimento. Troque os valores para explorar outros cenários.</div>
+      </article>
+
+      <article class="panel results-panel" id="resultados" aria-labelledby="results-title">
+        <div class="panel-heading"><div><p class="eyebrow">02 / RESUMO ESTATÍSTICO</p><h2 id="results-title">Medidas de tendência central</h2></div><span class="panel-icon" aria-hidden="true">x̄</span></div>
+        <div class="metric-grid">
+          <div class="metric"><span>Média</span><strong id="mean">—</strong><small>equilíbrio dos valores</small></div>
+          <div class="metric"><span>Mediana</span><strong id="median">—</strong><small>valor central ordenado</small></div>
+          <div class="metric"><span>Moda</span><strong id="mode">—</strong><small>valor(es) mais frequente(s)</small></div>
+          <div class="metric"><span>Tamanho (n)</span><strong id="count">—</strong><small>observações válidas</small></div>
+        </div>
+        <div class="divider"></div>
+        <h3 class="subheading">Dispersão e posição</h3>
+        <div class="metric-grid compact">
+          <div class="metric"><span>Mínimo – máximo</span><strong id="minmax">—</strong></div>
+          <div class="metric"><span>Amplitude</span><strong id="range">—</strong></div>
+          <div class="metric"><span>Variância</span><strong id="variance">—</strong></div>
+          <div class="metric"><span>Desvio padrão</span><strong id="stddev">—</strong></div>
+          <div class="metric"><span>1º quartil (Q1)</span><strong id="q1">—</strong></div>
+          <div class="metric"><span>3º quartil (Q3)</span><strong id="q3">—</strong></div>
+        </div>
+        <p id="interpretation" class="interpretation" aria-live="polite">Envie os valores para calcular as medidas.</p>
+      </article>
+    </section>
+
+    <section class="panel chart-panel" aria-labelledby="chart-title">
+      <div class="panel-heading"><div><p class="eyebrow">03 / DISTRIBUIÇÃO</p><h2 id="chart-title">Histograma de frequências</h2></div><span class="panel-icon" aria-hidden="true">▥</span></div>
+      <p class="description">Cada barra mostra quantos valores caem em um intervalo. Ajuste a quantidade de intervalos no painel de dados.</p>
+      <div id="histogram" class="histogram" role="list" aria-label="Frequência dos dados por intervalo"></div>
+      <div class="chart-legend"><span><i></i> Frequência absoluta</span><span id="chart-total">0 observações</span></div>
+    </section>
+
+    <section class="panel concepts-panel" id="conceitos">
+      <div class="panel-heading"><div><p class="eyebrow">04 / CONCEITOS</p><h2>O que os números contam</h2></div><span class="panel-icon" aria-hidden="true">∑</span></div>
+      <div class="concept-grid">
+        <article><span>TENDÊNCIA CENTRAL</span><h3>Média, mediana e moda</h3><p>A média usa todos os valores e pode mudar com extremos. A mediana marca o centro da lista ordenada. A moda identifica valores mais frequentes.</p></article>
+        <article><span>DISPERSÃO</span><h3>Variância e desvio padrão</h3><p>Indicam o quanto os dados se afastam da média. A variância amostral divide por n − 1; a populacional divide por n.</p></article>
+        <article><span>POSIÇÃO</span><h3>Quartis e amplitude</h3><p>Q1 e Q3 delimitam a metade central dos valores. A amplitude é a diferença entre o maior e o menor valor.</p></article>
+      </div>
+      <p class="method-note">Os quartis usam interpolação linear. Este laboratório é didático: interprete os resultados considerando o contexto e a forma como os dados foram coletados.</p>
+    </section>
+    <footer class="footnote">Projeto acadêmico de Estatística Aplicada · <a href="https://github.com/iure-go/iure-go.github.io/tree/main/projetos/demos-web/estatistica-aplicada">Ver arquivos do projeto ↗</a></footer>
+  </main>
+</body>
+</html>
