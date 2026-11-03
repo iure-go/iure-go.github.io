@@ -1,3 +1,4 @@
+// GUIA DE EDIÇÃO: Tela de edição de lançamento. O parâmetro id identifica o registro; carregar preenche os campos; salvarEdicao valida e atualiza.
 import { useEffect, useState } from 'react';
 import {
   Alert,
@@ -32,6 +33,7 @@ export default function EditarLancamento() {
   const [carregando, setCarregando] = useState(true);
 
   useEffect(() => {
+    // Busca o lançamento pelo identificador da rota e preenche o formulário.
     async function carregar() {
       const gastos = await buscarGastos();
       const gasto = gastos.find((item) => item.id === id);
@@ -53,6 +55,7 @@ export default function EditarLancamento() {
     carregar();
   }, [id]);
 
+  // Valida os campos, cria o objeto atualizado e envia a edição ao serviço.
   async function salvarEdicao() {
     const valorNumerico = Number(valor.replace(',', '.'));
     const dataSelecionada = new Date(`${data}T12:00:00`);

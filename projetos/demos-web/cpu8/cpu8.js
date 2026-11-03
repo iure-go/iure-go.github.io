@@ -1,3 +1,4 @@
+// GUIA DE EDIÇÃO: Montador e simulador de CPU. Opcode e assemble definem instruções; resetMachine limpa estado; advancePhase e executeInstruction simulam o ciclo.
 "use strict";
 
 const OPCODES = Object.freeze({
@@ -26,6 +27,7 @@ function newCpu() {
 }
 function hex(value) { return value === null || value === undefined ? "—" : value.toString(16).toUpperCase().padStart(2, "0"); }
 
+// Converte as instruções do editor para bytes e acumula erros com número de linha.
 function assemble(source) {
   // Primeira passagem: encontra instruções e associa rótulos a endereços da RAM.
   const instructions = [], labels = new Map(), errors = [];
@@ -92,6 +94,7 @@ function updateA(value, carry = false) {
   cpu.carry = carry;
 }
 
+// Avança uma etapa do ciclo didático de execução da CPU.
 function advancePhase() {
   if (!program) { setMessage("Monte um programa antes de executar.", true); return; }
   if (cpu.halted) { setMessage(cpu.fault || "Programa finalizado. Reinicie para executá-lo novamente."); return; }
@@ -121,6 +124,7 @@ function advancePhase() {
   render();
 }
 
+// Executa a instrução atual e atualiza registradores, flags ou memória.
 function executeInstruction() {
   const { decoded: op, operand: n } = cpu;
   const old = cpu.a;

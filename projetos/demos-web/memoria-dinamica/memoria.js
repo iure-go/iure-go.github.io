@@ -1,3 +1,4 @@
+// GUIA DE EDIÇÃO: Simulador de alocação dinâmica. MAX_POSITIONS limita o exemplo; allocate compara modos; renderCells e setControls atualizam visualização.
 (() => {
   const MAX_POSITIONS = 12;
   const sizeInput = document.querySelector("#quantidade");
@@ -79,6 +80,7 @@
     setControls();
   }
 
+  // Simula alocação e compara o conteúdo inicializado em cada método.
   function allocate(method) {
     const count = Number(sizeInput.value);
     if (!Number.isInteger(count) || count < 1 || count > MAX_POSITIONS) {

@@ -1,3 +1,4 @@
+// GUIA DE EDIÇÃO: Formulário de novo lançamento. CATEGORIAS define opções; salvarLancamento valida e envia pela camada storage.
 import { useState } from 'react';
 import {
   Alert,
@@ -30,6 +31,7 @@ export default function NovoGasto() {
     new Date().toISOString().slice(0, 10)
   );
 
+  // Valida os dados e grava uma nova entrada ou saída pela camada de serviço.
   async function salvarLancamento() {
     const valorNumerico = Number(valor.replace(',', '.'));
     const dataSelecionada = new Date(`${data}T12:00:00`);

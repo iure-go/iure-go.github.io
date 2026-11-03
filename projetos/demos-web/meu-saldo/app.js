@@ -1,3 +1,4 @@
+// GUIA DE EDIÇÃO: Lógica da demonstração Meu Saldo. Edite os dados de exemplo no estado inicial; interval calcula o período; render atualiza resumos e relatórios.
 (() => {
   const currency = new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL" });
   const categories = ["Alimentação", "Lazer", "Moradia", "Outros", "Transporte"];
@@ -27,6 +28,7 @@
   const titleCase = (text) => text.charAt(0).toLocaleUpperCase("pt-BR") + text.slice(1);
   const monthLabel = (date) => titleCase(new Intl.DateTimeFormat("pt-BR", { month: "long", year: "numeric" }).format(date));
 
+  // Calcula o começo e o fim do intervalo conforme período e deslocamento escolhidos.
   function interval() {
     const start = new Date(reference.getFullYear(), reference.getMonth(), reference.getDate());
     const end = new Date(start);
@@ -161,6 +163,7 @@
     });
   }
 
+  // Atualiza resumos e lançamentos quando período ou filtro muda.
   function render() {
     const list = periodTransactions();
     const sum = totals(list);

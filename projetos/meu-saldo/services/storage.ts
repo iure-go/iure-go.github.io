@@ -1,3 +1,4 @@
+// GUIA DE EDIÇÃO: Camada HTTP do app. EXPO_PUBLIC_API_URL define o backend; requisicao trata cabeçalhos e erros; funções exportadas correspondem às rotas.
 import { Gasto } from '../types/gasto';
 
 // Configure EXPO_PUBLIC_API_URL for the device where the API is running.
@@ -7,6 +8,7 @@ import { Gasto } from '../types/gasto';
 const API_URL = process.env.EXPO_PUBLIC_API_URL ?? 'http://localhost:8080/api';
 const PERFIL_ID = process.env.EXPO_PUBLIC_PERFIL_ID ?? 'iure';
 
+// Ponto central para URL-base, cabeçalhos HTTP e tratamento de respostas com erro.
 async function requisicao<T>(rota: string, init?: RequestInit): Promise<T> {
   const resposta = await fetch(`${API_URL}${rota}`, {
     ...init,

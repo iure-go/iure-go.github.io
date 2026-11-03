@@ -1,3 +1,4 @@
+// GUIA DE EDIÇÃO: Cálculos da demonstração de matemática básica. showResult/showError mostram retornos; gcd simplifica frações; handlers executam operações.
 const format = new Intl.NumberFormat('pt-BR', { maximumFractionDigits: 6 });
 
 function showResult(element, label, value, calculation) {
@@ -39,6 +40,7 @@ document.querySelector('#arithmetic-form').addEventListener('submit', event => {
   showResult(result, 'Resultado', format.format(value), `${format.format(a)} ${symbol} ${format.format(b)}`);
 });
 
+// Algoritmo de Euclides usado para simplificar numerador e denominador.
 function gcd(a, b) {
   a = Math.abs(a);
   b = Math.abs(b);

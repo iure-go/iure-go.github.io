@@ -1,3 +1,7 @@
+/*
+ * GUIA DE EDIÇÃO
+ * Demonstração de sizeof. Os tamanhos dependem da implementação e arquitetura; %zu exibe o valor retornado.
+ */
 #include <stdio.h>
 
 int main() {

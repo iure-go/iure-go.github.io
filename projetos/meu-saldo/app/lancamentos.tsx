@@ -1,3 +1,4 @@
+// GUIA DE EDIÇÃO: Lista e filtros de lançamentos. Filtro escolhe entrada/saída; categorias são calculadas dos dados; confirmarRemocao pede confirmação.
 import { useCallback, useState } from 'react';
 import {
   Alert,
@@ -61,6 +62,7 @@ export default function Lancamentos() {
     setGastos((atuais) => atuais.filter((gasto) => gasto.id !== id));
   }
 
+  // Confirma com a pessoa antes de remover, adaptando a experiência para web ou app.
   function confirmarRemocao(id: string) {
     if (Platform.OS === 'web') {
       if (window.confirm('Deseja remover este lançamento?')) {

@@ -1,3 +1,4 @@
+// GUIA DE EDIÇÃO: Animação SVG inicial. CYCLE e FADE_AT controlam duração; render desenha os quadros; replayIntro reinicia a apresentação.
 (() => {
   'use strict';
 

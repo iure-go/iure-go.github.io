@@ -1,3 +1,4 @@
+// GUIA DE EDIÇÃO: Protótipo LabFlux. Os chamados iniciais são fictícios; render monta a tela a partir do estado; handlers implementam as ações.
 // Registros fictícios usados somente durante a sessão do protótipo.
 const tickets = [
   { id: 1, title: 'Computador não inicia', requester: 'Marina Costa', location: 'Laboratório 204', category: 'Computadores', priority: 'Alta', status: 'Aberto', created: 'Hoje, 09:42', description: 'A estação não liga após a última aula.' },
@@ -18,6 +19,7 @@ function statusClass(status) {
 }
 
 // Recalcula os indicadores e apresenta somente os chamados que atendem à busca e ao filtro.
+// Atualiza cartões e indicadores usando a lista atual de chamados.
 function render() {
   const counts = {
     'Aberto': tickets.filter(ticket => ticket.status === 'Aberto').length,

@@ -1,3 +1,4 @@
+// GUIA DE EDIÇÃO: Editor de páginas HTML. Os campos são entradas; buildHTML monta a prévia; escapeHTML protege o texto; updatePreview atualiza o iframe.
 const titleInput = document.querySelector('#site-title');
 const introInput = document.querySelector('#site-intro');
 const aboutInput = document.querySelector('#about-text');
@@ -7,6 +8,7 @@ const preview = document.querySelector('#page-preview');
 const codeOutput = document.querySelector('#code-output');
 const status = document.querySelector('#editor-status');
 
+// Escapa texto digitado antes de inseri-lo no HTML da prévia.
 function escapeHTML(value) {
   return value.replace(/[&<>"']/g, character => ({
     '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
@@ -17,6 +19,7 @@ function selectedSections() {
   return new Set([...document.querySelectorAll('input[name="section"]:checked')].map(input => input.value));
 }
 
+// Combina os campos do editor para montar a página que aparece no iframe.
 function buildHTML() {
   const title = escapeHTML(titleInput.value.trim() || 'Título do projeto');
   const intro = escapeHTML(introInput.value.trim());

@@ -1,3 +1,7 @@
+/*
+ * GUIA DE EDIÇÃO
+ * Polinômios como lista encadeada. Cada nó guarda um termo; inserir mantém expoentes em ordem; soma/multiplicar criam resultados; liberar desaloca os nós.
+ */
 #include <stdio.h>
 #include <stdlib.h>
 

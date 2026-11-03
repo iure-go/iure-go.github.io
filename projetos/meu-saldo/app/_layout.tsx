@@ -1,5 +1,7 @@
+// GUIA DE EDIÇÃO: Navegação Expo Router. Cada Stack.Screen declara rota e título; ajuste opções nesta configuração.
 import { Stack } from 'expo-router';
 
+// Configure aqui as rotas empilhadas e os títulos que aparecem na navegação.
 export default function Layout() {
   return (
     <Stack>

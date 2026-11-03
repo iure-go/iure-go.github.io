@@ -1,3 +1,4 @@
+// GUIA DE EDIÇÃO: Tela de limite mensal. carregar consulta o valor; salvar valida e grava pela camada de serviço.
 import { useCallback, useState } from 'react';
 import {
   Alert,
@@ -28,6 +29,7 @@ export default function Orcamento() {
     }, [])
   );
 
+  // Valida o limite mensal e envia o valor à API.
   async function salvar() {
     const limite = Number(valor.replace(',', '.'));
 

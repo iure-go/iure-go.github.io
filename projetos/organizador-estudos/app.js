@@ -1,3 +1,4 @@
+// GUIA DE EDIÇÃO: Organizador de estudos. loadTasks/saveTasks usam localStorage; renderTasks desenha; updateTask altera uma tarefa no estado.
 const STORAGE_KEY = "iure-study-planner-v1";
 const form = document.querySelector("#task-form");
 const input = document.querySelector("#task-input");
@@ -9,6 +10,7 @@ const filterButtons = [...document.querySelectorAll("[data-filter]")];
 let tasks = loadTasks();
 let currentFilter = "all";
 
+// Lê tarefas do armazenamento local; altere a chave se quiser outro espaço de dados.
 function loadTasks() {
   try {
     const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
@@ -22,6 +24,7 @@ function saveTasks() {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks));
 }
 
+// Reconstrói a lista e associa os controles às tarefas visíveis.
 function renderTasks() {
   const visibleTasks = tasks.filter(task => {
     if (currentFilter === "pending") return !task.done;

@@ -1,3 +1,4 @@
+// GUIA DE EDIÇÃO: Relatório mensal. Agrupa entradas, saídas e despesas por categoria para montar indicadores visuais.
 import { useCallback, useState } from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import { useFocusEffect } from 'expo-router';
@@ -33,6 +34,7 @@ export default function Relatorio() {
     );
   });
 
+  // Calcula totais do período separando entradas, saídas e categorias.
   const entradas = lancamentosDoMes
     .filter((item) => item.tipo === 'entrada')
     .reduce((total, item) => total + item.valor, 0);

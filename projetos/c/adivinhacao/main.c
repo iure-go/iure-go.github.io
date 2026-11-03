@@ -1,3 +1,7 @@
+/*
+ * GUIA DE EDIÇÃO
+ * Jogo de adivinhação. LIMITE_SUPERIOR define a faixa; ler_palpite valida a entrada; main sorteia o segredo e conta as tentativas.
+ */
 #include <errno.h>
 #include <limits.h>
 #include <stdio.h>

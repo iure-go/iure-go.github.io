@@ -1,3 +1,4 @@
+// GUIA DE EDIÇÃO: Tela inicial do app. PERIODOS define filtros; intervaloDoPeriodo calcula datas; carregarDados consulta a API; estilos ficam no StyleSheet.
 import { useCallback, useState } from 'react';
 import {
   Pressable,
@@ -23,6 +24,7 @@ const PERIODOS: { id: Periodo; titulo: string }[] = [
   { id: 'ano', titulo: 'Ano' },
 ];
 
+// Calcula as datas-limite usadas para filtrar os lançamentos da página inicial.
 function intervaloDoPeriodo(periodo: Periodo, deslocamento: number) {
   const inicio = new Date();
 
@@ -136,6 +138,7 @@ export default function Inicio() {
 
   useFocusEffect(
     useCallback(() => {
+      // Carrega lançamentos e orçamento para atualizar o painel inicial.
       async function carregarDados() {
         const [gastosSalvos, limiteSalvo] = await Promise.all([
           buscarGastos(),

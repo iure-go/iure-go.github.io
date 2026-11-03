@@ -1,3 +1,7 @@
+/*
+ * GUIA DE EDIÇÃO
+ * Agenda em lista duplamente encadeada. MAX_FIELD limita os campos; valide dados nas funções de leitura; inserir/remover/navegar alteram a lista; salvar/carregar tratam o arquivo.
+ */
 // ========== BIBLIOTECAS ==========
 
 #include <stdio.h>      // Ferramentas para mostrar mensagens na tela (printf) e ler o que o usuário digita (scanf)

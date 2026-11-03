@@ -1,3 +1,4 @@
+// GUIA DE EDIÇÃO: Laboratório SQL com dados fictícios e interpretador limitado. tokenizeSQL/parseSQL interpretam o subconjunto; executeQuery roda consultas suportadas.
 const entityDescriptions = {
   Aluno: ['Aluno', 'Representa a pessoa que solicita empréstimos. A chave id_aluno identifica cada aluno; seu e-mail é único no sistema.'],
   'Empréstimo': ['Empréstimo', 'Registra a operação de retirada. id_aluno é uma FK: cada empréstimo pertence a um aluno, enquanto um aluno pode ter vários empréstimos.'],
@@ -126,6 +127,7 @@ FROM aluno
 ORDER BY nome;`
 };
 
+// Divide a consulta em tokens para a etapa de interpretação.
 function tokenizeSQL(sql) {
   const source = sql.replace(/--[^\n]*/g, '').replace(/\/\*[\s\S]*?\*\//g, ' ');
   const tokenPattern = /\s+|'(?:''|[^'])*'|"(?:""|[^"])*"|>=|<=|<>|!=|[=><.,*();]|[A-Za-z_][A-Za-z0-9_]*|\d+(?:\.\d+)?/gy;
@@ -141,6 +143,7 @@ function tokenizeSQL(sql) {
   return tokens;
 }
 
+// Analisa o subconjunto de SELECT aceito e retorna a estrutura da consulta.
 function parseSQL(sql) {
   const tokens = tokenizeSQL(sql);
   let i = 0;
@@ -265,6 +268,7 @@ function compareValues(left, operator, right) {
   return false;
 }
 
+// Executa a consulta interpretada sobre os dados fictícios deste laboratório.
 function executeQuery(sql) {
   const query = parseSQL(sql);
   const baseRows = demoDatabase[query.baseTable];

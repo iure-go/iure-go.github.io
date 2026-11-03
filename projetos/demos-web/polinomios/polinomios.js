@@ -1,3 +1,4 @@
+// GUIA DE EDIÇÃO: Operações com polinômios no navegador. parsePolynomial lê termos; combine/multiply calculam; evaluate substitui x; limites estão no início do arquivo.
 (() => {
   const MAX_TERMS = 20;
   const MAX_COEFFICIENT = 10000n;
@@ -15,6 +16,7 @@
   let p1 = null;
   let p2 = null;
 
+  // Transforma os termos digitados em coeficientes agrupados por expoente.
   function parsePolynomial(text) {
     const lines = text.split(/\r?\n/).map((line) => line.trim()).filter(Boolean);
     if (lines.length === 0) throw new Error("Informe pelo menos um termo.");
@@ -99,6 +101,7 @@
     return new Map([...result.entries()].filter(([, coefficient]) => coefficient !== 0n).sort((a, b) => b[0] - a[0]));
   }
 
+  // Multiplica cada par de termos e soma expoentes iguais no resultado.
   function multiply(first, second) {
     const result = new Map();
     for (const [firstExponent, firstCoefficient] of first) {

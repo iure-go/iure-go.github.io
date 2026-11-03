@@ -1,3 +1,4 @@
+// GUIA DE EDIÇÃO: Inicialização do Expo. registerRootComponent conecta App ao ciclo de vida nativo/web.
 import { registerRootComponent } from 'expo';
 
 import App from './App';

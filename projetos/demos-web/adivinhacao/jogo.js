@@ -1,3 +1,4 @@
+// GUIA DE EDIÇÃO: Jogo de adivinhação no navegador. LIMITE e novoJogo definem faixa e partida; handlers validam palpites e atualizam mensagens.
 (() => {
   const LIMITE = 100;
   const form = document.querySelector("#form-palpite");
@@ -10,6 +11,7 @@
   let tentativas;
   let encerrado;
 
+  // Reinicia segredo, contador de tentativas e mensagens para a próxima partida.
   function novoJogo() {
     segredo = Math.floor(Math.random() * LIMITE) + 1;
     tentativas = 0;

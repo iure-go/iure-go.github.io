@@ -1,3 +1,4 @@
+// GUIA DE EDIÇÃO: Laboratório de usabilidade. profileMessages define dicas; controles alteram acessibilidade; formulário simula uma tarefa; updateScore calcula avaliação.
 (() => {
   const body = document.body;
   const profile = document.getElementById('user-profile');
@@ -78,6 +79,7 @@
   });
 
   const checks = [...checklist.querySelectorAll('input[type="checkbox"]')];
+  // Conta princípios marcados e sincroniza texto, barra e atributo acessível.
   const updateScore = () => {
     const count = checks.filter(input => input.checked).length;
     scoreValue.textContent = count + ' de ' + checks.length;

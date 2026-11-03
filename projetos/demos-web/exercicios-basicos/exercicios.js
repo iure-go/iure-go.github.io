@@ -1,3 +1,4 @@
+// GUIA DE EDIÇÃO: Exercícios básicos interativos. readNumber centraliza conversão e validação; formulários atualizam saídas.
 (() => {
   const formatter = new Intl.NumberFormat("pt-BR", { maximumFractionDigits: 8 });
 
@@ -6,6 +7,7 @@
     element.className = `result${kind ? ` ${kind}` : ""}`;
   }
 
+  // Concentra a conversão e validação dos números informados nos exercícios.
   function readNumber(input) {
     if (input.value.trim() === "") return null;
     const value = Number(input.value);

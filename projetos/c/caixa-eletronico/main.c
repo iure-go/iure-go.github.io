@@ -1,3 +1,7 @@
+/*
+ * GUIA DE EDIÇÃO
+ * Simulador de caixa eletrônico. O saldo é mantido em centavos inteiros; conversor, depósitos e saques concentram as regras financeiras.
+ */
 #include <ctype.h>
 #include <errno.h>
 #include <limits.h>

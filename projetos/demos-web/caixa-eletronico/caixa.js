@@ -1,3 +1,4 @@
+// GUIA DE EDIÇÃO: Simulador financeiro web. Valores usam centavos inteiros; atualizarSaldo redesenha o resumo; o formulário valida e aplica operações.
 (() => {
   const form = document.querySelector("#form-transacao");
   const entrada = document.querySelector("#valor");
@@ -12,6 +13,7 @@
 
   let saldoCentavos = 0;
 
+  // Reflete o saldo atual nos elementos de resumo da tela.
   function atualizarSaldo() {
     saldoTela.textContent = formatoMoeda.format(saldoCentavos / 100);
   }
@@ -21,6 +23,7 @@
     mensagem.className = `message${tipo ? ` ${tipo}` : ""}`;
   }
 
+  // Converte a entrada para centavos inteiros antes de calcular depósito ou saque.
   function lerValorEmCentavos() {
     const valor = Number(entrada.value);
     if (!Number.isFinite(valor) || valor <= 0) return null;

@@ -1,3 +1,4 @@
+// GUIA DE EDIÇÃO: Agenda web: lista, busca, filtros e formulários. visibleContacts filtra; renderList redesenha; os handlers cadastram, selecionam e removem contatos.
 (() => {
   const form = document.querySelector("#form-contato");
   const search = document.querySelector("#busca");
@@ -12,6 +13,7 @@
   let contacts = [];
   let selectedId = null;
 
+  // Aplica busca e filtros antes de decidir quais contatos serão exibidos.
   function visibleContacts() {
     const query = search.value.trim().toLocaleLowerCase("pt-BR");
     return contacts.filter((contact) => contact.name.toLocaleLowerCase("pt-BR").includes(query));
@@ -49,6 +51,7 @@
     nextButton.disabled = contacts.length < 2;
   }
 
+  // Redesenha a lista a partir do estado atual dos contatos e seleção.
   function renderList() {
     const visible = visibleContacts();
     count.textContent = `${contacts.length} ${contacts.length === 1 ? "contato" : "contatos"}`;
@@ -92,6 +95,7 @@
     renderSelected();
   }
 
+  // Remove o contato identificado e atualiza a interface sem recarregar a página.
   function removeContact(id) {
     const index = contacts.findIndex((contact) => contact.id === id);
     contacts = contacts.filter((contact) => contact.id !== id);

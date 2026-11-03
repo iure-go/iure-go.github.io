@@ -1,3 +1,7 @@
+/*
+ * GUIA DE EDIÇÃO
+ * CPU didática de 8 bits. MEMORY_SIZE e DATA_START definem a memória; Opcode lista instruções; execute implementa operações; main executa o ciclo.
+ */
 #include <stdbool.h>
 #include <stdint.h>
 #include <stdio.h>

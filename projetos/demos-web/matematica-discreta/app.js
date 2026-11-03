@@ -1,3 +1,4 @@
+// GUIA DE EDIÇÃO: Operações com conjuntos, lógica e relações. parseSet normaliza conjuntos; renderTruthTable calcula proposições; relationProperties verifica propriedades.
 const sortValues = values => [...new Set(values.map(value => value.trim()).filter(Boolean))].sort((a, b) => a.localeCompare(b, 'pt-BR', { numeric: true, sensitivity: 'base' }));
 const parseSet = value => sortValues(value.split(','));
 const escapeHTML = value => String(value).replace(/[&<>"']/g, character => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[character]);
@@ -32,6 +33,7 @@ const operators = {
 };
 const truth = value => value ? 'V' : 'F';
 
+// Gera as combinações das proposições e calcula o resultado do conectivo selecionado.
 function renderTruthTable(operatorKey) {
   const operator = operators[operatorKey];
   const rows = [[true, true], [true, false], [false, true], [false, false]];
@@ -63,6 +65,7 @@ function parseRelation(setInput, pairInput) {
   return { elements, pairs, pairSet: new Set(pairs.map(pair => JSON.stringify(pair))) };
 }
 
+// Verifica propriedades da relação com base no conjunto de elementos e pares.
 function relationProperties(elements, pairSet) {
   const has = (a, b) => pairSet.has(JSON.stringify([a, b]));
   const reflexive = elements.every(value => has(value, value));
