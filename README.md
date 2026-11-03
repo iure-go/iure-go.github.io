@@ -33,15 +33,6 @@ Estudante de Análise e Desenvolvimento de Sistemas na UERJ/ZO, com projetos aca
 - **Experiência do usuário:** princípios de usabilidade, acessibilidade e design centrado nas pessoas.
 - **Suporte e operação:** manutenção de computadores, configuração de sistemas, atendimento e documentação.
 
-## Formação
-
-**Tecnologia em Análise e Desenvolvimento de Sistemas** — Universidade do Estado do Rio de Janeiro, Unidade Zona Oeste (UERJ/ZO)  
-Em andamento · conclusão prevista: **2028.2**
-
-## Idiomas
-
-Português · Inglês intermediário (Duolingo: 129)
-
 ## Contato
 
 - E-mail: [1821312080@uezo.edu.br](mailto:1821312080@uezo.edu.br)
