@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="LabPOO: explore classes, objetos, encapsulamento, herança, polimorfismo, interfaces, coleções e eventos em um laboratório de equipamentos.">
+  <title>LabPOO · Programação Orientada a Objetos I | Iure Oliveira</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <main class="shell" id="inicio">
+    <a class="back" href="../">← Todas as demonstrações</a>
+    <header class="hero">
+      <p class="eyebrow">PROGRAMAÇÃO ORIENTADA A OBJETOS I · PROJETO DIDÁTICO</p>
+      <h1>LabPOO <span>Modele objetos. Dê vida ao laboratório.</span></h1>
+      <p class="intro">Cadastre equipamentos, altere seu estado e acompanhe como classes, encapsulamento, herança e polimorfismo organizam o sistema.</p>
+    </header>
+
+    <nav class="tabs" aria-label="Seções do laboratório">
+      <a href="#laboratorio">Laboratório</a>
+      <a href="#modelo">Modelo de classes</a>
+      <a href="#conceitos">Conceitos POO</a>
+      <a href="#java">Projeto Java</a>
+    </nav>
+
+    <section class="concept-strip" aria-label="Conceitos da atividade">
+      <div><span>01</span><strong>Instancie</strong><small>crie objetos concretos</small></div>
+      <div><span>02</span><strong>Encapsule</strong><small>proteja o estado interno</small></div>
+      <div><span>03</span><strong>Especialize</strong><small>reaproveite uma classe-base</small></div>
+      <div><span>04</span><strong>Interaja</strong><small>responda a eventos da interface</small></div>
+    </section>
+
+    <section class="workspace" id="laboratorio" aria-label="Demonstração interativa de POO">
+      <article class="panel form-panel">
+        <div class="panel-heading"><div><p class="eyebrow">01 / CRIE OBJETOS</p><h2>Novo equipamento</h2></div><span class="panel-icon" aria-hidden="true">new</span></div>
+        <p class="description">Escolha uma classe concreta e informe seus atributos. O patrimônio não pode se repetir.</p>
+        <form id="equipment-form">
+          <label for="equipment-type">Classe do objeto</label>
+          <select id="equipment-type">
+            <option value="notebook">Notebook</option>
+            <option value="projector">Projetor</option>
+          </select>
+          <label for="asset-id">Patrimônio</label>
+          <input id="asset-id" maxlength="16" placeholder="Ex.: NT-021" autocomplete="off" required>
+          <label for="equipment-name">Nome</label>
+          <input id="equipment-name" maxlength="48" placeholder="Ex.: Notebook da sala 2" autocomplete="off" required>
+          <label for="equipment-spec" id="spec-label">Sistema operacional</label>
+          <input id="equipment-spec" maxlength="40" placeholder="Ex.: Linux" autocomplete="off" required>
+          <p class="hint" id="spec-hint">Atributo específico da classe Notebook.</p>
+          <button class="primary" type="submit">Adicionar ao armário</button>
+          <p id="form-status" class="status" role="status" aria-live="polite"></p>
+        </form>
+        <div class="sample-note"><strong>Teste:</strong> crie Notebooks e Projetores, ligue-os ou desligue-os e compare os resumos.</div>
+      </article>
+
+      <article class="panel inventory-panel">
+        <div class="panel-heading"><div><p class="eyebrow">02 / COLEÇÃO DE OBJETOS</p><h2>Armário do laboratório</h2></div><span class="panel-icon" aria-hidden="true">▤</span></div>
+        <div class="inventory-summary"><span>Instâncias cadastradas</span><strong id="inventory-count">0</strong></div>
+        <ul id="equipment-list" class="equipment-list" aria-label="Equipamentos cadastrados"></ul>
+        <p id="empty-state" class="empty-state" hidden>Nenhum objeto no armário. Cadastre um equipamento para começar.</p>
+        <p id="inventory-status" class="inventory-status" role="status" aria-live="polite">Exemplos carregados.</p>
+      </article>
+    </section>
+
+    <section class="panel model-panel" id="modelo">
+      <div class="panel-heading"><div><p class="eyebrow">03 / MODELO DE CLASSES</p><h2>Uma classe-base, especializações diferentes</h2></div><span class="panel-icon" aria-hidden="true">UML</span></div>
+      <div class="class-diagram" aria-label="Diagrama de herança">
+        <article class="class-box base-class"><span>classe abstrata</span><strong>Equipamento</strong><small>patrimônio · nome · estado</small><small>ligar() · desligar() · resumo()</small></article>
+        <div class="inheritance" aria-hidden="true"><span>△</span><i></i></div>
+        <div class="subclasses">
+          <article class="class-box"><span>extends Equipamento</span><strong>Notebook</strong><small>sistemaOperacional</small><small>detalhesTecnicos()</small></article>
+          <article class="class-box"><span>extends Equipamento</span><strong>Projetor</strong><small>lumens</small><small>detalhesTecnicos()</small></article>
+        </div>
+      </div>
+      <p class="model-note"><strong>Polimorfismo:</strong> a lista chama <code>resumo()</code> para qualquer equipamento. Cada subclasse fornece seus próprios detalhes técnicos por sobrescrita do método.</p>
+    </section>
+
+    <section class="concept-grid" id="conceitos" aria-label="Conceitos de programação orientada a objetos">
+      <article class="panel concept-card"><span>ESTRUTURA</span><h3>Classes e objetos</h3><p><strong>Equipamento</strong> descreve dados e comportamentos. Cada Notebook ou Projetor cadastrado é uma instância com seus próprios atributos.</p></article>
+      <article class="panel concept-card"><span>PROTEÇÃO</span><h3>Encapsulamento</h3><p>O armário mantém sua coleção privada e controla inclusões e remoções por métodos. O estado ligado/desligado também muda por operações da classe.</p></article>
+      <article class="panel concept-card"><span>REUSO</span><h3>Herança e polimorfismo</h3><p>Notebook e Projetor herdam de Equipamento. Ambos respondem a <code>detalhesTecnicos()</code> com uma implementação própria.</p></article>
+      <article class="panel concept-card"><span>CONTRATO</span><h3>Interfaces</h3><p>A interface Java <code>Ligavel</code> declara operações que qualquer equipamento ligável precisa oferecer.</p></article>
+      <article class="panel concept-card"><span>ROBUSTEZ</span><h3>Exceções e coleções</h3><p>Entradas inválidas e patrimônios duplicados geram exceções. O armário guarda os objetos em uma coleção tipada.</p></article>
+      <article class="panel concept-card"><span>INTERAÇÃO</span><h3>Eventos e janela</h3><p>A versão Java usa eventos Swing em uma janela. Esta página reproduz ações semelhantes com eventos de formulário e botões no navegador.</p></article>
+    </section>
+
+    <section class="panel java-panel" id="java">
+      <div class="panel-heading"><div><p class="eyebrow">04 / CÓDIGO-FONTE</p><h2>Projeto Java comentado</h2></div><span class="panel-icon" aria-hidden="true">.java</span></div>
+      <p class="description">A aplicação de desktop usa Swing e pode ser compilada localmente. Os comentários indicam onde adaptar classes, campos e eventos.</p>
+      <div class="java-files">
+        <a href="https://github.com/iure-go/iure-go.github.io/tree/main/projetos/java/programacao-orientada-a-objetos" target="_blank" rel="noreferrer">Abrir pasta do projeto ↗</a>
+        <a href="https://github.com/iure-go/iure-go.github.io/blob/main/projetos/java/programacao-orientada-a-objetos/src/main/java/br/com/iure/labpoo/Equipamento.java" target="_blank" rel="noreferrer">Equipamento.java</a>
+        <a href="https://github.com/iure-go/iure-go.github.io/blob/main/projetos/java/programacao-orientada-a-objetos/src/main/java/br/com/iure/labpoo/JanelaLaboratorio.java" target="_blank" rel="noreferrer">JanelaLaboratorio.java</a>
+        <a href="https://github.com/iure-go/iure-go.github.io/blob/main/projetos/java/programacao-orientada-a-objetos/README.md" target="_blank" rel="noreferrer">Instruções de execução</a>
+      </div>
+      <p class="method-note">Conteúdo alinhado à ementa de Programação Orientada a Objetos I da UERJ, que inclui classes, encapsulamento, herança, polimorfismo, interfaces, exceções, coleções e programação em janela. <a href="https://www.dep.uerj.br/ementa_dep_api.php?cdg_disciplina=14912" target="_blank" rel="noreferrer">Consultar ementa oficial ↗</a></p>
+    </section>
+    <footer class="footnote">Projeto acadêmico de Programação Orientada a Objetos I · <a href="https://github.com/iure-go/iure-go.github.io/tree/main/projetos/demos-web/programacao-orientada-a-objetos">Ver arquivos da demonstração ↗</a></footer>
+  </main>
+</body>
+</html>
