@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="EngSoft Lab: laboratório interativo de requisitos, backlog, planejamento de sprint, rastreabilidade e testes de aceitação.">
+  <title>EngSoft Lab · Engenharia de Software I | Iure Oliveira</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <main class="shell" id="inicio">
+    <a class="back" href="../">← Todas as demonstrações</a>
+    <header class="hero">
+      <p class="eyebrow">ENGENHARIA DE SOFTWARE I · PROJETO DIDÁTICO</p>
+      <h1>EngSoft Lab <span>Planeje requisitos. Entregue qualidade.</span></h1>
+      <p class="intro">Acompanhe um pequeno ciclo de desenvolvimento de um sistema de reservas de salas. Organize requisitos fictícios, monte uma sprint e simule testes de aceitação.</p>
+    </header>
+
+    <nav class="tabs" aria-label="Seções do laboratório">
+      <a href="#ciclo">Ciclo</a>
+      <a href="#requisitos">Requisitos</a>
+      <a href="#sprint">Sprint</a>
+      <a href="#testes">Rastreabilidade e testes</a>
+      <a href="#conceitos">Conceitos</a>
+    </nav>
+
+    <section class="concept-strip" aria-label="Etapas representadas">
+      <div><span>01</span><strong>Entenda</strong><small>problema e pessoas</small></div>
+      <div><span>02</span><strong>Especifique</strong><small>requisitos claros</small></div>
+      <div><span>03</span><strong>Planeje</strong><small>escopo da sprint</small></div>
+      <div><span>04</span><strong>Verifique</strong><small>critérios de aceite</small></div>
+    </section>
+
+    <section class="panel scenario" id="ciclo">
+      <div class="panel-heading">
+        <div><p class="eyebrow">ESTUDO DE CASO · RESERVAS DE SALAS</p><h2>Do problema à validação</h2></div>
+        <span class="panel-icon" aria-hidden="true">SDLC</span>
+      </div>
+      <p class="description">Uma universidade quer que estudantes consultem horários livres e reservem salas de estudo. A equipe precisa definir o que será entregue primeiro e como demonstrará que cada necessidade foi atendida.</p>
+      <div class="phase-tabs" role="tablist" aria-label="Fases do ciclo de desenvolvimento">
+        <button class="phase-tab active" type="button" data-phase="requirements" role="tab" aria-selected="true">01 · Requisitos</button>
+        <button class="phase-tab" type="button" data-phase="design" role="tab" aria-selected="false">02 · Projeto</button>
+        <button class="phase-tab" type="button" data-phase="delivery" role="tab" aria-selected="false">03 · Construção</button>
+        <button class="phase-tab" type="button" data-phase="verification" role="tab" aria-selected="false">04 · Verificação</button>
+      </div>
+      <div class="phase-content" id="phase-content" role="tabpanel" aria-live="polite"></div>
+    </section>
+
+    <section class="workspace" id="requisitos" aria-label="Requisitos e planejamento">
+      <article class="panel backlog-panel">
+        <div class="panel-heading"><div><p class="eyebrow">01 / ESCOPO DO PRODUTO</p><h2>Backlog de requisitos</h2></div><span class="panel-icon" aria-hidden="true">REQ</span></div>
+        <p class="description">Selecione um item para inspecionar sua história de usuário e critérios de aceitação. Filtre por tipo e ajuste sua prioridade MoSCoW.</p>
+        <div class="filter-row" role="group" aria-label="Filtrar requisitos">
+          <button class="filter-chip active" type="button" data-filter="all" aria-pressed="true">Todos</button>
+          <button class="filter-chip" type="button" data-filter="Funcional" aria-pressed="false">Funcionais</button>
+          <button class="filter-chip" type="button" data-filter="Qualidade" aria-pressed="false">Qualidade</button>
+        </div>
+        <ul id="requirement-list" class="requirement-list" aria-label="Lista de requisitos"></ul>
+        <p class="hint">MoSCoW: Must (essencial), Should (importante), Could (desejável) e Won’t (fora do escopo desta versão).</p>
+      </article>
+
+      <article class="panel detail-panel" aria-labelledby="detail-title">
+        <div class="panel-heading"><div><p class="eyebrow">02 / DETALHE DO REQUISITO</p><h2 id="detail-title">História e aceite</h2></div><span class="panel-icon" id="detail-id" aria-hidden="true">—</span></div>
+        <div id="requirement-detail"></div>
+      </article>
+    </section>
+
+    <section class="panel sprint-panel" id="sprint">
+      <div class="panel-heading"><div><p class="eyebrow">03 / PLANEJAMENTO ITERATIVO</p><h2>Sprint 1 · capacidade de 8 pontos</h2></div><span class="panel-icon" aria-hidden="true">SP</span></div>
+      <p class="description">Adicione ou remova requisitos pelo painel de detalhes. Compare o esforço estimado com a capacidade e perceba como prioridade e escopo afetam o plano.</p>
+      <div class="sprint-summary">
+        <div><span>Esforço planejado</span><strong id="sprint-points">0 / 8 pts</strong></div>
+        <div><span>Itens selecionados</span><strong id="sprint-count">0</strong></div>
+      </div>
+      <div class="progress-track" role="progressbar" aria-label="Capacidade planejada da sprint" aria-valuemin="0" aria-valuemax="8" aria-valuenow="0"><span id="sprint-progress"></span></div>
+      <p class="status" id="sprint-status" role="status" aria-live="polite"></p>
+      <ul id="sprint-list" class="sprint-list"></ul>
+      <p id="sprint-empty" class="empty-state" hidden>Nenhum requisito planejado. Escolha um item do backlog para iniciar a sprint.</p>
+    </section>
+
+    <section class="panel tests-panel" id="testes">
+      <div class="panel-heading"><div><p class="eyebrow">04 / QUALIDADE E RASTREABILIDADE</p><h2>Requisito → critério → teste</h2></div><span class="panel-icon" aria-hidden="true">QA</span></div>
+      <p class="description">Cada requisito está ligado a um cenário de aceitação. Use os controles para simular uma execução e observar a cobertura dos testes aprovados.</p>
+      <div class="test-metrics">
+        <div class="metric"><span>Rastreabilidade</span><strong id="trace-count">0 / 0</strong><small>requisitos com cenário</small></div>
+        <div class="metric"><span>Testes aprovados</span><strong id="passed-count">0 / 0</strong><small>cenários executados</small></div>
+        <div class="metric"><span>Cobertura aprovada</span><strong id="coverage">0%</strong><small>dos requisitos mapeados</small></div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Requisito</th><th>Critério / cenário de aceitação</th><th>Resultado simulado</th><th>Ação</th></tr></thead>
+          <tbody id="test-table"></tbody>
+        </table>
+      </div>
+      <p class="hint">A execução acontece apenas nesta página e usa exemplos didáticos. Nenhum dado é enviado a um servidor.</p>
+    </section>
+
+    <section class="concept-grid" id="conceitos" aria-label="Conceitos de engenharia de software">
+      <article class="panel concept-card"><span>LEVANTAMENTO</span><h3>Requisitos funcionais</h3><p>Descrevem serviços ou comportamentos que o sistema oferece, como consultar horários, reservar e cancelar.</p></article>
+      <article class="panel concept-card"><span>QUALIDADE</span><h3>Requisitos não funcionais</h3><p>Expressam condições de qualidade, como acessibilidade, responsividade, segurança ou desempenho.</p></article>
+      <article class="panel concept-card"><span>GESTÃO DO ESCOPO</span><h3>Prioridade e backlog</h3><p>MoSCoW ajuda a conversar sobre valor e escopo. A estimativa em pontos é relativa e não representa horas exatas.</p></article>
+      <article class="panel concept-card"><span>VALIDAÇÃO</span><h3>Critérios de aceitação</h3><p>Exemplos observáveis ajudam equipe e pessoa solicitante a verificar se uma necessidade foi atendida.</p></article>
+    </section>
+
+    <footer class="footnote">Projeto acadêmico de Engenharia de Software I · <a href="https://github.com/iure-go/iure-go.github.io/tree/main/projetos/demos-web/engenharia-software">Ver arquivos do projeto ↗</a> · Requisitos e dados fictícios.</footer>
+  </main>
+</body>
+</html>
