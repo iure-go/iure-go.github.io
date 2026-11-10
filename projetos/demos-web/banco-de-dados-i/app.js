@@ -197,7 +197,7 @@
         ? "ROLLBACK;"
         : "-- Confirme com COMMIT ou desfaça com ROLLBACK.";
     elements.transactionCode.textContent = lastStatements.length
-      ? "BEGIN;\\n\\n" + lastStatements.join("\\n\\n") + "\\n\\n" + closingStatement
+      ? "BEGIN;\n\n" + lastStatements.join("\n\n") + "\n\n" + closingStatement
       : "-- As operações SQL aparecerão aqui.";
     renderSelects();
   }
