@@ -28,6 +28,7 @@
   let pending = [];
   let selectedTable = "loans";
   let lastStatements = [];
+  let lastOutcome = "pending";
 
   const elements = {
     dataTable: document.querySelector("#data-table"),
@@ -190,8 +191,13 @@
     elements.transactionDot.classList.toggle("ready", pending.length > 0);
     elements.commit.disabled = pending.length === 0;
     elements.rollback.disabled = pending.length === 0;
+    const closingStatement = lastOutcome === "committed"
+      ? "COMMIT;"
+      : lastOutcome === "rolled-back"
+        ? "ROLLBACK;"
+        : "-- Confirme com COMMIT ou desfaça com ROLLBACK.";
     elements.transactionCode.textContent = lastStatements.length
-      ? `BEGIN;\n\n${lastStatements.join("\n\n")}\n\n-- Confirme com COMMIT ou desfaça com ROLLBACK.`
+      ? "BEGIN;\\n\\n" + lastStatements.join("\\n\\n") + "\\n\\n" + closingStatement
       : "-- As operações SQL aparecerão aqui.";
     renderSelects();
   }
@@ -267,6 +273,7 @@
     }
     pending = trial;
     lastStatements = statements;
+    lastOutcome = "pending";
     renderQueue();
     setMessage("Operação adicionada. A base continua igual até o COMMIT.", "success");
     return true;
@@ -284,6 +291,7 @@
     data = updated;
     pending = [];
     lastStatements = statements;
+    lastOutcome = "committed";
     render();
     setMessage(`COMMIT concluído: ${statements.length} ${statements.length === 1 ? "operação aplicada" : "operações aplicadas"}.`, "success");
   }
@@ -322,7 +330,7 @@
   elements.commit.addEventListener("click", commit);
   elements.rollback.addEventListener("click", () => {
     pending = [];
-    lastStatements = [];
+    lastOutcome = "rolled-back";
     renderQueue();
     setMessage("ROLLBACK concluído. Nenhuma alteração pendente foi aplicada.", "success");
   });
@@ -331,6 +339,7 @@
     data = copy(initialData);
     pending = [];
     lastStatements = [];
+    lastOutcome = "pending";
     render();
     setMessage("Dados fictícios reiniciados.", "success");
   });
