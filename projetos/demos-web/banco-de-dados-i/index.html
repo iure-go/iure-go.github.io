@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Laboratório didático de SQL, integridade de dados e transações para Banco de Dados I.">
+  <title>BancoLab · Banco de Dados I | Iure Oliveira</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <main class="shell">
+    <a class="back" href="../">← Todas as demonstrações</a>
+
+    <header class="hero">
+      <p class="eyebrow">BANCO DE DADOS I · PROJETO DIDÁTICO</p>
+      <h1>BancoLab <span>SQL, integridade e transações</span></h1>
+      <p class="intro">Pratique operações em um sistema fictício de biblioteca universitária. Consulte dados relacionados, acompanhe as restrições que protegem as tabelas e teste como uma transação pode ser confirmada ou desfeita.</p>
+      <div class="hero-meta"><span>Estudo de caso: biblioteca universitária</span><span>Dados fictícios · sem backend</span></div>
+    </header>
+
+    <nav class="tabs" aria-label="Seções do laboratório">
+      <a href="#base">Base de dados</a>
+      <a href="#consultas">Consultas SQL</a>
+      <a href="#transacoes">Transações</a>
+      <a href="#conceitos">Conceitos</a>
+    </nav>
+
+    <section id="base" class="panel">
+      <div class="section-heading">
+        <div><p class="eyebrow">01 / BASE RELACIONAL</p><h2>Explore as tabelas</h2><p class="muted">Alterne entre as tabelas e veja como as chaves ligam estudantes, livros e empréstimos.</p></div>
+        <span class="panel-icon" aria-hidden="true">DB</span>
+      </div>
+      <div class="table-tabs" role="group" aria-label="Selecionar tabela">
+        <button class="table-tab active" data-table="loans" type="button">Empréstimos</button>
+        <button class="table-tab" data-table="students" type="button">Estudantes</button>
+        <button class="table-tab" data-table="books" type="button">Livros</button>
+      </div>
+      <div class="table-scroll">
+        <table class="data-table" id="data-table" aria-live="polite"></table>
+      </div>
+      <div class="schema-grid">
+        <article class="schema-card"><span class="schema-name">ESTUDANTE</span><p><b>PK</b> id_estudante · <b>UNIQUE</b> email · nome obrigatório</p></article>
+        <article class="schema-card"><span class="schema-name">LIVRO</span><p><b>PK</b> id_livro · <b>UNIQUE</b> ISBN · título obrigatório</p></article>
+        <article class="schema-card"><span class="schema-name">EMPRESTIMO</span><p><b>PK</b> id_emprestimo · <b>FK</b> estudante e livro · datas e status obrigatórios</p></article>
+      </div>
+      <p class="scope-note"><span aria-hidden="true">ⓘ</span> A tabela EMPRÉSTIMO usa chaves estrangeiras para apontar para registros existentes. O identificador de cada tabela é sua chave primária.</p>
+    </section>
+
+    <section id="consultas" class="panel">
+      <div class="section-heading">
+        <div><p class="eyebrow">02 / CONSULTAS SQL</p><h2>Consulte os dados</h2><p class="muted">Escolha uma consulta para ver o SQL e executar a mesma operação sobre a base fictícia.</p></div>
+        <span class="panel-icon" aria-hidden="true">SQL</span>
+      </div>
+      <div class="query-controls">
+        <label for="query-select">Consulta de exemplo</label>
+        <div class="query-row">
+          <select id="query-select">
+            <option value="open">Empréstimos em aberto · JOIN + WHERE</option>
+            <option value="student">Histórico de uma pessoa · JOIN</option>
+            <option value="popular">Livros mais emprestados · GROUP BY</option>
+          </select>
+          <label class="student-filter" id="student-filter">Estudante
+            <select id="query-student"></select>
+          </label>
+          <button class="button primary" id="run-query" type="button">Executar consulta</button>
+        </div>
+      </div>
+      <pre class="sql-code"><code id="query-code"></code></pre>
+      <div class="result-heading"><strong id="query-title">Resultado da consulta</strong><span id="query-count" aria-live="polite"></span></div>
+      <div class="table-scroll result-scroll">
+        <table class="data-table" id="query-result" aria-live="polite"></table>
+      </div>
+    </section>
+
+    <section id="transacoes" class="panel">
+      <div class="section-heading">
+        <div><p class="eyebrow">03 / TRANSAÇÕES</p><h2>Prepare as alterações antes de confirmar</h2><p class="muted">Inclua uma operação ou registre uma devolução. As mudanças ficam pendentes até você confirmar a transação.</p></div>
+        <span class="panel-icon" aria-hidden="true">ACID</span>
+      </div>
+      <div class="transaction-grid">
+        <div class="forms-column">
+          <form id="loan-form" class="action-form">
+            <h3>Novo empréstimo</h3>
+            <label>Estudante<select id="loan-student" required></select></label>
+            <label>Livro disponível<select id="loan-book" required></select></label>
+            <button class="button secondary" type="submit">＋ Adicionar à transação</button>
+          </form>
+          <form id="return-form" class="action-form">
+            <h3>Registrar devolução</h3>
+            <label>Empréstimo em aberto<select id="return-loan" required></select></label>
+            <button class="button secondary" type="submit">↩ Adicionar devolução</button>
+          </form>
+        </div>
+        <aside class="transaction-box" aria-label="Operações pendentes">
+          <div class="pending-heading"><div><h3>Fila da transação</h3><span id="pending-count">Nenhuma alteração pendente</span></div><span class="transaction-dot" id="transaction-dot"></span></div>
+          <ol id="pending-list" class="pending-list"><li class="empty-state">Adicione uma operação para começar.</li></ol>
+          <pre class="sql-code transaction-sql"><code id="transaction-code">-- As operações SQL aparecerão aqui.</code></pre>
+          <div class="transaction-actions">
+            <button class="button secondary" id="rollback" type="button" disabled>Reverter (ROLLBACK)</button>
+            <button class="button primary" id="commit" type="button" disabled>Confirmar (COMMIT)</button>
+          </div>
+          <p id="transaction-message" class="message" role="status" aria-live="polite">As alterações pendentes ainda não afetam as tabelas.</p>
+        </aside>
+      </div>
+      <div class="acid-grid" aria-label="Propriedades ACID">
+        <article><b>A</b><strong>Atomicidade</strong><span>Confirma todas as operações juntas ou nenhuma.</span></article>
+        <article><b>C</b><strong>Consistência</strong><span>Restrições válidas antes e depois da transação.</span></article>
+        <article><b>I</b><strong>Isolamento</strong><span>As alterações pendentes não aparecem na tabela antes do COMMIT.</span></article>
+        <article><b>D</b><strong>Durabilidade</strong><span>Após confirmar, as alterações permanecem nesta sessão até reiniciar a demonstração.</span></article>
+      </div>
+      <div class="transaction-footer"><button class="text-button" id="reset-demo" type="button">Reiniciar dados fictícios</button><span>O navegador mantém os dados apenas enquanto esta página estiver aberta.</span></div>
+    </section>
+
+    <section id="conceitos" class="panel learning">
+      <div class="section-heading"><div><p class="eyebrow">04 / CONCEITOS EM FOCO</p><h2>O que este laboratório demonstra</h2></div></div>
+      <div class="learning-grid">
+        <article><h3>SQL</h3><p>SELECT e JOIN consultam dados em mais de uma tabela; WHERE filtra linhas e GROUP BY resume registros relacionados.</p></article>
+        <article><h3>Integridade</h3><p>PK identifica linhas, UNIQUE impede duplicidade em atributos escolhidos e FK exige uma referência válida.</p></article>
+        <article><h3>DML</h3><p>INSERT inclui um empréstimo e UPDATE registra sua devolução. Os comandos aparecem na fila antes da confirmação.</p></article>
+        <article><h3>Transações</h3><p>COMMIT aplica o conjunto de alterações; ROLLBACK limpa as operações preparadas sem modificar as tabelas.</p></article>
+      </div>
+      <p class="scope-note curriculum-note"><span aria-hidden="true">ⓘ</span> No fluxograma oficial da UERJ, Banco de Dados I aparece no 3º período, depois de Modelagem de Dados. A ementa detalhada dessa disciplina não está disponível no ementário eletrônico; este protótipo usa tópicos introdutórios de SQL e transações como exercício didático.</p>
+      <p class="source-link"><a href="https://www.dep.uerj.br/fluxos/tecnologia_em_analise_e_desenvolvimento_de_sistemas_fcee.pdf" target="_blank" rel="noreferrer">Fluxograma do curso de ADS · UERJ ↗</a> · <a href="https://www.dep.uerj.br/ementario.php" target="_blank" rel="noreferrer">Ementário eletrônico da UERJ ↗</a></p>
+    </section>
+
+    <footer class="footnote">Projeto didático de Banco de Dados I · <a href="https://github.com/iure-go/iure-go.github.io/tree/main/projetos/demos-web/banco-de-dados-i">Ver arquivos do projeto ↗</a></footer>
+  </main>
+</body>
+</html>
