@@ -561,3 +561,32 @@ footer a {
 .hero.vanta-active .hero-card {background:rgba(14,37,24,.92);box-shadow:18px 18px 0 #82ff3f;backdrop-filter:blur(5px)}
 .hero.vanta-active .card-mark {background:#82ff3f}
 @media(max-width:760px){.hero.vanta-active{grid-template-columns:minmax(0,1fr)}.hero.vanta-active .hero-copy,.hero.vanta-active .hero-card{grid-column:1;grid-row:auto}}
+
+
+/* Link para o catálogo completo, depois dos três projetos em destaque. */
+.project-more {
+  grid-column: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin-top: 2px;
+  padding: 22px 26px;
+  background: #eef1e9;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+.project-more p {
+  margin: 0;
+  color: #526055;
+  font-size: 14px;
+  font-weight: 600;
+}
+.project-more .button { white-space: nowrap; }
+@media (max-width: 900px) {
+  .project-more { grid-column: 1; }
+}
+@media (max-width: 620px) {
+  .project-more { align-items: flex-start; flex-direction: column; padding: 20px; }
+  .project-more p { font-size: 13px; }
+}
