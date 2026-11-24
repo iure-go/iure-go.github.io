@@ -619,19 +619,3 @@ footer a {
   .project-card { transition: none; }
 }
 
-/* Filtros acessíveis de competências e projetos relacionados. */
-.skill-filter { grid-column: 2; padding: 18px 20px; border: 1px solid var(--line); border-radius: 9px; background: #f1f4ed; }
-.skill-filter-title { margin: 0 0 11px; color: #1b2b22; font-size: 14px; font-weight: 800; }
-.skill-filter-options { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-.skill-filter-chip, .skill-filter-clear { min-height: 38px; padding: 8px 12px; border: 1px solid #aeb9af; border-radius: 22px; background: white; color: #34453a; font: 700 12px Arial, sans-serif; cursor: pointer; }
-.skill-filter-chip:hover, .skill-filter-chip[aria-pressed="true"] { border-color: #4d7134; background: #1b2b22; color: white; }
-.skill-filter-chip:focus-visible, .skill-filter-clear:focus-visible { outline: 3px solid #82ff3f; outline-offset: 3px; }
-.skill-filter-clear { border-style: dashed; color: #496a31; }
-.skill-filter-clear:disabled { opacity: .5; cursor: not-allowed; }
-.skill-filter-status { margin: 10px 0 0; color: #59655f; font-size: 13px; }
-.project-card { transition: opacity .2s ease, transform .2s ease, box-shadow .2s ease; }
-.project-card.skill-match { border-color: #71954c; box-shadow: 0 0 0 3px #82ff3f44, 0 16px 34px #18211e14; transform: translateY(-2px); }
-.project-card.skill-dimmed { opacity: .48; }
-@media (max-width: 900px) { .skill-filter { grid-column: 1; } }
-@media (max-width: 620px) { .skill-filter { padding: 16px; } .skill-filter-chip, .skill-filter-clear { font-size: 11px; } }
-@media (prefers-reduced-motion: reduce) { .project-card { transition: none; } }
