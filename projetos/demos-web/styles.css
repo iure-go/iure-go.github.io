@@ -20,3 +20,18 @@ h2{margin:0 0 8px;font-size:23px;letter-spacing:-.5px}
 .text-link{display:inline-block;margin-top:12px;font-size:13px;font-weight:700}
 .pending{background:#eef1e9}
 @media(max-width:600px){.page{padding-top:24px}header{padding-top:42px}.card{padding:20px}}
+/* Filtro de competências no catálogo de demonstrações. */
+.skill-filter { margin: 0 0 18px; padding: 18px 20px; border: 1px solid var(--line); border-radius: 12px; background: #eef1e9; }
+.skill-filter-title { margin: 0 0 11px; color: #18211e; font-size: 14px; font-weight: 800; }
+.skill-filter-options { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.skill-filter-chip, .skill-filter-clear { min-height: 38px; padding: 8px 12px; border: 1px solid #aeb9af; border-radius: 22px; background: white; color: #34453a; font: 700 12px Arial, sans-serif; cursor: pointer; }
+.skill-filter-chip:hover, .skill-filter-chip[aria-pressed="true"] { border-color: #4d7134; background: var(--dark); color: white; }
+.skill-filter-chip:focus-visible, .skill-filter-clear:focus-visible { outline: 3px solid #82ff3f; outline-offset: 3px; }
+.skill-filter-clear { border-style: dashed; color: #496a31; }
+.skill-filter-clear:disabled { opacity: .5; cursor: not-allowed; }
+.skill-filter-status { margin: 10px 0 0; color: #59655f; font-size: 13px; }
+.card { transition: opacity .2s ease, transform .2s ease, box-shadow .2s ease; }
+.card.skill-match { border-color: #71954c; box-shadow: 0 0 0 3px #82ff3f55, 0 12px 28px #18211e16; transform: translateY(-2px); }
+.card.skill-dimmed { opacity: .48; }
+@media (max-width: 600px) { .skill-filter { padding: 15px; } .skill-filter-chip, .skill-filter-clear { font-size: 11px; } }
+@media (prefers-reduced-motion: reduce) { .card { transition: none; } }
