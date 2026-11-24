@@ -590,3 +590,31 @@ footer a {
   .project-more { align-items: flex-start; flex-direction: column; padding: 20px; }
   .project-more p { font-size: 13px; }
 }
+
+/* Estudos de caso interativos dos projetos em destaque. */
+.project-card { transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease; }
+.project-card:hover { transform: translateY(-3px); border-color: #9dad91; box-shadow: 0 16px 34px #18211e14; }
+.case-details {
+  margin: 0 0 18px;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.case-details summary {
+  width: fit-content;
+  padding: 13px 0;
+  color: #496a31;
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+}
+.case-details summary:focus-visible {
+  outline: 3px solid #82ff3f;
+  outline-offset: 4px;
+  border-radius: 3px;
+}
+.case-content { padding: 0 0 10px; }
+.case-content p { margin: 0 0 10px; color: #59655f; font-size: 14px; line-height: 1.6; }
+.case-content strong { color: #1b2b22; }
+@media (prefers-reduced-motion: reduce) {
+  .project-card { transition: none; }
+}
