@@ -79,12 +79,23 @@
         <article class="skill-card"><span class="skill-number">03</span><h3>Suporte e operação</h3><p>Experiência em suporte e manutenção de computadores, atendimento ao usuário, organização e documentação.</p></article>
         <article class="skill-card"><span class="skill-number">04</span><h3>Colaboração</h3><p>Comunicação, atendimento ao público, organização de rotinas e trabalho com equipes em contextos administrativos e operacionais.</p></article>
       </div>
+      <div class="skill-filter">
+        <p class="skill-filter-title">Explore os projetos por competência</p>
+        <div class="skill-filter-options" role="group" aria-label="Filtrar projetos por competência">
+          <button type="button" class="skill-filter-chip" data-skill-filter="mobile" aria-pressed="false">Desenvolvimento mobile</button>
+          <button type="button" class="skill-filter-chip" data-skill-filter="data" aria-pressed="false">SQL e modelagem de dados</button>
+          <button type="button" class="skill-filter-chip" data-skill-filter="requirements" aria-pressed="false">Engenharia de requisitos</button>
+          <button type="button" class="skill-filter-chip" data-skill-filter="web" aria-pressed="false">HTML, CSS e JavaScript</button>
+          <button type="button" class="skill-filter-clear" id="clear-skill-filter" disabled>Limpar seleção</button>
+        </div>
+        <p class="skill-filter-status" id="skill-filter-status" aria-live="polite">Selecione uma competência para destacar os projetos relacionados.</p>
+      </div>
       <p class="language-note"><strong>Idiomas:</strong> Português · Inglês intermediário B1 (Duolingo: 129)</p>
     </section>
 
     <section class="section shaded" id="projetos">
       <div class="section-heading"><p class="eyebrow">04 / PROJETOS</p><h2>Aprendizado aplicado.</h2></div>
-      <article class="project-card">
+      <article class="project-card" data-skills="mobile">
         <div class="project-topline"><span class="project-type">PROJETO ACADÊMICO · UERJ/ZO</span><span class="project-status">Aplicativo móvel</span></div>
         <h3>Meu Saldo</h3>
         <p>Aplicativo para controle financeiro pessoal, desenvolvido para a disciplina Programação para Dispositivos Móveis. Registra receitas e despesas, acompanha limites mensais e apresenta relatórios por período e categoria.</p>
@@ -100,7 +111,7 @@
         <div class="project-actions"><a class="button primary" href="projetos/meu-saldo/">Conhecer o projeto ↗</a><a class="project-code" href="projetos/demos-web/meu-saldo/">Experimentar demonstração ↗</a><a class="project-code" href="https://github.com/iure-go/iure-go.github.io/tree/main/projetos/meu-saldo" target="_blank" rel="noreferrer">Ver código no GitHub ↗</a></div>
       </article>
 
-      <article class="project-card">
+      <article class="project-card" data-skills="web data">
         <div class="project-topline"><span class="project-type">PROJETO ACADÊMICO · MODELAGEM DE DADOS</span><span class="project-status">Laboratório SQL</span></div>
         <h3>DataLab · Modelagem relacional</h3>
         <p>Explore um modelo de empréstimo de equipamentos, edite consultas SQL sobre dados fictícios e acompanhe a normalização até a 3ª Forma Normal.</p>
@@ -116,7 +127,7 @@
         <div class="project-actions"><a class="button primary" href="projetos/demos-web/modelagem-dados/">Experimentar no navegador ↗</a><a class="project-code" href="https://github.com/iure-go/iure-go.github.io/tree/main/projetos/demos-web/modelagem-dados" target="_blank" rel="noreferrer">Ver código e conceitos ↗</a></div>
       </article>
 
-      <article class="project-card">
+      <article class="project-card" data-skills="web requirements">
         <div class="project-topline"><span class="project-type">PROJETO ACADÊMICO · ENGENHARIA DE SOFTWARE I</span><span class="project-status">Requisitos · planejamento · testes</span></div>
         <h3>EngSoft Lab · Desenvolvimento de software</h3>
         <p>Estudo de caso interativo de reservas de salas: organize requisitos, priorize o backlog com MoSCoW, planeje uma sprint, siga a rastreabilidade e simule testes de aceitação.</p>
@@ -333,6 +344,55 @@
       }
     })();
   </script>
+
+<script>
+  // Os botões de competência destacam os estudos de caso relacionados.
+  (() => {
+    const filters = [...document.querySelectorAll("[data-skill-filter]")];
+    const cards = [...document.querySelectorAll("#projetos .project-card")];
+    const clearButton = document.querySelector("#clear-skill-filter");
+    const status = document.querySelector("#skill-filter-status");
+    const selectedSkills = new Set();
+
+    function updateSkillHighlights() {
+      let matchCount = 0;
+      cards.forEach((card) => {
+        const cardSkills = (card.dataset.skills || "").split(/\s+/);
+        const matches = selectedSkills.size === 0 || [...selectedSkills].some((skill) => cardSkills.includes(skill));
+        card.classList.toggle("skill-match", selectedSkills.size > 0 && matches);
+        card.classList.toggle("skill-dimmed", selectedSkills.size > 0 && !matches);
+        if (matches) matchCount += 1;
+      });
+
+      filters.forEach((button) => {
+        button.setAttribute("aria-pressed", String(selectedSkills.has(button.dataset.skillFilter)));
+      });
+      clearButton.disabled = selectedSkills.size === 0;
+      if (selectedSkills.size === 0) {
+        status.textContent = "Selecione uma competência para destacar os projetos relacionados.";
+      } else {
+        const names = filters
+          .filter((button) => selectedSkills.has(button.dataset.skillFilter))
+          .map((button) => button.textContent.trim());
+        status.textContent = `${names.join(", ")}: ${matchCount} ${matchCount === 1 ? "projeto relacionado" : "projetos relacionados"} em destaque.`;
+      }
+    }
+
+    filters.forEach((button) => {
+      button.addEventListener("click", () => {
+        const skill = button.dataset.skillFilter;
+        if (selectedSkills.has(skill)) selectedSkills.delete(skill);
+        else selectedSkills.add(skill);
+        updateSkillHighlights();
+      });
+    });
+
+    clearButton.addEventListener("click", () => {
+      selectedSkills.clear();
+      updateSkillHighlights();
+    });
+  })();
+</script>
 </body>
 </html>
 
