@@ -15,8 +15,21 @@
       <h1>Experimente no navegador</h1>
       <p class="intro">Versões web interativas dos projetos acadêmicos. Os programas originais em C continuam disponíveis nas páginas de código.</p>
     </header>
+<div class="skill-filter">
+        <p class="skill-filter-title">Explore os demonstrações por competência</p>
+        <div class="skill-filter-options" role="group" aria-label="Filtrar demonstrações por competência">
+          <button type="button" class="skill-filter-chip" data-skill-filter="mobile" aria-pressed="false">Desenvolvimento mobile</button>
+          <button type="button" class="skill-filter-chip" data-skill-filter="data" aria-pressed="false">SQL e modelagem de dados</button>
+          <button type="button" class="skill-filter-chip" data-skill-filter="requirements" aria-pressed="false">Engenharia de requisitos</button>
+          <button type="button" class="skill-filter-chip" data-skill-filter="web" aria-pressed="false">HTML, CSS e JavaScript</button>
+          <button type="button" class="skill-filter-clear" id="clear-skill-filter" disabled>Limpar seleção</button>
+        </div>
+      </div>
+      <p class="skill-filter-status" id="skill-filter-status" aria-live="polite">Selecione uma competência para destacar as demonstrações relacionadas.</p>
+    </div>
+
     <section class="cards" aria-label="Demonstrações disponíveis">
-      <article class="card">
+      <article class="card" data-skills="mobile data web">
         <p class="label">PROJETO ACADÊMICO · UERJ/ZO</p>
         <h2>Meu Saldo</h2>
         <p>Explore um painel financeiro com lançamentos, filtros, saldo por período, limite mensal e relatório por categoria.</p>
@@ -72,21 +85,21 @@
         <a class="button" href="cpu8/">Abrir simulador ↗</a>
         <a class="text-link" href="../c/cpu8/cpu8.c">Ver implementação em C ↗</a>
       </article>
-      <article class="card">
+      <article class="card" data-skills="requirements web">
         <p class="label">FUNDAMENTOS DE SISTEMAS DE INFORMAÇÃO</p>
         <h2>LabFlux · Central de chamados</h2>
         <p>Registre solicitações de suporte, acompanhe status e veja como dados e processos ajudam a organizar o atendimento em laboratórios.</p>
         <a class="button" href="fundamentos-si/">Abrir demonstração ↗</a>
         <a class="text-link" href="https://github.com/iure-go/iure-go.github.io/tree/main/projetos/demos-web/fundamentos-si">Ver documentação ↗</a>
       </article>
-      <article class="card">
+      <article class="card" data-skills="web">
         <p class="label">MATEMÁTICA BÁSICA</p>
         <h2>Matemática em prática</h2>
         <p>Revise operações fundamentais, frações, porcentagem e regra de três com ferramentas interativas e explicações das fórmulas.</p>
         <a class="button" href="matematica-basica/">Abrir demonstração ↗</a>
         <a class="text-link" href="https://github.com/iure-go/iure-go.github.io/tree/main/projetos/demos-web/matematica-basica">Ver código e conceitos ↗</a>
       </article>
-      <article class="card">
+      <article class="card" data-skills="web">
         <p class="label">CONSTRUÇÃO DE PÁGINAS WEB</p>
         <h2>PageLab · Editor de páginas</h2>
         <p>Edite textos, cor e seções, veja a prévia responsiva e explore o HTML semântico gerado.</p>
@@ -100,14 +113,14 @@
         <a class="button" href="matematica-discreta/">Abrir laboratório ↗</a>
         <a class="text-link" href="https://github.com/iure-go/iure-go.github.io/tree/main/projetos/demos-web/matematica-discreta">Ver código e conceitos ↗</a>
       </article>
-      <article class="card">
+      <article class="card" data-skills="data web">
         <p class="label">MODELAGEM DE DADOS</p>
         <h2>DataLab · Modelagem relacional</h2>
         <p>Explore um modelo de empréstimo de equipamentos, edite consultas SQL sobre dados fictícios e acompanhe a normalização até a 3ª Forma Normal.</p>
         <a class="button" href="modelagem-dados/">Abrir laboratório ↗</a>
         <a class="text-link" href="https://github.com/iure-go/iure-go.github.io/tree/main/projetos/demos-web/modelagem-dados">Ver código e conceitos ↗</a>
       </article>
-      <article class="card">
+      <article class="card" data-skills="data web">
         <p class="label">BANCO DE DADOS I</p>
         <h2>BancoLab · SQL e transações</h2>
         <p>Explore tabelas relacionadas, execute consultas de demonstração e simule empréstimos e devoluções com validações, COMMIT e ROLLBACK.</p>
@@ -115,14 +128,14 @@
         <a class="text-link" href="https://github.com/iure-go/iure-go.github.io/tree/main/projetos/demos-web/banco-de-dados-i">Ver código e documentação ↗</a>
       </article>
 
-      <article class="card">
+      <article class="card" data-skills="requirements web">
         <p class="label">INTERFACE HOMEM COMPUTADOR</p>
         <h2>IHC Lab · Usabilidade e acessibilidade</h2>
         <p>Experimente uma tarefa de suporte, ajuste preferências de acessibilidade e avalie a interface com princípios heurísticos.</p>
         <a class="button" href="interface-homem-computador/">Abrir laboratório ↗</a>
         <a class="text-link" href="https://github.com/iure-go/iure-go.github.io/tree/main/projetos/demos-web/interface-homem-computador">Ver código e conceitos ↗</a>
       </article>
-      <article class="card">
+      <article class="card" data-skills="data web">
         <p class="label">ESTATÍSTICA APLICADA</p>
         <h2>EstatLab · Análise descritiva</h2>
         <p>Edite dados e explore média, mediana, moda, dispersão, quartis e distribuição em um histograma interativo.</p>
@@ -136,7 +149,7 @@
         <a class="button" href="programacao-orientada-a-objetos/">Abrir laboratório ↗</a>
         <a class="text-link" href="https://github.com/iure-go/iure-go.github.io/tree/main/projetos/java/programacao-orientada-a-objetos">Ver código Java ↗</a>
       </article>
-      <article class="card">
+      <article class="card" data-skills="requirements web">
         <p class="label">ENGENHARIA DE SOFTWARE I</p>
         <h2>EngSoft Lab · Desenvolvimento de software</h2>
         <p>Organize requisitos de um sistema fictício de reservas, monte uma sprint e simule testes de aceitação com rastreabilidade.</p>
@@ -151,5 +164,47 @@
       </article>
     </section>
   </main>
+
+<script>
+  // Filtros acessíveis: realçam as demonstrações que usam cada competência.
+  (() => {
+    const filters = [...document.querySelectorAll("[data-skill-filter]")];
+    const cards = [...document.querySelectorAll(".cards .card[data-skills]")];
+    const clearButton = document.querySelector("#clear-skill-filter");
+    const status = document.querySelector("#skill-filter-status");
+    const selectedSkills = new Set();
+
+    function updateHighlights() {
+      let matchCount = 0;
+      cards.forEach((card) => {
+        const cardSkills = (card.dataset.skills || "").split(/\\s+/);
+        const matches = selectedSkills.size === 0 || [...selectedSkills].some((skill) => cardSkills.includes(skill));
+        card.classList.toggle("skill-match", selectedSkills.size > 0 && matches);
+        card.classList.toggle("skill-dimmed", selectedSkills.size > 0 && !matches);
+        if (matches) matchCount += 1;
+      });
+      filters.forEach((button) => button.setAttribute("aria-pressed", String(selectedSkills.has(button.dataset.skillFilter))));
+      clearButton.disabled = selectedSkills.size === 0;
+      if (!selectedSkills.size) {
+        status.textContent = "Selecione uma competência para destacar as demonstrações relacionadas.";
+      } else {
+        const names = filters.filter((button) => selectedSkills.has(button.dataset.skillFilter)).map((button) => button.textContent.trim());
+        status.textContent = `${names.join(", ")}: ${matchCount} ${matchCount === 1 ? "demonstração relacionada" : "demonstrações relacionadas"} em destaque.`;
+      }
+    }
+
+    filters.forEach((button) => button.addEventListener("click", () => {
+      const skill = button.dataset.skillFilter;
+      if (selectedSkills.has(skill)) selectedSkills.delete(skill);
+      else selectedSkills.add(skill);
+      updateHighlights();
+    }));
+    clearButton.addEventListener("click", () => {
+      selectedSkills.clear();
+      updateHighlights();
+    });
+  })();
+</script>
+
 </body>
 </html>
