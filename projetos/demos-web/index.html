@@ -16,14 +16,13 @@
       <p class="intro">Versões web interativas dos projetos acadêmicos. Os programas originais em C continuam disponíveis nas páginas de código.</p>
     </header>
 <div class="skill-filter">
-        <p class="skill-filter-title">Explore os demonstrações por competência</p>
-        <div class="skill-filter-options" role="group" aria-label="Filtrar demonstrações por competência">
-          <button type="button" class="skill-filter-chip" data-skill-filter="mobile" aria-pressed="false">Desenvolvimento mobile</button>
-          <button type="button" class="skill-filter-chip" data-skill-filter="data" aria-pressed="false">SQL e modelagem de dados</button>
-          <button type="button" class="skill-filter-chip" data-skill-filter="requirements" aria-pressed="false">Engenharia de requisitos</button>
-          <button type="button" class="skill-filter-chip" data-skill-filter="web" aria-pressed="false">HTML, CSS e JavaScript</button>
-          <button type="button" class="skill-filter-clear" id="clear-skill-filter" disabled>Limpar seleção</button>
-        </div>
+      <p class="skill-filter-title">Filtre as demonstrações por competência</p>
+      <div class="skill-filter-options" role="group" aria-label="Filtrar demonstrações por competência">
+        <button type="button" class="skill-filter-chip" data-skill-filter="mobile" aria-pressed="false">Desenvolvimento mobile</button>
+        <button type="button" class="skill-filter-chip" data-skill-filter="data" aria-pressed="false">SQL e modelagem de dados</button>
+        <button type="button" class="skill-filter-chip" data-skill-filter="requirements" aria-pressed="false">Engenharia de requisitos</button>
+        <button type="button" class="skill-filter-chip" data-skill-filter="web" aria-pressed="false">HTML, CSS e JavaScript</button>
+        <button type="button" class="skill-filter-clear" id="clear-skill-filter" disabled>Limpar seleção</button>
       </div>
       <p class="skill-filter-status" id="skill-filter-status" aria-live="polite">Selecione uma competência para destacar as demonstrações relacionadas.</p>
     </div>
@@ -177,7 +176,7 @@
     function updateHighlights() {
       let matchCount = 0;
       cards.forEach((card) => {
-        const cardSkills = (card.dataset.skills || "").split(/\\s+/);
+        const cardSkills = (card.dataset.skills || "").split(/\s+/);
         const matches = selectedSkills.size === 0 || [...selectedSkills].some((skill) => cardSkills.includes(skill));
         card.classList.toggle("skill-match", selectedSkills.size > 0 && matches);
         card.classList.toggle("skill-dimmed", selectedSkills.size > 0 && !matches);
